@@ -1,0 +1,21 @@
+{
+  "theme": "brand",
+  "layouts": ["centered", "price-led", "editorial", "coupon"],
+  "formats": ["portrait", "story"],
+  "content": {
+    "name": "Safe Routine Test",
+    "amt": "30%",
+    "off": "Off",
+    "was": "$150",
+    "now": "$105",
+    "lead": "For the dad who builds after bedtime.",
+    "sub": "Quiet launch, this week only.",
+    "deadline": "Ends Friday",
+    "cta": "Comment BUILD",
+    "wordmark": "The Digital Dad",
+    "kicker": "Limited offer",
+    "on": "This week only on",
+    "ribbon": "30% Off",
+    "dropline": "Now"
+  }
+}

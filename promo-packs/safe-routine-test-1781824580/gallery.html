@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Your Promo Pack — The Digital Dad</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Fraunces:opsz,wght@9..144,600;9..144,800;9..144,900&family=Poppins:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#0b0a08;color:#efe6d4;font-family:'Poppins',system-ui,sans-serif;padding:32px}
+  h1{font-weight:700;font-size:24px;margin-bottom:4px} .lede{color:#9b8f78;margin-bottom:26px;font-size:14px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:26px}
+  .item{background:#15110b;border:1px solid rgba(224,176,99,.18);border-radius:14px;padding:14px}
+  .stage{overflow:hidden;border-radius:8px;background:#000;position:relative}
+  .stageInner{transform-origin:top left}
+  .cap{display:flex;align-items:center;justify-content:space-between;margin-top:12px}
+  .cap span{font-size:12px;color:#9b8f78;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.08em}
+  .dl{background:linear-gradient(100deg,#f1d79a,#caa052);color:#1a1208;font-weight:600;border:none;border-radius:999px;padding:8px 16px;font-size:13px;cursor:pointer}
+  /* ===== card styles (mirror render_promos.py) ===== */
+  .card{position:relative;overflow:hidden;color:var(--ink);font-family:var(--body)}
+  .card .bg{position:absolute;inset:0;z-index:0;background:var(--glow)}
+  .card .grain{position:absolute;inset:0;z-index:1;opacity:.06;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  .card .frame{position:absolute;inset:30px;border:1px solid var(--line);border-radius:18px;z-index:2}
+  .ins{position:relative;z-index:3;height:100%;display:flex;flex-direction:column}
+  .ac{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .strike{text-decoration:line-through;text-decoration-color:var(--accent);opacity:.85;color:var(--mute2)}
+  .kick{font-family:var(--mono);letter-spacing:.34em;text-transform:uppercase;color:var(--accent);font-size:21px}
+  .disp{font-family:var(--disp);font-weight:var(--dispw);line-height:.86}
+  .nm{font-family:var(--disp);font-weight:var(--namew);color:var(--cream)}
+  .ctab{font-family:var(--body);font-weight:600;color:var(--btnink);background:var(--btn);border-radius:999px;display:inline-block}
+  .dl2{font-family:var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+  .ribbon{font-family:var(--mono);font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--btnink);background:var(--btn);border-radius:8px;display:inline-block}
+  .on{font-family:var(--mono);font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--mute2)}
+  .lead{font-family:var(--leadf);font-weight:600;color:var(--cream)}
+  .off{font-family:var(--mono);font-weight:600;letter-spacing:.5em;color:var(--accent);padding-left:.5em}
+  .ticket{position:relative;width:100%;height:100%;border:2px dashed var(--accent);border-radius:24px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+  .notch{position:absolute;width:56px;height:56px;border-radius:50%;background:var(--bg);top:50%;transform:translateY(-50%)}
+</style></head>
+<body>
+<h1 id="title">Your promo pack</h1>
+<div class="lede" id="lede">Loading…</div>
+<div class="grid" id="grid"></div>
+
+<script>
+const THEMES={
+ gold:{bg:"#15110b",ink:"#efe6d4",cream:"#f5ecda",mute2:"#8a7c63",accent:"#e0b063",line:"rgba(224,176,99,.24)",
+  grad:"linear-gradient(180deg,#fbf2df,#e0b063 78%,#b9893f)",btn:"linear-gradient(100deg,#f1d79a,#e0b063 55%,#caa052)",btnink:"#1a1208",
+  glow:"radial-gradient(720px 540px at 50% -8%,rgba(224,176,99,.22),transparent 62%),radial-gradient(700px 600px at 10% 108%,rgba(202,160,82,.12),transparent 60%),radial-gradient(720px 620px at 100% 102%,rgba(120,86,40,.18),transparent 60%)",
+  disp:"'Fraunces',serif",dispw:"900",namew:"800",body:"'Poppins',sans-serif",mono:"'JetBrains Mono',monospace",leadf:"'Fraunces',serif"},
+ brand:{bg:"#050816",ink:"#f4f7ff",cream:"#fff",mute2:"#6f7aa0",accent:"#00AEEF",line:"rgba(255,255,255,.10)",
+  grad:"linear-gradient(100deg,#00AEEF,#3B82F6 45%,#8B5CF6)",btn:"linear-gradient(100deg,#00AEEF,#3B82F6)",btnink:"#00131c",
+  glow:"radial-gradient(720px 540px at 50% -8%,rgba(0,174,239,.24),transparent 62%),radial-gradient(700px 600px at 8% 108%,rgba(59,130,246,.16),transparent 60%),radial-gradient(720px 620px at 100% 102%,rgba(139,92,246,.22),transparent 60%)",
+  disp:"'Anton',sans-serif",dispw:"400",namew:"400",body:"'Poppins',sans-serif",mono:"'JetBrains Mono',monospace",leadf:"'Poppins',sans-serif"}
+};
+const FMT={portrait:[1080,1350],square:[1080,1080],story:[1080,1920]};
+const PAD={portrait:"84px 84px",square:"76px",story:"150px 84px 500px"};
+const esc=s=>(s==null?"":String(s)).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+
+function inner(layout,c){
+ const up=c._disp&&c._disp.indexOf('Anton')>-1; // unused
+ const NAME=esc(c.name),AMT=esc(c.amt),OFF=esc(c.off||'Off'),WAS=esc(c.was),NOW=esc(c.now);
+ const DL=c.deadline?`<div class="dl2" style="font-size:21px">${esc(c.deadline)}</div>`:'';
+ const CTA=`<div class="ctab" style="font-size:28px;padding:20px 50px">${esc(c.cta||'DM to claim')}</div>`;
+ const SUB=c.sub?`<div class="sub" style="color:var(--mute2);max-width:780px;margin-top:24px;font-size:26px;line-height:1.5">${esc(c.sub)}</div>`:'';
+ const PRICE=(WAS&&NOW)?`<div style="font-family:var(--leadf);font-size:46px;margin-top:12px"><span class="strike">${WAS}</span> &rarr; <span class="ac" style="font-weight:900">${NOW}</span></div>`:'';
+ const upper=THEMES[c._theme].disp.indexOf('Anton')>-1?'text-transform:uppercase':'';
+ if(layout==='price-led') return `<div class="ins" style="padding:${c._pad};align-items:center;text-align:center;justify-content:center">
+   <div class="ribbon" style="font-size:21px;padding:13px 30px">${esc(c.ribbon||(AMT+' Off'))}</div>
+   <div class="lead" style="font-size:38px;margin-top:54px;${THEMES[c._theme].leadf.indexOf('Fraunces')>-1?'font-style:italic':''}">${esc(c.dropline||'Now')}</div>
+   <div class="disp ac" style="font-size:290px;${upper};margin-top:6px">${NOW}</div>
+   <div style="font-family:var(--leadf);font-size:50px;margin-top:8px"><span class="strike">was ${WAS}</span></div>
+   <div class="on" style="font-size:23px;margin-top:36px">${NAME}</div>
+   <div style="margin-top:auto;display:flex;flex-direction:column;align-items:center;gap:20px">${DL}${CTA}</div></div>`;
+ if(layout==='editorial') return `<div class="ins" style="padding:${c._pad};align-items:flex-start;text-align:left;justify-content:center">
+   <div class="kick" style="font-size:21px">${esc(c.kicker||"Offer")}</div>
+   <div class="lead" style="font-size:42px;margin-top:32px;${THEMES[c._theme].leadf.indexOf('Fraunces')>-1?'font-style:italic':''}">${esc(c.lead||'')}</div>
+   <div class="disp ac" style="font-size:280px;${upper};margin-top:16px">${AMT}</div><div class="off" style="font-size:40px">${OFF}</div>
+   <div class="nm" style="font-size:72px;${upper};margin-top:28px"><span class="on" style="display:block;font-size:20px;margin-bottom:8px">${esc(c.on||'This week only on')}</span>${NAME}</div>
+   ${PRICE}${SUB}<div style="margin-top:34px;display:flex;align-items:center;gap:30px">${CTA}${DL}</div></div>`;
+ if(layout==='photo'){
+   const ph=(c.photo_urls&&c.photo_urls[0])||'';
+   return `<img crossorigin="anonymous" src="${esc(ph)}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:4"/>
+   <div style="position:absolute;inset:0;z-index:5;background:linear-gradient(180deg,rgba(5,8,22,.10) 0%,rgba(5,8,22,.5) 52%,rgba(5,8,22,.93) 100%)"></div>
+   <div class="ins" style="padding:${c._pad};z-index:6;align-items:flex-start;text-align:left;justify-content:flex-end">
+     <div class="kick" style="font-size:21px">${esc(c.kicker||'Offer')}</div>
+     <div class="disp ac" style="font-size:210px;${upper};margin-top:6px">${AMT}</div><div class="off" style="font-size:38px">${OFF}</div>
+     <div class="nm" style="font-size:74px;${upper};margin-top:14px;color:#fff">${NAME}</div>${PRICE}
+     <div style="margin-top:26px;display:flex;align-items:center;gap:26px">${CTA}${DL}</div></div>`;
+ }
+ if(layout==='coupon') return `<div class="ins" style="padding:56px"><div class="ticket"><span class="notch" style="left:-30px"></span><span class="notch" style="right:-30px"></span>
+   <div class="kick" style="font-size:22px">${esc(c.kicker||"Father's Day")}</div>
+   <div class="disp ac" style="font-size:280px;${upper};margin-top:30px">${AMT}</div><div class="off" style="font-size:46px">${OFF}</div>
+   <div class="nm" style="font-size:74px;${upper};margin-top:44px">${NAME}</div>${PRICE}
+   <div class="dl2" style="font-size:21px;margin-top:40px">${esc(c.deadline||'')}</div>
+   <div class="ctab" style="font-size:29px;padding:20px 52px;margin-top:22px">${esc(c.cta||'DM to claim')}</div></div></div>`;
+ // centered
+ return `<div class="ins" style="padding:${c._pad};align-items:center;text-align:center;justify-content:center">
+   <div class="kick" style="font-size:21px">${esc(c.kicker||"Offer")}</div>
+   <div class="lead" style="font-size:38px;margin-top:48px;${THEMES[c._theme].leadf.indexOf('Fraunces')>-1?'font-style:italic':''}">${esc(c.lead||'')}</div>
+   <div class="disp ac" style="font-size:250px;${upper};margin-top:8px">${AMT}</div><div class="off" style="font-size:40px">${OFF}</div>
+   <div class="on" style="font-size:20px;margin-top:46px">${esc(c.on||'This week only on')}</div>
+   <div class="nm" style="font-size:88px;${upper};margin-top:12px">${NAME}</div>
+   ${PRICE}${SUB}<div style="margin-top:auto;display:flex;flex-direction:column;align-items:center;gap:20px">${DL}${CTA}</div></div>`;
+}
+
+function buildCard(layout,fmt,cfg){
+ const [w,h]=FMT[fmt]; const t=THEMES[cfg.theme]||THEMES.gold;
+ const c=Object.assign({},cfg.content,{_theme:(THEMES[cfg.theme]?cfg.theme:'gold'),_pad:PAD[fmt]});
+ const card=document.createElement('div'); card.className='card';
+ card.style.cssText=`width:${w}px;height:${h}px;background:${t.bg};`+
+  `--bg:${t.bg};--ink:${t.ink};--cream:${t.cream};--mute2:${t.mute2};--accent:${t.accent};--line:${t.line};--grad:${t.grad};--btn:${t.btn};--btnink:${t.btnink};--glow:${t.glow};--disp:${t.disp};--dispw:${t.dispw};--namew:${t.namew};--body:${t.body};--mono:${t.mono};--leadf:${t.leadf};`;
+ card.innerHTML=`<div class="bg"></div><div class="grain"></div><div class="frame"></div>${inner(layout,c)}`;
+ return card;
+}
+
+async function main(){
+ let cfg; try{ cfg=await (await fetch('./config.json',{cache:'no-store'})).json(); }
+ catch(e){ document.getElementById('lede').textContent='Could not load config.json'; return; }
+ const layouts=cfg.layouts||['centered','price-led','editorial','coupon'];
+ const formats=cfg.formats||['portrait','square','story'];
+ document.getElementById('title').textContent=(cfg.content&&cfg.content.name||'Your')+' — promo pack';
+ document.getElementById('lede').textContent=`${layouts.length*formats.length} graphics. Tap Download on each, then post.`;
+ const grid=document.getElementById('grid');
+ for(const layout of layouts) for(const fmt of formats){
+   const [w,h]=FMT[fmt];
+   const item=document.createElement('div'); item.className='item';
+   const stage=document.createElement('div'); stage.className='stage';
+   const dispW=Math.min(300, w); const scale=dispW/w;
+   stage.style.height=(h*scale)+'px';
+   const innerWrap=document.createElement('div'); innerWrap.className='stageInner'; innerWrap.style.transform=`scale(${scale})`;
+   const card=buildCard(layout,fmt,cfg); innerWrap.appendChild(card); stage.appendChild(innerWrap); item.appendChild(stage);
+   const cap=document.createElement('div'); cap.className='cap';
+   cap.innerHTML=`<span>${layout} · ${fmt}</span>`;
+   const btn=document.createElement('button'); btn.className='dl'; btn.textContent='Download';
+   btn.onclick=async()=>{ btn.textContent='…';
+     const cv=await html2canvas(card,{width:w,height:h,scale:2,backgroundColor:null,logging:false,useCORS:true});
+     const a=document.createElement('a'); a.href=cv.toDataURL('image/jpeg',0.92); a.download=`${layout}-${fmt}.jpg`; a.click(); btn.textContent='Download'; };
+   cap.appendChild(btn); item.appendChild(cap); grid.appendChild(item);
+ }
+}
+main();
+</script>
+</body></html>
