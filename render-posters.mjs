@@ -1,16 +1,21 @@
 import { chromium } from 'playwright';
 import http from 'http'; import fs from 'fs'; import path from 'path';
 const ROOT=process.cwd();
-const TYPES={'.html':'text/html','.json':'application/json','.jpg':'image/jpeg','.jpeg':'image/jpeg','.png':'image/png','.svg':'image/svg+xml','.webp':'image/webp','.css':'text/css','.js':'text/javascript'};
+const TYPES={'.html':'text/html','.json':'application/json','.jpg':'image/jpeg','.jpeg':'image/jpeg','.png':'image/png','.svg':'image/svg+xml','.webp':'image/webp','.css':'text/css','.js':'text/javascript','.mp4':'video/mp4'};
 const server=http.createServer((req,res)=>{let f=path.join(ROOT,decodeURIComponent(req.url.split('?')[0]));try{if(fs.existsSync(f)&&fs.statSync(f).isFile()){res.setHeader('Content-Type',TYPES[path.extname(f).toLowerCase()]||'application/octet-stream');fs.createReadStream(f).pipe(res);return;}}catch(e){}res.statusCode=404;res.end('nf');});
 await new Promise(r=>server.listen(0,r)); const port=server.address().port;
 function walk(d){let o=[];for(const e of fs.readdirSync(d,{withFileTypes:true})){const fp=path.join(d,e.name);if(e.isDirectory())o=o.concat(walk(fp));else if(/^poster-.*\.html$/.test(e.name))o.push(fp);}return o;}
+const packOf=ph=>path.dirname(path.dirname(ph)); // promo-packs/<job>
 const dir=path.join(ROOT,'promo-packs');
 const posters=fs.existsSync(dir)?walk(dir):[];
 const browser=await chromium.launch(); let n=0;
 for(const ph of posters){
   const png=ph.replace(/\.html$/,'.png');
-  if(fs.existsSync(png)) continue; // render only missing; routine deletes the PNG on redo
+  // Render if the PNG is missing OR the pack carries a .rerender flag (a redo). On a redo
+  // we OVERWRITE in place — the old PNG stays live on Pages until the commit swaps it
+  // atomically, so the pack is never blank mid-redo. The flag is cleared by the workflow.
+  const force=fs.existsSync(path.join(packOf(ph),'.rerender'));
+  if(fs.existsSync(png) && !force) continue;
   const rel=path.relative(ROOT,ph).split(path.sep).join('/');
   const pg=await browser.newPage({viewport:{width:1080,height:1920},deviceScaleFactor:1});
   try{
