@@ -99,6 +99,18 @@ function inner(layout,c){
      <div class="nm" style="font-size:74px;${upper};margin-top:14px;color:#fff">${NAME}</div>${PRICE}
      <div style="margin-top:26px;display:flex;align-items:center;gap:26px">${CTA}${DL}</div></div>`;
  }
+ if(layout==='banner'){
+   const ph=(c.photo_urls&&c.photo_urls[0])||'';
+   const PR=(WAS&&NOW)?`<div style="font-family:var(--leadf);font-size:44px"><span class="strike">${WAS}</span> &rarr; <span class="ac" style="font-weight:900">${NOW}</span></div>`:`<div class="disp ac" style="font-size:96px;${upper}">${AMT} <span class="off" style="font-size:30px">${OFF}</span></div>`;
+   return `<div style="position:absolute;inset:0;z-index:3;display:flex;flex-direction:column">
+     <div style="flex:60;overflow:hidden;background:var(--bg);display:flex;align-items:center;justify-content:center"><img crossorigin="anonymous" src="${esc(ph)}" style="width:100%;height:100%;object-fit:contain"/></div>
+     <div style="flex:40;background:var(--bg);border-top:5px solid var(--accent);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:36px 56px;gap:18px">
+       <div class="kick" style="font-size:18px">${esc(c.kicker||'Offer')}</div>
+       ${c.band_show_name===false?'':`<div class="nm" style="font-size:50px;line-height:1.02;${upper}">${NAME}</div>`}
+       ${PR}
+       <div class="ctab" style="font-size:26px;padding:16px 42px">${esc(c.cta||'DM to claim')}</div>
+     </div></div>`;
+ }
  if(layout==='coupon') return `<div class="ins" style="padding:56px"><div class="ticket"><span class="notch" style="left:-30px"></span><span class="notch" style="right:-30px"></span>
    <div class="kick" style="font-size:22px">${esc(c.kicker||"Father's Day")}</div>
    <div class="disp ac" style="font-size:280px;${upper};margin-top:30px">${AMT}</div><div class="off" style="font-size:46px">${OFF}</div>
