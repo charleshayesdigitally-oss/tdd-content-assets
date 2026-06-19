@@ -6,6 +6,7 @@ on:
       - 'promo-packs/**/config.json'
       - 'promo-packs/**/*.jpg'
       - 'promo-packs/**/*.png'
+      - 'promo-packs/**/.rerender'
   workflow_dispatch:
 permissions:
   contents: write
@@ -25,6 +26,8 @@ jobs:
       - run: npx playwright install --with-deps chromium
       - run: node render-posters.mjs
       - run: node render-videos.mjs
+      - name: Clear .rerender flags (renders are now in place)
+        run: find promo-packs -name .rerender -delete || true
       - name: Commit rendered media (rebase + retry to survive concurrent pushes)
         run: |
           git config user.name "poster-renderer"
