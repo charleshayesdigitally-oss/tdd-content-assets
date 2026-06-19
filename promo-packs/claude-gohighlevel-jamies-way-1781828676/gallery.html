@@ -157,6 +157,21 @@ async function main(){
      const a=document.createElement('a'); a.href=cv.toDataURL('image/jpeg',0.92); a.download=`${layout}-${fmt}.jpg`; a.click(); btn.textContent='Download'; };
    cap.appendChild(btn); item.appendChild(cap); grid.appendChild(item);
  }
+ // Buyer-uploaded files, included as-is (no text overlay) — direct download of the original
+ const extras=cfg.extra_downloads||[];
+ for(const ex of extras){
+   const item=document.createElement('div'); item.className='item';
+   const stage=document.createElement('div'); stage.className='stage';
+   stage.style.cssText+='height:360px;display:flex;align-items:center;justify-content:center;background:#15110b';
+   const img=document.createElement('img'); img.src=ex.url; img.crossOrigin='anonymous';
+   img.style.cssText='max-width:100%;max-height:100%;object-fit:contain';
+   stage.appendChild(img); item.appendChild(stage);
+   const cap=document.createElement('div'); cap.className='cap';
+   cap.innerHTML=`<span>${esc(ex.label||'your file')}</span>`;
+   const a=document.createElement('a'); a.className='dl'; a.textContent='Download'; a.href=ex.url; a.setAttribute('download',''); a.style.textDecoration='none';
+   cap.appendChild(a); item.appendChild(cap); grid.appendChild(item);
+ }
+ if(extras.length){ document.getElementById('lede').textContent=`${layouts.length*formats.length} graphics + ${extras.length} of your file(s). Tap Download on each, then post.`; }
 }
 main();
 </script>
