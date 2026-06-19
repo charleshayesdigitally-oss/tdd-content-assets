@@ -35,6 +35,7 @@ for(const ph of posters){
       await (el||pg).screenshot({path:path.join(fdir,`f${String(i).padStart(4,'0')}.png`)});
     }
     execFileSync('ffmpeg',['-y','-framerate',String(FPS),'-i',path.join(fdir,'f%04d.png'),'-c:v','libx264','-pix_fmt','yuv420p','-movflags','+faststart','-an',mp4],{stdio:'ignore'});
+    if(!fs.existsSync(mp4)||fs.statSync(mp4).size<20000){ try{fs.rmSync(mp4,{force:true});}catch(e){} throw new Error('MP4 too small/empty — encode failed'); }
     console.log('video',rel); n++;
   }catch(e){ console.log('FAIL',rel,String(e).slice(0,140)); }
   await pg.close();
