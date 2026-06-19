@@ -24,6 +24,7 @@ for(const ph of posters){
     await pg.waitForTimeout(2500);
     const el=await pg.$('#poster');
     await (el||pg).screenshot({path:png});
+    if(!fs.existsSync(png)||fs.statSync(png).size<5000){ try{fs.rmSync(png,{force:true});}catch(e){} throw new Error('PNG too small/empty — render failed'); }
     console.log('rendered',rel); n++;
   }catch(e){ console.log('FAIL',rel,String(e).slice(0,120)); }
   await pg.close();
