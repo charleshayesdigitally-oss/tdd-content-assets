@@ -145,7 +145,15 @@ async function main(){
    cap.innerHTML=`<span>${layout} · ${fmt}</span>`;
    const btn=document.createElement('button'); btn.className='dl'; btn.textContent='Download';
    btn.onclick=async()=>{ btn.textContent='…';
-     const cv=await html2canvas(card,{width:w,height:h,scale:2,backgroundColor:null,logging:false,useCORS:true});
+     // Capture a FRESH full-size card off-screen (html2canvas can't capture a CSS-transform-scaled element)
+     const holder=document.createElement('div');
+     holder.style.cssText=`position:fixed;left:-99999px;top:0;width:${w}px;height:${h}px;`;
+     const full=buildCard(layout,fmt,cfg); holder.appendChild(full); document.body.appendChild(holder);
+     const im=full.querySelector('img');
+     if(im && !im.complete){ await new Promise(r=>{im.onload=r;im.onerror=r;}); }
+     await new Promise(r=>setTimeout(r,80));
+     const cv=await html2canvas(full,{width:w,height:h,scale:2,backgroundColor:null,logging:false,useCORS:true});
+     document.body.removeChild(holder);
      const a=document.createElement('a'); a.href=cv.toDataURL('image/jpeg',0.92); a.download=`${layout}-${fmt}.jpg`; a.click(); btn.textContent='Download'; };
    cap.appendChild(btn); item.appendChild(cap); grid.appendChild(item);
  }
