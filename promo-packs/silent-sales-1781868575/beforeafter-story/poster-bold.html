@@ -9,6 +9,7 @@
 .grid{position:absolute;inset:0;opacity:.07;background-image:linear-gradient(transparent 49px,rgba(255,80,80,.5) 50px),linear-gradient(90deg,transparent 49px,rgba(255,80,80,.5) 50px);background-size:50px 50px;mask:radial-gradient(80% 60% at 50% 40%, #000, transparent 75%);-webkit-mask:radial-gradient(80% 60% at 50% 40%, #000, transparent 75%)}
 .laser{position:absolute;height:3px;background:linear-gradient(90deg,transparent,var(--red),#fff,var(--red),transparent);box-shadow:0 0 16px 2px rgba(255,38,48,.9);border-radius:3px}
 .wrap{position:absolute;inset:0;z-index:5;display:flex;flex-direction:column;padding:58px 70px 60px}
+.core{flex:1;display:flex;flex-direction:column;justify-content:center;min-height:0}
 .brandrow{display:flex;justify-content:center;gap:14px;align-items:center;font-family:'Poppins';font-weight:600;letter-spacing:.34em;font-size:21px;color:var(--mut);text-transform:uppercase;flex-wrap:wrap}
 .brandrow b{color:var(--red)}
 .head{margin-top:28px;text-align:center}
@@ -34,7 +35,7 @@
 .price .was{font-family:'Archivo';font-weight:700;font-size:38px;color:var(--mut);text-decoration:line-through;text-decoration-color:var(--red)}
 .price .now{font-family:'Archivo Black';font-size:140px;line-height:.8;background:linear-gradient(180deg,var(--gold1),var(--gold2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 2px 10px rgba(216,162,58,.5))}
 .cta{margin-top:34px;text-align:center;font-family:'Archivo Black';font-size:52px;letter-spacing:1px;color:#fff;padding:28px;border-radius:999px;background:linear-gradient(100deg,var(--red),var(--red2));box-shadow:0 0 40px rgba(255,38,48,.7),inset 0 2px 0 rgba(255,255,255,.25);text-transform:uppercase}
-.foot{margin-top:auto;text-align:center;font-family:'Kaushan Script';font-size:42px;color:var(--ink);padding-top:26px;opacity:.92}
+.foot{text-align:center;font-family:'Kaushan Script';font-size:42px;color:var(--ink);padding-top:30px;opacity:.92}
 /* hook type */
 .hook{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
 .hook .big{font-family:'Archivo Black';font-size:128px;line-height:.94;letter-spacing:-1px;color:#fff}
@@ -101,31 +102,31 @@ async function main(){
  const priceHTML=NOW?`<div class="price"><div class="lab">${WAS?`Was <span class="was">${WAS}</span><br>`:''}now only</div><div class="now">${NOW}</div></div>`:'';
  const ctaHTML=`<div class="cta">${esc(p.cta||'Get it now')}</div>`;
  const footHTML=p.tagline?`<div class="foot">${esc(p.tagline)}</div>`:'';
- let body='';
+ let mid='';
  if(type==='hook'){
    const lines=(p.headline_lines||[p.name||'']).map(l=>`<div class="big">${hl(l,p.headline_highlight)}</div>`).join('');
    const scr=p.script?`<div class="scr">${esc(p.script)}</div>`:'';
    const sub=p.sub||p.tagline?`<div class="sub">${esc(p.sub||p.tagline)}</div>`:'';
-   body=`${brandrow}<div class="hook">${lines}${scr}<div class="rule"></div>${sub}</div>${p.cta?ctaHTML:''}`;
+   mid=`<div class="hook">${lines}${scr}<div class="rule"></div>${sub}</div>${p.cta?ctaHTML:''}`;
  } else if(type==='features'){
    const lines=(p.headline_lines||[p.name||'']).map(l=>`<div class="l1">${hl(l,p.headline_highlight)}</div>`).join('');
    const scr=p.script?`<div class="script">${esc(p.script)}</div>`:'';
    const feats=(p.features||[]).slice(0,6).map(f=>`<div class="card"><span class="ic"><svg viewBox="0 0 24 24">${ICONS[f.icon]||ICONS.check}</svg></span><div><div class="t">${esc(f.label)}</div>${f.desc?`<div class="d">${esc(f.desc)}</div>`:''}</div></div>`).join('');
-   body=`${brandrow}<div class="head">${lines}${scr}</div><div class="sec"><span class="ln"></span><span>${esc(p.section||"What you'll learn")}</span><span class="ln r"></span></div><div class="cards">${feats}</div>${priceHTML}${ctaHTML}${footHTML}`;
+   mid=`<div class="head">${lines}${scr}</div><div class="sec"><span class="ln"></span><span>${esc(p.section||"What you'll learn")}</span><span class="ln r"></span></div><div class="cards">${feats}</div>${priceHTML}${ctaHTML}`;
  } else if(type==='beforeafter'){
    const title=(p.headline_lines&&p.headline_lines[0])||p.headline||'Before &amp; After';
    const scr=p.script?`<div class="script">${esc(p.script)}</div>`:'';
    const bl=(p.before||[]).map(x=>`<div class="baitem"><span class="dot">&times;</span><span>${esc(x)}</span></div>`).join('');
    const al=(p.after||[]).map(x=>`<div class="baitem"><span class="dot">&#10003;</span><span>${esc(x)}</span></div>`).join('');
-   body=`${brandrow}<div class="head"><div class="l1">${esc(title)}</div>${scr}</div><div class="ba"><div class="bacol"><div class="bah">${esc(p.before_label||'Before')}</div>${bl}</div><div class="bacol after"><div class="bah aft">${esc(p.after_label||'After')}</div>${al}</div></div>${p.cta?ctaHTML:''}${footHTML}`;
+   mid=`<div class="head"><div class="l1">${esc(title)}</div>${scr}</div><div class="ba"><div class="bacol"><div class="bah">${esc(p.before_label||'Before')}</div>${bl}</div><div class="bacol after"><div class="bah aft">${esc(p.after_label||'After')}</div>${al}</div></div>${p.cta?ctaHTML:''}`;
  } else if(type==='steps'){
    const title=(p.headline_lines&&p.headline_lines[0])||p.headline||'How it works';
    const scr=p.script?`<div class="script">${esc(p.script)}</div>`:'';
    const st=(p.steps||[]).slice(0,4).map((s,i)=>{const lab=(typeof s==='string')?s:(s.label||''); const desc=(s&&s.desc)?`<div class="sd">${esc(s.desc)}</div>`:''; const n=(s&&s.n)||(i+1); return `<div class="step"><div class="n">${esc(n)}</div><div><div class="sl">${esc(lab)}</div>${desc}</div></div>`;}).join('');
-   body=`${brandrow}<div class="head"><div class="l1">${esc(title)}</div>${scr}</div><div class="steps">${st}</div>${priceHTML}${p.cta?ctaHTML:''}${footHTML}`;
+   mid=`<div class="head"><div class="l1">${esc(title)}</div>${scr}</div><div class="steps">${st}</div>${priceHTML}${p.cta?ctaHTML:''}`;
  } else if(type==='testimonial'){
    const stars='&#9733;'.repeat(Math.max(0,Math.min(5,p.stars||5)));
-   body=`${brandrow}<div class="testi"><div class="qm">&ldquo;</div><div class="q">${esc(p.quote||'')}</div><div class="stars">${stars}</div><div class="by">${esc(p.attribution||p.brand||'')}</div></div>${p.cta?ctaHTML:''}`;
+   mid=`<div class="testi"><div class="qm">&ldquo;</div><div class="q">${esc(p.quote||'')}</div><div class="stars">${stars}</div><div class="by">${esc(p.attribution||p.brand||'')}</div></div>${p.cta?ctaHTML:''}`;
  } else { // offer
    const lines=(p.headline_lines||[p.name||'']).map(l=>`<div class="l1">${hl(l,p.headline_highlight)}</div>`).join('');
    const scr=p.script?`<div class="script">${esc(p.script)}</div>`:'';
@@ -134,9 +135,9 @@ async function main(){
    const hero=heroSrc?`<div class="hero">${tag}<div class="frame"><div class="im" style="background-image:url('${safeUrl(heroSrc)}')"></div></div></div>`:'';
    const feats=(p.features||[]).slice(0,4).map(f=>`<div class="card"><span class="ic"><svg viewBox="0 0 24 24">${ICONS[f.icon]||ICONS.check}</svg></span><span class="t">${esc(f.label)}</span></div>`).join('');
    const cards=feats?`<div class="sec"><span class="ln"></span><span>${esc(p.section||"What you'll build")}</span><span class="ln r"></span></div><div class="cards">${feats}</div>`:'';
-   body=`${brandrow}<div class="head">${lines}${scr}</div>${hero}${cards}${priceHTML}${ctaHTML}${footHTML}`;
+   mid=`<div class="head">${lines}${scr}</div>${hero}${cards}${priceHTML}${ctaHTML}`;
  }
- root.innerHTML=`${ATMO}<div class="wrap">${body}</div>`;
+ root.innerHTML=`${ATMO}<div class="wrap">${brandrow}<div class="core">${mid}</div>${footHTML}</div>`;
  window.__ready=true;
 }
 main();
