@@ -1,0 +1,26 @@
+{
+  "style": "bold",
+  "palette": {
+    "accent": "#FF1A2E",
+    "accent2": "#C2001A"
+  },
+  "content": {
+    "headline_lines": ["CLAUDE &", "GOHIGHLEVEL"],
+    "headline_highlight": "GOHIGHLEVEL",
+    "script": "Jamie's Way",
+    "section": "What you'll build",
+    "features": [
+      {"label": "Funnel Pages", "icon": "funnel"},
+      {"label": "Landing Pages", "icon": "page"},
+      {"label": "Quizzes", "icon": "quiz"},
+      {"label": "Store Pages", "icon": "store"}
+    ],
+    "now": "$47",
+    "was": "$97",
+    "cta": "Yes I Want It",
+    "tagline": "Built for the non-techy.",
+    "brand": "BossWithVaJamie",
+    "meta": ["Online", "Self-Paced"],
+    "hero_image": "./DR1-jamie.jpg"
+  }
+}
