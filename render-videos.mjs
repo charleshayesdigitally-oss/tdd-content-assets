@@ -8,12 +8,16 @@ await new Promise(r=>server.listen(0,r)); const port=server.address().port;
 const DUR=6000, FPS=30, N=Math.round(DUR/1000*FPS); // 6s @ 30fps
 // only story-format pieces become TikTok videos (vertical 1080x1920)
 function walk(d){let o=[];for(const e of fs.readdirSync(d,{withFileTypes:true})){const fp=path.join(d,e.name);if(e.isDirectory())o=o.concat(walk(fp));else if(/^poster-.*\.html$/.test(e.name)&&path.basename(path.dirname(fp)).endsWith('-story'))o.push(fp);}return o;}
+const packOf=ph=>path.dirname(path.dirname(ph)); // promo-packs/<job>
 const dir=path.join(ROOT,'promo-packs');
 const posters=fs.existsSync(dir)?walk(dir):[];
 const browser=await chromium.launch(); let n=0;
 for(const ph of posters){
   const mp4=ph.replace(/\.html$/,'.mp4');
-  if(fs.existsSync(mp4)) continue; // render only missing; routine deletes the mp4 on redo
+  // Render if MP4 missing OR the pack has a .rerender flag (a redo). Overwrites in place so
+  // the old video stays live until the commit swaps it — never blank mid-redo. Flag cleared by workflow.
+  const force=fs.existsSync(path.join(packOf(ph),'.rerender'));
+  if(fs.existsSync(mp4) && !force) continue;
   const rel=path.relative(ROOT,ph).split(path.sep).join('/');
   const fdir=path.join(path.dirname(ph),'_frames'); fs.mkdirSync(fdir,{recursive:true});
   const pg=await browser.newPage({viewport:{width:1080,height:1920},deviceScaleFactor:1});
