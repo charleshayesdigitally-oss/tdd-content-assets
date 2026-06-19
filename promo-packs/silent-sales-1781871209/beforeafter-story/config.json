@@ -4,7 +4,7 @@
   "format": "story",
   "palette": {"accent": "#c4879a", "accent2": "#9b72cf"},
   "content": {
-    "headline_lines": ["A Different", "Foundation."],
+    "headline_lines": ["A different way to build"],
     "script": "build your way.",
     "before_label": "Before",
     "after_label": "After",

@@ -7,6 +7,7 @@
     "headline_lines": ["Silent Sales"],
     "script": "Father's Day Sale",
     "hero_image": "../momnetize-photo.png",
+    "hero_mode": "background",
     "features": [],
     "now": "$397",
     "was": "$697",

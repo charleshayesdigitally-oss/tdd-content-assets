@@ -7,7 +7,13 @@
     "headline_lines": ["Silent", "Sales"],
     "headline_highlight": "Sales",
     "script": "$300 off.",
-    "features": [],
+    "section": "What you get",
+    "features": [
+      {"icon": "check", "label": "No hard selling"},
+      {"icon": "users", "label": "Built for busy mamas"},
+      {"icon": "money", "label": "Income keeps flowing"},
+      {"icon": "home", "label": "Works around your life"}
+    ],
     "now": "$397",
     "was": "$697",
     "cta": "Comment SYSTEMS for more info",
