@@ -1,0 +1,32 @@
+name: Render posters
+on:
+  push:
+    paths:
+      - 'promo-packs/**/poster-*.html'
+      - 'promo-packs/**/config.json'
+      - 'promo-packs/**/*.jpg'
+      - 'promo-packs/**/*.png'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: render-posters
+  cancel-in-progress: false
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm init -y && npm i playwright@1.48.0
+      - run: npx playwright install --with-deps chromium
+      - run: node render-posters.mjs
+      - name: Commit rendered PNGs
+        run: |
+          git config user.name "poster-renderer"
+          git config user.email "render@thedigitaldad.co"
+          git add -A
+          git diff --cached --quiet || git commit -m "Render posters [skip render]"
+          git push
