@@ -1,0 +1,15 @@
+{
+  "style": "bold",
+  "type": "hook",
+  "format": "feed",
+  "palette": {"accent": "#ec4899", "accent2": "#0d9488"},
+  "content": {
+    "headline_lines": ["Kids home.", "Sales still", "coming in."],
+    "headline_highlight": "coming in.",
+    "script": "stay paid.",
+    "sub": "For the mama that doesn't need her income to end just because the kids are home for summer break.",
+    "cta": "Comment SYSTEMS for more info",
+    "brand": "Hustle4SportsMama",
+    "meta": ["Online", "Self-Paced"]
+  }
+}

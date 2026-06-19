@@ -1,0 +1,28 @@
+{
+  "style": "bold",
+  "type": "beforeafter",
+  "format": "feed",
+  "content": {
+    "headline_lines": ["The Build.", "Transformed."],
+    "headline_highlight": "Transformed.",
+    "script": "Jamie's Way.",
+    "before_label": "Before",
+    "after_label": "After",
+    "before": [
+      "Hours lost on funnel pages",
+      "Tech overwhelm every build",
+      "Quiz setup that never clicks",
+      "Store pages you keep avoiding"
+    ],
+    "after": [
+      "Funnels built in Claude + GHL",
+      "Non-tech friendly, start to finish",
+      "Quizzes done without the confusion",
+      "Store pages live and ready to sell"
+    ],
+    "cta": "Yes I Want It",
+    "tagline": "For the non-tech savvy. Start building today.",
+    "brand": "BossWithVaJamie",
+    "meta": ["Online", "Self-Paced"]
+  }
+}

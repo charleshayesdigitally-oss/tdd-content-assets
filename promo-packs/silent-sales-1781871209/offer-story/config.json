@@ -1,0 +1,18 @@
+{
+  "style": "elegant",
+  "type": "offer",
+  "format": "story",
+  "palette": {"accent": "#c4879a", "accent2": "#9b72cf"},
+  "content": {
+    "headline_lines": ["Silent Sales"],
+    "script": "Father's Day Sale",
+    "hero_image": "../momnetize-photo.png",
+    "features": [],
+    "now": "$397",
+    "was": "$697",
+    "cta": "Build My Foundation",
+    "tagline": "Ends Sunday Night.",
+    "brand": "Momnetize",
+    "meta": ["Online", "Self-Paced"]
+  }
+}

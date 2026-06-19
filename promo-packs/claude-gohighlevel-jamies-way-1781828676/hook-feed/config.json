@@ -1,0 +1,14 @@
+{
+  "style": "bold",
+  "type": "hook",
+  "format": "feed",
+  "content": {
+    "headline_lines": ["Non-tech savvy.", "No time.", "This is for you."],
+    "headline_highlight": "This is for you.",
+    "script": "Jamie's Way.",
+    "sub": "Funnel pages. Landing pages. Quizzes. Store pages. Built in Claude + GoHighLevel — without the hours.",
+    "cta": "Yes I Want It",
+    "brand": "BossWithVaJamie",
+    "meta": ["Online", "Self-Paced"]
+  }
+}

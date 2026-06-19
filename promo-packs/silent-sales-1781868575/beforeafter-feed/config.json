@@ -1,0 +1,29 @@
+{
+  "style": "bold",
+  "type": "beforeafter",
+  "format": "feed",
+  "palette": {"accent": "#ec4899", "accent2": "#0d9488"},
+  "content": {
+    "headline_lines": ["Summer changed", "everything."],
+    "headline_highlight": "everything.",
+    "script": "stay paid.",
+    "before_label": "Before",
+    "after_label": "After",
+    "before": [
+      "Income stops when school lets out",
+      "Business on pause all summer",
+      "Choosing between the kids and the coins",
+      "Starting over every September"
+    ],
+    "after": [
+      "Sales happen even on beach days",
+      "Business runs around your kids",
+      "Income that doesn't take a summer break",
+      "September starts where June left off"
+    ],
+    "cta": "Comment SYSTEMS for more info",
+    "tagline": "Ends Sunday June 21st.",
+    "brand": "Hustle4SportsMama",
+    "meta": ["Online", "Self-Paced"]
+  }
+}

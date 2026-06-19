@@ -1,0 +1,23 @@
+{
+  "style": "bold",
+  "type": "features",
+  "format": "feed",
+  "content": {
+    "headline_lines": ["Everything you", "couldn't build."],
+    "headline_highlight": "couldn't build.",
+    "script": "Now you can.",
+    "section": "Build all of this",
+    "features": [
+      {"label": "Funnel Pages", "desc": "Built without code or confusion", "icon": "funnel"},
+      {"label": "Landing Pages", "desc": "Done in Claude + GoHighLevel", "icon": "page"},
+      {"label": "Interactive Quizzes", "desc": "Set up without the tech headache", "icon": "quiz"},
+      {"label": "Store Pages", "desc": "Ready to sell, minus the overwhelm", "icon": "store"}
+    ],
+    "now": "$47",
+    "was": "$97",
+    "cta": "Yes I Want It",
+    "tagline": "For the non-tech savvy. Start building today.",
+    "brand": "BossWithVaJamie",
+    "meta": ["Online", "Self-Paced"]
+  }
+}

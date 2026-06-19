@@ -1,0 +1,13 @@
+{
+  "style": "bold",
+  "offer_name": "Silent Sales",
+  "brand": "Hustle4SportsMama",
+  "pieces": [
+    {"type": "offer", "format": "story", "png": "offer-story/poster-bold.png"},
+    {"type": "offer", "format": "feed", "png": "offer-feed/poster-bold.png"},
+    {"type": "hook", "format": "story", "png": "hook-story/poster-bold.png"},
+    {"type": "hook", "format": "feed", "png": "hook-feed/poster-bold.png"},
+    {"type": "beforeafter", "format": "story", "png": "beforeafter-story/poster-bold.png"},
+    {"type": "beforeafter", "format": "feed", "png": "beforeafter-feed/poster-bold.png"}
+  ]
+}

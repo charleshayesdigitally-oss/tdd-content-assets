@@ -1,0 +1,14 @@
+{
+  "style": "elegant",
+  "type": "hook",
+  "format": "story",
+  "palette": {"accent": "#c4879a", "accent2": "#9b72cf"},
+  "content": {
+    "headline_lines": ["Looking for", "options."],
+    "script": "tired of one paycheck.",
+    "sub": "This is for the mom who's looking for options — and done depending on the same paycheck.",
+    "cta": "Build My Foundation",
+    "brand": "Momnetize",
+    "meta": ["Online", "Self-Paced"]
+  }
+}

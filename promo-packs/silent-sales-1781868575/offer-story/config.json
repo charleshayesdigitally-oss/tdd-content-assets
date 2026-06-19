@@ -1,0 +1,18 @@
+{
+  "style": "bold",
+  "type": "offer",
+  "format": "story",
+  "palette": {"accent": "#ec4899", "accent2": "#0d9488"},
+  "content": {
+    "headline_lines": ["Silent", "Sales"],
+    "headline_highlight": "Sales",
+    "script": "$300 off.",
+    "features": [],
+    "now": "$397",
+    "was": "$697",
+    "cta": "Comment SYSTEMS for more info",
+    "tagline": "Ends Sunday June 21st.",
+    "brand": "Hustle4SportsMama",
+    "meta": ["Online", "Self-Paced"]
+  }
+}

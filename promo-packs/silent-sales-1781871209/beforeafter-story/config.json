@@ -1,0 +1,28 @@
+{
+  "style": "elegant",
+  "type": "beforeafter",
+  "format": "story",
+  "palette": {"accent": "#c4879a", "accent2": "#9b72cf"},
+  "content": {
+    "headline_lines": ["A Different", "Foundation."],
+    "script": "build your way.",
+    "before_label": "Before",
+    "after_label": "After",
+    "before": [
+      "Tired of paycheck to paycheck",
+      "No real options on the table",
+      "Income tied to one source",
+      "One missed check from stress"
+    ],
+    "after": [
+      "A foundation that pays quietly",
+      "Options you built yourself",
+      "Income that runs in the background",
+      "Done depending on one paycheck"
+    ],
+    "cta": "Build My Foundation",
+    "tagline": "Ends Sunday Night.",
+    "brand": "Momnetize",
+    "meta": ["Online", "Self-Paced"]
+  }
+}
