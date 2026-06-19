@@ -1,0 +1,13 @@
+{
+  "style": "elegant",
+  "offer_name": "Silent Sales",
+  "brand": "Brianna",
+  "pieces": [
+    {"type": "offer", "format": "story", "png": "offer-story/poster-elegant.png"},
+    {"type": "offer", "format": "feed", "png": "offer-feed/poster-elegant.png"},
+    {"type": "hook", "format": "story", "png": "hook-story/poster-elegant.png"},
+    {"type": "hook", "format": "feed", "png": "hook-feed/poster-elegant.png"},
+    {"type": "beforeafter", "format": "story", "png": "beforeafter-story/poster-elegant.png"},
+    {"type": "beforeafter", "format": "feed", "png": "beforeafter-feed/poster-elegant.png"}
+  ]
+}

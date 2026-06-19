@@ -1,0 +1,18 @@
+{
+  "style": "elegant",
+  "type": "offer",
+  "format": "feed",
+  "palette": {"accent": "#d4af37", "accent2": "#e8c97a"},
+  "content": {
+    "headline_lines": ["Silent Sales"],
+    "script": "$300 off — Ends Sunday",
+    "hero_image": "../brianna-photo.png",
+    "hero_mode": "background",
+    "now": "$397",
+    "was": "$697",
+    "cta": "Comment \"INFO\" below",
+    "tagline": "Sunday June 21st only.",
+    "brand": "Brianna",
+    "meta": ["Online", "Self-Paced"]
+  }
+}

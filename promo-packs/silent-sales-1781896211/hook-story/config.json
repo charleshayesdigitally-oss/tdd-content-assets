@@ -1,0 +1,15 @@
+{
+  "style": "elegant",
+  "type": "hook",
+  "format": "story",
+  "palette": {"accent": "#d4af37", "accent2": "#e8c97a"},
+  "content": {
+    "headline_lines": ["I didn't expect", "this."],
+    "headline_highlight": "this.",
+    "script": "but it made a difference.",
+    "sub": "What started as curiosity turned into something I actually found useful.",
+    "cta": "Comment \"INFO\" below",
+    "brand": "Brianna",
+    "meta": ["Online", "Self-Paced"]
+  }
+}

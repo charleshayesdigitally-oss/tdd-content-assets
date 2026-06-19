@@ -1,0 +1,28 @@
+{
+  "style": "elegant",
+  "type": "beforeafter",
+  "format": "feed",
+  "palette": {"accent": "#d4af37", "accent2": "#e8c97a"},
+  "content": {
+    "headline_lines": ["Started curious.", "Ended different."],
+    "script": "didn't see it coming.",
+    "before_label": "Before",
+    "after_label": "After",
+    "before": [
+      "Started with pure curiosity",
+      "Wasn't sure it would stick",
+      "Didn't expect real results",
+      "No idea if it would actually help"
+    ],
+    "after": [
+      "Found something I actually use",
+      "Made more of a difference than expected",
+      "Curiosity turned into something real",
+      "Worth every bit of the decision"
+    ],
+    "cta": "Comment \"INFO\" below",
+    "tagline": "Ends Sunday June 21st.",
+    "brand": "Brianna",
+    "meta": ["Online", "Self-Paced"]
+  }
+}
