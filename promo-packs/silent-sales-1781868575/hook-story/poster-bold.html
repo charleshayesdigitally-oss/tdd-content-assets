@@ -80,6 +80,28 @@
 #poster.feed .foot{font-size:34px;padding-top:18px}
 #poster.feed .hook .big{font-size:104px}
 #poster.feed .hook .scr{font-size:104px}
+/* === TikTok motion — only active when #poster has .anim (video render); static PNG render never adds it === */
+#poster.anim .brandrow,#poster.anim .head,#poster.anim .hook,#poster.anim .hero,#poster.anim .sec,#poster.anim .cards,#poster.anim .ba,#poster.anim .steps,#poster.anim .testi,#poster.anim .price,#poster.anim .cta,#poster.anim .foot{opacity:0}
+#poster.anim .brandrow{animation:riseIn .7s cubic-bezier(.2,.75,.25,1) .05s forwards}
+#poster.anim .head{animation:riseIn .8s cubic-bezier(.2,.75,.25,1) .2s forwards}
+#poster.anim .hook{animation:riseIn .85s cubic-bezier(.2,.75,.25,1) .3s forwards}
+#poster.anim .testi{animation:riseIn .85s cubic-bezier(.2,.75,.25,1) .35s forwards}
+#poster.anim .hero{animation:heroIn .9s cubic-bezier(.2,.75,.25,1) .5s forwards;will-change:transform}
+#poster.anim .ba{animation:riseIn .8s cubic-bezier(.2,.75,.25,1) .6s forwards}
+#poster.anim .steps{animation:riseIn .8s cubic-bezier(.2,.75,.25,1) .6s forwards}
+#poster.anim .sec{animation:riseIn .7s cubic-bezier(.2,.75,.25,1) .8s forwards}
+#poster.anim .cards{animation:riseIn .7s cubic-bezier(.2,.75,.25,1) .95s forwards}
+#poster.anim .price{animation:pop .85s cubic-bezier(.2,.8,.2,1) 1.15s forwards}
+#poster.anim .cta{animation:riseIn .7s cubic-bezier(.2,.75,.25,1) 1.4s forwards, ctaGlow 2.2s ease-in-out 2.2s infinite}
+#poster.anim .foot{animation:riseIn .7s cubic-bezier(.2,.75,.25,1) 1.6s forwards}
+#poster.anim .glow{animation:glowPulse 3.4s ease-in-out infinite}
+#poster.anim .laser{animation:laserFlicker 2.8s ease-in-out infinite}
+@keyframes riseIn{from{opacity:0;transform:translateY(48px)}to{opacity:1;transform:translateY(0)}}
+@keyframes heroIn{from{opacity:0;transform:rotate(-2.4deg) translateY(42px) scale(.93)}to{opacity:1;transform:rotate(-2.4deg) translateY(0) scale(1)}}
+@keyframes pop{0%{opacity:0;transform:scale(.82)}65%{opacity:1;transform:scale(1.06)}100%{opacity:1;transform:scale(1)}}
+@keyframes ctaGlow{0%,100%{box-shadow:0 0 40px rgba(255,38,48,.7),inset 0 2px 0 rgba(255,255,255,.25);transform:scale(1)}50%{box-shadow:0 0 74px rgba(255,38,48,1),inset 0 2px 0 rgba(255,255,255,.3);transform:scale(1.02)}}
+@keyframes glowPulse{0%,100%{opacity:.72}50%{opacity:1}}
+@keyframes laserFlicker{0%,100%{opacity:.8}50%{opacity:1}}
 </style></head>
 <body>
 <div id="poster"></div>
