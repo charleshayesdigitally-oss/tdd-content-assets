@@ -89,15 +89,29 @@ function inner(layout,c){
    <div class="disp ac" style="font-size:280px;${upper};margin-top:16px">${AMT}</div><div class="off" style="font-size:40px">${OFF}</div>
    <div class="nm" style="font-size:72px;${upper};margin-top:28px"><span class="on" style="display:block;font-size:20px;margin-bottom:8px">${esc(c.on||'This week only on')}</span>${NAME}</div>
    ${PRICE}${SUB}<div style="margin-top:34px;display:flex;align-items:center;gap:30px">${CTA}${DL}</div></div>`;
- if(layout==='photo'){
+ if(layout==='overlay'||layout==='photo'){
    const ph=(c.photo_urls&&c.photo_urls[0])||'';
-   return `<img crossorigin="anonymous" src="${esc(ph)}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:4"/>
-   <div style="position:absolute;inset:0;z-index:5;background:linear-gradient(180deg,rgba(5,8,22,.10) 0%,rgba(5,8,22,.5) 52%,rgba(5,8,22,.93) 100%)"></div>
-   <div class="ins" style="padding:${c._pad};z-index:6;align-items:flex-start;text-align:left;justify-content:flex-end">
-     <div class="kick" style="font-size:21px">${esc(c.kicker||'Offer')}</div>
-     <div class="disp ac" style="font-size:210px;${upper};margin-top:6px">${AMT}</div><div class="off" style="font-size:38px">${OFF}</div>
-     <div class="nm" style="font-size:74px;${upper};margin-top:14px;color:#fff">${NAME}</div>${PRICE}
-     <div style="margin-top:26px;display:flex;align-items:center;gap:26px">${CTA}${DL}</div></div>`;
+   const objpos=c.object_position||'center';
+   const pos=c.overlay_pos||'bottom';
+   const justify=pos==='top'?'flex-start':(pos==='center'?'center':'flex-end');
+   const scrim=pos==='top'
+     ? 'linear-gradient(180deg,rgba(0,0,0,.9),rgba(0,0,0,.42) 40%,transparent 66%)'
+     : (pos==='center'
+       ? 'linear-gradient(0deg,rgba(0,0,0,.55),rgba(0,0,0,.55))'
+       : 'linear-gradient(0deg,rgba(0,0,0,.93),rgba(0,0,0,.55) 40%,transparent 72%)');
+   const PR=(WAS&&NOW)
+     ? `<div style="display:flex;align-items:baseline;gap:18px"><span class="disp ac" style="font-size:104px;line-height:.86;${upper}">${NOW}</span><span style="font-family:var(--leadf);font-size:38px;color:var(--mute2)" class="strike">${WAS}</span></div>`
+     : `<div style="display:flex;align-items:baseline;gap:14px"><span class="disp ac" style="font-size:104px;line-height:.86;${upper}">${AMT}</span><span class="off" style="font-size:30px">${OFF}</span></div>`;
+   return `<img crossorigin="anonymous" src="${esc(ph)}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:${objpos};z-index:4"/>
+   <div style="position:absolute;inset:0;z-index:5;background:${scrim}"></div>
+   <div style="position:absolute;inset:0;z-index:6;display:flex;flex-direction:column;justify-content:${justify};align-items:flex-start;text-align:left;padding:${c._pad}">
+     <div class="kick" style="font-size:20px">${esc(c.kicker||'Limited offer')}</div>
+     <div style="width:46px;height:3px;background:var(--accent);margin:16px 0 18px;border-radius:2px"></div>
+     ${PR}
+     <div class="nm" style="font-size:44px;line-height:1.04;margin-top:14px;color:var(--cream)">${NAME}</div>
+     ${c.sub?`<div style="color:var(--mute2);font-size:23px;line-height:1.45;margin-top:10px;max-width:78%">${esc(c.sub)}</div>`:''}
+     <div style="margin-top:24px;display:flex;align-items:center;gap:22px">${CTA}${DL}</div>
+   </div>`;
  }
  if(layout==='banner'){
    const ph=(c.photo_urls&&c.photo_urls[0])||'';
@@ -164,7 +178,10 @@ async function main(){
      const im=full.querySelector('img');
      if(im && !im.complete){ await new Promise(r=>{im.onload=r;im.onerror=r;}); }
      await new Promise(r=>setTimeout(r,80));
-     const cv=await html2canvas(full,{width:w,height:h,scale:2,backgroundColor:null,logging:false,useCORS:true});
+     // image-hero layouts render at 1x (1080 native) so a photo is never upscaled into mush; text-only layouts use 2x for crisp type
+     const heavyImg=(layout==='overlay'||layout==='banner'||layout==='photo');
+     const cap=heavyImg?1.5:2;
+     const cv=await html2canvas(full,{width:w,height:h,scale:cap,backgroundColor:null,logging:false,useCORS:true});
      document.body.removeChild(holder);
      const a=document.createElement('a'); a.href=cv.toDataURL('image/jpeg',0.92); a.download=`${layout}-${fmt}.jpg`; a.click(); btn.textContent='Download'; };
    cap.appendChild(btn); item.appendChild(cap); grid.appendChild(item);
