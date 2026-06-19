@@ -1,0 +1,19 @@
+{
+  "style": "bold",
+  "type": "beforeafter",
+  "format": "story",
+  "palette": {"accent": "#ff2630", "accent2": "#c20812"},
+  "content": {
+    "brand": "MotionTest",
+    "meta": ["Online", "Self-Paced"],
+    "headline_lines": ["Motion Changes Everything"],
+    "headline_highlight": "Motion",
+    "script": "TikTok Motion Test",
+    "before_label": "Before",
+    "after_label": "After Motion",
+    "before": ["Promos sit still", "Static on TikTok", "Scrolled past", "No motion"],
+    "after": ["Promos that move", "TikTok-ready", "Motion on the feed", "Built for builders"],
+    "cta": "Get it now",
+    "tagline": "For the builder who wants their promos to move."
+  }
+}
