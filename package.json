@@ -1,0 +1,15 @@
+{
+  "name": "tdd-content-assets",
+  "version": "1.0.0",
+  "description": "Public image host for The Digital Dad scheduled social posts (carousel slides served via raw URLs to the Instagram Graph API).",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "playwright": "^1.48.0"
+  }
+}
