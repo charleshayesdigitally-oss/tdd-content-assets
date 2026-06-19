@@ -6,9 +6,10 @@
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:#0b0a08;color:#efe6d4;font-family:'Poppins',system-ui,sans-serif;padding:34px 18px 70px;text-align:center}
 h1{font-size:26px;font-weight:700}.lede{color:#9b8f78;font-size:14px;margin:6px 0 28px}
+h2.sec{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#caa052;margin:42px auto 18px;max-width:1100px;text-align:left}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:24px;max-width:1100px;margin:0 auto}
 .item{background:#15110b;border:1px solid rgba(224,176,99,.16);border-radius:14px;padding:14px}
-.item img{width:100%;border-radius:8px;display:block;background:#000;cursor:pointer}
+.item img,.item video{width:100%;border-radius:8px;display:block;background:#000;cursor:pointer}
 .cap{display:flex;align-items:center;justify-content:space-between;margin-top:12px}
 .cap span{font-size:12px;color:#9b8f78;text-transform:uppercase;letter-spacing:.08em}
 .dl{background:linear-gradient(100deg,#f1d79a,#caa052);color:#1a1208;font-weight:600;border-radius:999px;padding:8px 16px;font-size:13px;text-decoration:none}
@@ -19,6 +20,8 @@ h1{font-size:26px;font-weight:700}.lede{color:#9b8f78;font-size:14px;margin:6px 
 <body>
 <h1 id="title">Your promo pack</h1>
 <div class="lede" id="lede">Loading…</div>
+<div id="vidwrap" style="display:none"><h2 class="sec">🎬 TikTok / Reels videos — post these as video</h2><div class="grid" id="vids"></div></div>
+<h2 class="sec" id="imghead" style="display:none">🖼 Images — for IG feed, carousels, stories</h2>
 <div class="grid" id="grid"></div>
 <div class="caps" id="caps" style="display:none"></div>
 <div class="note">Built by The Digital Dad. One round of tweaks included — just reply to your delivery email.</div>
@@ -29,8 +32,23 @@ const safe=u=>String(u==null?"":u).replace(/[ -"'()\\<>`]/g,"");
  let m={}; try{ m=await (await fetch('./pack.json',{cache:'no-store'})).json(); }catch(e){}
  const pieces=m.pieces||[];
  document.getElementById('title').textContent=(m.offer_name||'Your')+' — promo pack';
- document.getElementById('lede').textContent=pieces.length?`${pieces.length} graphics. Tap any to view, then Download.`:'Your pack is rendering — refresh in a minute.';
- document.getElementById('grid').innerHTML=pieces.map(p=>{const png=safe(p.png);const lab=esc((p.type||'')+' · '+(p.format||''));return `<div class="item"><a href="${png}" target="_blank"><img src="${png}" alt=""/></a><div class="cap"><span>${lab}</span><a class="dl" href="${png}" download>Download</a></div></div>`;}).join('');
+ document.getElementById('lede').textContent=pieces.length?`${pieces.length} graphics + animated TikTok videos. Tap any to view, then Download.`:'Your pack is rendering — refresh in a minute.';
+ // images
+ if(pieces.length) document.getElementById('imghead').style.display='block';
+ document.getElementById('grid').innerHTML=pieces.map(p=>{const png=safe(p.png);const lab=esc((p.type||'')+' · '+(p.format||''));return `<div class="item"><a href="${png}" target="_blank"><img src="${png}" alt="" loading="lazy"/></a><div class="cap"><span>${lab}</span><a class="dl" href="${png}" download>Download</a></div></div>`;}).join('');
+ // TikTok videos: story-format pieces each have an .mp4 next to the .png (only show if it loads)
+ const vids=pieces.filter(p=>(p.format==='story')).map(p=>({mp4:safe(p.png.replace(/\.png$/i,'.mp4')),type:p.type}));
+ const vwrap=document.getElementById('vidwrap'), vgrid=document.getElementById('vids');
+ let shown=0;
+ for(const v of vids){
+   // probe the mp4 exists before adding (HEAD via fetch)
+   try{ const r=await fetch(v.mp4,{method:'HEAD'}); if(!r.ok) continue; }catch(e){ continue; }
+   shown++;
+   const d=document.createElement('div'); d.className='item';
+   d.innerHTML=`<video src="${v.mp4}" muted autoplay loop playsinline></video><div class="cap"><span>${esc(v.type)} · video</span><a class="dl" href="${v.mp4}" download>Download</a></div>`;
+   vgrid.appendChild(d);
+ }
+ if(shown) vwrap.style.display='block';
  try{ const t=await (await fetch('./captions.md',{cache:'no-store'})).text(); if(t){ const el=document.getElementById('caps'); el.innerHTML=esc(t).replace(/^##\s*(.+)$/gm,'<h2>$1</h2>'); el.style.display='block'; } }catch(e){}
 })();
 </script>
