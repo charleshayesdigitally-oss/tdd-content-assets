@@ -1,4 +1,4 @@
-name: Render posters
+name: Render posters + TikTok videos
 on:
   push:
     paths:
@@ -20,13 +20,15 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
+      - run: sudo apt-get update && sudo apt-get install -y ffmpeg
       - run: npm init -y && npm i playwright@1.48.0
       - run: npx playwright install --with-deps chromium
       - run: node render-posters.mjs
-      - name: Commit rendered PNGs
+      - run: node render-videos.mjs
+      - name: Commit rendered media
         run: |
           git config user.name "poster-renderer"
           git config user.email "render@thedigitaldad.co"
           git add -A
-          git diff --cached --quiet || git commit -m "Render posters [skip render]"
+          git diff --cached --quiet || git commit -m "Render posters + videos [skip render]"
           git push
