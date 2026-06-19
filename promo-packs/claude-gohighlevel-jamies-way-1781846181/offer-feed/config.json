@@ -1,0 +1,24 @@
+{
+  "style": "bold",
+  "type": "offer",
+  "format": "feed",
+  "content": {
+    "brand": "BossWithVaJamie",
+    "meta": ["Online", "Self-Paced"],
+    "headline_lines": ["Claude &", "GoHighLevel"],
+    "headline_highlight": "GoHighLevel",
+    "script": "Jamie's Way",
+    "hero_image": "../PK1-jamie.jpg",
+    "section": "What you'll build",
+    "features": [
+      {"icon": "funnel", "label": "Funnel Pages"},
+      {"icon": "page",   "label": "Landing Pages"},
+      {"icon": "quiz",   "label": "Quizzes"},
+      {"icon": "store",  "label": "Store Pages"}
+    ],
+    "now": "$47",
+    "was": "$97",
+    "cta": "Yes I Want It",
+    "tagline": "No tech skills. No time wasted."
+  }
+}

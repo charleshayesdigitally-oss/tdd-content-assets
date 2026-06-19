@@ -1,0 +1,26 @@
+{
+  "style": "bold",
+  "type": "beforeafter",
+  "format": "feed",
+  "content": {
+    "brand": "BossWithVaJamie",
+    "meta": ["Online", "Self-Paced"],
+    "headline_lines": ["Before & After"],
+    "headline_highlight": "After",
+    "script": "Jamie's Way",
+    "before_label": "Before",
+    "after_label": "After",
+    "before": [
+      "Stuck on the tech",
+      "No time for trial and error",
+      "Funnel pages feel out of reach"
+    ],
+    "after": [
+      "Funnel pages built and live",
+      "Landing pages converting",
+      "Quizzes & store pages done"
+    ],
+    "cta": "Yes I Want It",
+    "tagline": "No tech skills. No time wasted."
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "style": "bold",
+  "type": "features",
+  "format": "story",
+  "content": {
+    "brand": "BossWithVaJamie",
+    "meta": ["Online", "Self-Paced"],
+    "headline_lines": ["What You'll", "Build"],
+    "headline_highlight": "Build",
+    "script": "Jamie's Way",
+    "section": "Inside the course",
+    "features": [
+      {"icon": "funnel", "label": "Funnel Pages",  "desc": "Built with Claude + GoHighLevel"},
+      {"icon": "page",   "label": "Landing Pages",  "desc": "No tech skills required"},
+      {"icon": "quiz",   "label": "Quizzes",         "desc": "Lead capture, done your way"},
+      {"icon": "store",  "label": "Store Pages",     "desc": "Simple setup, your style"}
+    ],
+    "now": "$47",
+    "was": "$97",
+    "cta": "Yes I Want It",
+    "tagline": "No tech skills. No time wasted."
+  }
+}
