@@ -1,0 +1,17 @@
+{
+  "type": "beforeafter",
+  "format": "story",
+  "style": "editorial",
+  "palette": {"accent": "#ACC6A1", "accent2": "#D8C9B3"},
+  "content": {
+    "brand": "Creator Compass Collective",
+    "hero_image": "../qp19D9-IMG_4591.png",
+    "hero_mode": "background",
+    "headline_lines": ["The UGC turning point"],
+    "headline_highlight": "turning point",
+    "before_label": "Before",
+    "after_label": "After",
+    "before": ["UGC knowledge, no clear path", "Not sure what to do first", "Figuring it out alone"],
+    "after": ["One focused move at a time", "Paid, in-the-wild creator work", "Coaching and community behind you"]
+  }
+}

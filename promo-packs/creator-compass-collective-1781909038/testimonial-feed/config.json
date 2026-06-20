@@ -1,0 +1,14 @@
+{
+  "type": "testimonial",
+  "format": "feed",
+  "style": "editorial",
+  "palette": {"accent": "#ACC6A1", "accent2": "#D8C9B3"},
+  "content": {
+    "brand": "Creator Compass Collective",
+    "hero_image": "../qp19D9-IMG_4591.png",
+    "hero_mode": "background",
+    "quote": "Working with Jamie over the past two months has been such a blessing! As someone who was completely new to UGC, I had countless questions and needed a lot of guidance, reassurance, and support. From day one, Jamie has been my biggest cheerleader and has always encouraged me to keep pushing forward. If you're feeling stuck or need someone in your corner, Jamie is your girl!",
+    "attribution": "Creator Compass Member",
+    "stars": 5
+  }
+}
