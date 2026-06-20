@@ -6,6 +6,7 @@ on:
       - 'promo-packs/**/config.json'
       - 'promo-packs/**/*.jpg'
       - 'promo-packs/**/*.png'
+      - 'promo-packs/**/*.mp4'
       - 'promo-packs/**/.rerender'
   workflow_dispatch:
 permissions:

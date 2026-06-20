@@ -59,9 +59,10 @@
 /* Motion — only under #poster.anim (the video renderer adds it; PNGs are unaffected) */
 @keyframes riseIn{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes fadeWm{from{opacity:0}to{opacity:.15}}  /* watermark fades to FAINT, not full — keeps text readable in video */
 #poster.anim .brandrow,#poster.anim .kicker,#poster.anim .logo,#poster.anim .big,#poster.anim .rule,#poster.anim .price,#poster.anim .sub,#poster.anim .cta,#poster.anim .qm,#poster.anim .quote,#poster.anim .stars,#poster.anim .by,#poster.anim .bglogo{opacity:0}
 #poster.anim .brandrow{animation:fadeIn .6s ease .1s forwards}
-#poster.anim .bglogo{animation:fadeIn 1.3s ease .25s forwards}
+#poster.anim .bglogo{animation:fadeWm 1.3s ease .25s forwards}
 #poster.anim .kicker,#poster.anim .logo,#poster.anim .qm{animation:riseIn .75s cubic-bezier(.2,.75,.25,1) .2s forwards}
 #poster.anim .big{animation:riseIn .8s cubic-bezier(.2,.75,.25,1) .25s forwards}
 #poster.anim .rule{animation:fadeIn .6s ease .55s forwards}
