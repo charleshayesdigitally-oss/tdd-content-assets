@@ -1,7 +1,7 @@
 {
   "style": "editorial",
   "type": "hook",
-  "format": "story",
+  "format": "feed",
   "palette": {"accent": "#ACC6A1", "accent2": "#D8C9B3"},
   "content": {
     "brand": "Creator Compass Collective",

@@ -1,26 +1,11 @@
 {
   "style": "editorial",
   "offer_name": "Silent Sales",
+  "brand": "The Digital Dad",
   "pieces": [
-    {
-      "type": "offer",
-      "format": "story",
-      "png": "offer-story/poster-editorial.png"
-    },
-    {
-      "type": "offer",
-      "format": "feed",
-      "png": "offer-feed/poster-editorial.png"
-    },
-    {
-      "type": "hook",
-      "format": "story",
-      "png": "hook-story/poster-editorial.png"
-    },
-    {
-      "type": "hook",
-      "format": "feed",
-      "png": "hook-feed/poster-editorial.png"
-    }
+    {"type": "offer", "format": "story", "png": "offer-story/poster-editorial.png"},
+    {"type": "offer", "format": "feed",  "png": "offer-feed/poster-editorial.png"},
+    {"type": "hook",  "format": "story", "png": "hook-story/poster-editorial.png"},
+    {"type": "hook",  "format": "feed",  "png": "hook-feed/poster-editorial.png"}
   ]
 }
