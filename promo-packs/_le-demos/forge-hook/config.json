@@ -1,0 +1,15 @@
+{
+  "style": "bold",
+  "type": "hook",
+  "format": "feed",
+  "palette": {"accent": "#FF5A1F", "accent2": "#B33A12"},
+  "content": {
+    "brand": "FORGE ATHLETICS",
+    "headline_lines": ["Get strong", "again."],
+    "headline_highlight": "again.",
+    "script": "no excuses.",
+    "sub": "The 40-Strong Program — 12 weeks of strength built for busy men over 40.",
+    "cta": "Join 40-Strong",
+    "meta": ["12 weeks", "Online"]
+  }
+}

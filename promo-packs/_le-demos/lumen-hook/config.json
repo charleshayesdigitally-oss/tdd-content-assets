@@ -1,0 +1,14 @@
+{
+  "style": "light",
+  "type": "hook",
+  "format": "feed",
+  "palette": {"accent": "#8FA37E", "accent2": "#C98B6B", "ink": "#2E3A2B"},
+  "content": {
+    "brand": "LUMEN & LEAF",
+    "headline_lines": ["Reclaim your", "energy."],
+    "headline_highlight": "energy.",
+    "sub": "The Reset — a 6-week hormone & energy reset for women running on empty.",
+    "cta": "Start The Reset",
+    "tagline": "lumenandleaf.co"
+  }
+}

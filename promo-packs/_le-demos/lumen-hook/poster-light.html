@@ -1,0 +1,113 @@
+<!doctype html><html><head><meta charset="utf-8">
+<!--
+  Promo Engine — LIGHT style (soft / earthy / logo-forward). For brands with a logo (not a
+  headshot) + a light palette. Config-driven: fetch ./config.json; honors config.type
+  (offer | hook | testimonial) and config.format (story 1080x1920 | feed 1080x1350).
+  palette.accent (sage), palette.accent2 (tan), palette.ink (deep text) optional.
+  offer uses config.content.logo_image (the brand logo, shown clean — NOT a dark overlay).
+-->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Manrope:wght@400;500;600;700&family=Kaushan+Script&display=swap');
+:root{
+  --ink:#2c3b27;--soft:#5d6b54;--accent:#8a9a7b;--accent2:#d8c9b3;
+  --bg1:#f8f6ef;--bg2:#eef0e6;--line:rgba(44,59,39,.14);--card:rgba(255,255,255,.55);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+#poster{width:1080px;height:1920px;position:relative;overflow:hidden;
+  font-family:'Manrope',sans-serif;color:var(--ink);
+  background:
+    radial-gradient(1100px 760px at 78% -6%, color-mix(in srgb,var(--accent) 26%, transparent), transparent 60%),
+    radial-gradient(900px 700px at 6% 104%, color-mix(in srgb,var(--accent2) 40%, transparent), transparent 62%),
+    linear-gradient(160deg,var(--bg1),var(--bg2));}
+#poster.feed{height:1350px}
+.grain{position:absolute;inset:0;pointer-events:none;opacity:.05;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E")}
+/* bg_logo = a faint EMBLEM watermark behind the content (use a mark-only crop, not a full
+   lockup — a wordmark behind centered text always collides). Brand name stays crisp via .brandrow. */
+.bglogo{position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);width:92%;max-width:1000px;
+  z-index:1;mix-blend-mode:multiply;opacity:.15;pointer-events:none}
+#poster.feed .bglogo{width:80%}
+.wrap{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:center;
+  align-items:center;text-align:center;padding:120px 96px}
+.brandrow{position:absolute;top:84px;left:0;right:0;text-align:center;font-weight:700;
+  letter-spacing:.32em;text-transform:uppercase;font-size:24px;color:var(--soft)}
+.kicker{font-family:'Kaushan Script';font-size:62px;color:var(--accent);line-height:1;margin-bottom:6px}
+.serif{font-family:'Playfair Display',serif}
+.hl{color:var(--accent)}
+.logo{width:560px;max-width:74%;height:auto;margin:0 auto 16px;display:block;
+  filter:drop-shadow(0 22px 50px rgba(44,59,39,.18))}
+.price{display:flex;align-items:baseline;justify-content:center;gap:18px;margin:30px 0 6px}
+.price .was{font-family:'Playfair Display',serif;font-size:46px;color:var(--soft);text-decoration:line-through;opacity:.7}
+.price .now{font-family:'Playfair Display',serif;font-weight:700;font-size:104px;line-height:.9;color:var(--ink)}
+.sub{font-size:34px;line-height:1.45;color:var(--soft);max-width:760px;margin:14px auto 0;font-weight:500}
+.cta{margin-top:48px;display:inline-block;background:var(--accent);color:#fdfdf9;font-weight:700;
+  font-size:34px;letter-spacing:.01em;padding:30px 66px;border-radius:60px;
+  box-shadow:0 18px 40px color-mix(in srgb,var(--accent) 42%, transparent)}
+.rule{width:90px;height:3px;background:var(--accent);border-radius:3px;margin:38px auto}
+/* hook */
+.big{font-family:'Playfair Display',serif;font-weight:700;font-size:118px;line-height:1.02;letter-spacing:-.01em}
+#poster.feed .big{font-size:96px}
+/* testimonial */
+.qm{font-family:'Playfair Display',serif;font-size:200px;line-height:.4;color:var(--accent);height:96px}
+.quote{font-family:'Playfair Display',serif;font-style:italic;font-weight:500;font-size:50px;line-height:1.4;
+  color:var(--ink);max-width:840px;margin:28px auto 0}
+#poster.feed .quote{font-size:42px}
+.stars{color:var(--accent);font-size:46px;letter-spacing:12px;margin-top:34px}
+.by{font-family:'Kaushan Script';font-size:50px;color:var(--soft);margin-top:18px}
+.foot{position:absolute;bottom:74px;left:0;right:0;text-align:center;font-size:24px;color:var(--soft);
+  letter-spacing:.04em;font-weight:600}
+/* Motion — only under #poster.anim (the video renderer adds it; PNGs are unaffected) */
+@keyframes riseIn{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes fadeWm{from{opacity:0}to{opacity:.15}}  /* watermark fades to FAINT, not full — keeps text readable in video */
+#poster.anim .brandrow,#poster.anim .kicker,#poster.anim .logo,#poster.anim .big,#poster.anim .rule,#poster.anim .price,#poster.anim .sub,#poster.anim .cta,#poster.anim .qm,#poster.anim .quote,#poster.anim .stars,#poster.anim .by,#poster.anim .bglogo{opacity:0}
+#poster.anim .brandrow{animation:fadeIn .6s ease .1s forwards}
+#poster.anim .bglogo{animation:fadeWm 1.3s ease .25s forwards}
+#poster.anim .kicker,#poster.anim .logo,#poster.anim .qm{animation:riseIn .75s cubic-bezier(.2,.75,.25,1) .2s forwards}
+#poster.anim .big{animation:riseIn .8s cubic-bezier(.2,.75,.25,1) .25s forwards}
+#poster.anim .rule{animation:fadeIn .6s ease .55s forwards}
+#poster.anim .price,#poster.anim .quote{animation:riseIn .75s cubic-bezier(.2,.75,.25,1) .5s forwards}
+#poster.anim .sub,#poster.anim .stars{animation:riseIn .75s cubic-bezier(.2,.75,.25,1) .7s forwards}
+#poster.anim .by{animation:riseIn .75s cubic-bezier(.2,.75,.25,1) .85s forwards}
+#poster.anim .cta{animation:riseIn .75s cubic-bezier(.2,.75,.25,1) 1s forwards}
+</style></head>
+<body>
+<div id="poster"><div class="grain"></div><div class="wrap" id="w"></div></div>
+<script>
+(async function(){
+  const esc=s=>String(s==null?'':s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+  let cfg={};try{cfg=await (await fetch('./config.json')).json();}catch(e){}
+  const p=cfg.content||{}, type=cfg.type||'offer', fmt=cfg.format||'story';
+  const pal=cfg.palette||{}, root=document.getElementById('poster'), w=document.getElementById('w');
+  if(fmt==='feed') root.classList.add('feed');
+  const rs=document.documentElement.style;
+  if(pal.accent) rs.setProperty('--accent',pal.accent);
+  if(pal.accent2) rs.setProperty('--accent2',pal.accent2);
+  if(pal.ink) rs.setProperty('--ink',pal.ink);
+  if(p.bg_logo){root.classList.add('has-bglogo');const bl=document.createElement('img');bl.className='bglogo';bl.src=p.bg_logo;root.insertBefore(bl,root.firstChild);}
+  const brand=p.brand?`<div class="brandrow">${esc(p.brand)}</div>`:'';
+  const cta=p.cta?`<div class="cta">${esc(p.cta)}</div>`:'';
+  const hl=(line,word)=>{ if(!word) return esc(line); const i=line.toLowerCase().indexOf(String(word).toLowerCase());
+    if(i<0) return esc(line); return esc(line.slice(0,i))+'<span class="hl">'+esc(line.slice(i,i+word.length))+'</span>'+esc(line.slice(i+word.length)); };
+  let html='';
+  if(type==='offer'){
+    const logo=p.logo_image?`<img class="logo" src="${esc(p.logo_image)}" alt="">`:'';
+    const kick=p.script?`<div class="kicker">${esc(p.script)}</div>`:'';
+    const price=(p.now||p.was)?`<div class="price">${p.was?`<span class="was">${esc(p.was)}</span>`:''}${p.now?`<span class="now">${esc(p.now)}</span>`:''}</div>`:'';
+    const sub=p.sub||p.tagline?`<div class="sub">${esc(p.sub||p.tagline)}</div>`:'';
+    html=`${brand}${logo}${kick}${price}${sub}${cta}`;
+  } else if(type==='hook'){
+    const lines=(p.headline_lines||[p.headline||'']).map(l=>hl(l,p.headline_highlight)).join('<br>');
+    const sub=p.sub?`<div class="sub">${esc(p.sub)}</div>`:'';
+    html=`${brand}<div class="big serif">${lines}</div><div class="rule"></div>${sub}${cta}`;
+  } else if(type==='testimonial'){
+    const stars=p.stars?`<div class="stars">${'★'.repeat(Math.max(1,Math.min(5,p.stars)))}</div>`:'';
+    const by=p.attribution?`<div class="by">${esc(p.attribution)}</div>`:'';
+    html=`${brand}<div class="qm serif">&ldquo;</div><div class="quote">${esc(p.quote||'')}</div>${stars}${by}${cta}`;
+  }
+  w.innerHTML=html;
+  if(p.tagline && type!=='offer') { const f=document.createElement('div'); f.className='foot'; f.textContent=p.tagline; root.appendChild(f); }
+  window.__ready=true;
+})();
+</script>
+</body></html>
