@@ -1,18 +1,5 @@
-## Offer
-$300 off Silent Sales.
+## Feed
+Silent Sales is $300 off ($697 to $397). Comment SS and I'll send the details.
 
-The system that sells without the noise. Comment SS or tap the link.
-
-## Hook
-Silent.
-
-Still selling.
-
-Comment SS if you want to know how.
-
-## Before / After
-The old way: loud, exhausting, chasing leads daily.
-
-Silent Sales: your system runs. Revenue flows. You stay quiet.
-
-Comment SS below.
+## Story / TikTok
+$300 off Silent Sales. Comment SS.

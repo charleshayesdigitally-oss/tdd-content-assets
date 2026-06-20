@@ -1,17 +1,24 @@
 {
+  "style": "editorial",
   "type": "offer",
   "format": "feed",
-  "style": "editorial",
-  "palette": {"accent": "#00AEEF", "accent2": "#8B5CF6"},
+  "palette": {
+    "accent": "#00AEEF",
+    "accent2": "#8B5CF6"
+  },
   "content": {
-    "brand": "The Digital Dad",
+    "headline_lines": [
+      "$300",
+      "OFF"
+    ],
+    "headline_highlight": "OFF",
+    "script": "Silent Sales",
     "hero_image": "../charles-hero.png",
     "hero_mode": "background",
-    "headline_lines": ["Silent", "Sales."],
-    "headline_highlight": "Sales.",
-    "sub": "Sell without the noise.",
-    "was": "$697",
     "now": "$397",
-    "cta": "Comment SS"
+    "was": "$697",
+    "cta": "Comment SS",
+    "tagline": "Build smarter. Create leverage.",
+    "brand": "THE DIGITAL DAD"
   }
 }

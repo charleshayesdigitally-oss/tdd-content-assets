@@ -20,7 +20,7 @@ h2.sec{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#caa05
 <body>
 <h1 id="title">Your promo pack</h1>
 <div class="lede" id="lede">Loading…</div>
-<div id="vidwrap" style="display:none"><h2 class="sec">🎥 TikTok / Reels videos — post these as video</h2><div class="grid" id="vids"></div></div>
+<div id="vidwrap" style="display:none"><h2 class="sec">🎬 TikTok / Reels videos — post these as video</h2><div class="grid" id="vids"></div></div>
 <h2 class="sec" id="imghead" style="display:none">🖼 Images — for IG feed, carousels, stories</h2>
 <div class="grid" id="grid"></div>
 <div class="caps" id="caps" style="display:none"></div>
@@ -33,12 +33,15 @@ const safe=u=>String(u==null?"":u).replace(/[ -"'()\\<>`]/g,"");
  const pieces=m.pieces||[];
  document.getElementById('title').textContent=(m.offer_name||'Your')+' — promo pack';
  document.getElementById('lede').textContent=pieces.length?`${pieces.length} graphics + animated TikTok videos. Tap any to view, then Download.`:'Your pack is rendering — refresh in a minute.';
+ // images
  if(pieces.length) document.getElementById('imghead').style.display='block';
  document.getElementById('grid').innerHTML=pieces.map(p=>{const png=safe(p.png);const lab=esc((p.type||'')+' · '+(p.format||''));return `<div class="item"><a href="${png}" target="_blank"><img src="${png}" alt="" loading="lazy"/></a><div class="cap"><span>${lab}</span><a class="dl" href="${png}" download>Download</a></div></div>`;}).join('');
+ // TikTok videos: story-format pieces each have an .mp4 next to the .png (only show if it loads)
  const vids=pieces.filter(p=>(p.format==='story')).map(p=>({mp4:safe(p.png.replace(/\.png$/i,'.mp4')),type:p.type}));
  const vwrap=document.getElementById('vidwrap'), vgrid=document.getElementById('vids');
  let shown=0;
  for(const v of vids){
+   // probe the mp4 exists before adding (HEAD via fetch)
    try{ const r=await fetch(v.mp4,{method:'HEAD'}); if(!r.ok) continue; }catch(e){ continue; }
    shown++;
    const d=document.createElement('div'); d.className='item';

@@ -1,14 +1,26 @@
 {
-  "job": "silent-sales-1781924546",
-  "offer_name": "Silent Sales",
-  "buyer_email": "charles@thedigitaldad.co",
   "style": "editorial",
+  "offer_name": "Silent Sales",
   "pieces": [
-    {"type": "offer",       "format": "story", "png": "./offer-story/poster-editorial.png"},
-    {"type": "offer",       "format": "feed",  "png": "./offer-feed/poster-editorial.png"},
-    {"type": "hook",        "format": "story", "png": "./hook-story/poster-editorial.png"},
-    {"type": "hook",        "format": "feed",  "png": "./hook-feed/poster-editorial.png"},
-    {"type": "beforeafter", "format": "story", "png": "./beforeafter-story/poster-editorial.png"},
-    {"type": "beforeafter", "format": "feed",  "png": "./beforeafter-feed/poster-editorial.png"}
+    {
+      "type": "offer",
+      "format": "story",
+      "png": "offer-story/poster-editorial.png"
+    },
+    {
+      "type": "offer",
+      "format": "feed",
+      "png": "offer-feed/poster-editorial.png"
+    },
+    {
+      "type": "hook",
+      "format": "story",
+      "png": "hook-story/poster-editorial.png"
+    },
+    {
+      "type": "hook",
+      "format": "feed",
+      "png": "hook-feed/poster-editorial.png"
+    }
   ]
 }

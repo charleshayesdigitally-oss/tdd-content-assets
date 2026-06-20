@@ -1,18 +1,24 @@
 {
+  "style": "editorial",
   "type": "offer",
   "format": "story",
-  "style": "editorial",
-  "palette": {"accent": "#ACC6A1", "accent2": "#D8C9B3"},
+  "palette": {
+    "accent": "#8a9a7b",
+    "accent2": "#D8C9B3"
+  },
   "content": {
-    "brand": "Creator Compass Collective",
+    "headline_lines": [
+      "Creator Compass",
+      "Collective"
+    ],
+    "headline_highlight": "Collective",
+    "script": "Founders pricing",
     "hero_image": "../qp19D9-IMG_4591.png",
     "hero_mode": "background",
-    "headline_lines": ["You know what", "you need to do."],
-    "headline_highlight": "need to do.",
-    "script": "You're just not sure what's first.",
-    "sub": "The UGC membership that turns what you've learned into actual, paid creator work.",
-    "was": "$37",
     "now": "$22/mo",
-    "cta": "Join the Waitlist"
+    "was": "$37",
+    "cta": "Join the Waitlist",
+    "tagline": "Turn what you've learned about UGC into paid creator work.",
+    "brand": "CREATOR COMPASS"
   }
 }

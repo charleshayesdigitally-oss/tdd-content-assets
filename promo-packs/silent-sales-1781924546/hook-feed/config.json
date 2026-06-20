@@ -1,14 +1,19 @@
 {
+  "style": "editorial",
   "type": "hook",
   "format": "feed",
-  "style": "editorial",
-  "palette": {"accent": "#00AEEF", "accent2": "#8B5CF6"},
+  "palette": {
+    "accent": "#00AEEF",
+    "accent2": "#8B5CF6"
+  },
   "content": {
-    "brand": "The Digital Dad",
-    "hero_image": "../charles-hero.png",
-    "hero_mode": "background",
-    "headline_lines": ["Silent.", "Still selling."],
-    "headline_highlight": "Still selling.",
-    "cta": "Comment SS"
+    "headline_lines": [
+      "$300 off",
+      "Silent Sales"
+    ],
+    "headline_highlight": "$300 off",
+    "sub": "Comment SS and I'll send you the details.",
+    "cta": "Comment SS",
+    "brand": "THE DIGITAL DAD"
   }
 }
