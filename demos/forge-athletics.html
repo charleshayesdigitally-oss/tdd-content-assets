@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FORGE ATHLETICS — The 40-Strong Program</title>
+<meta name="description" content="The 40-Strong Program — a 12-week strength system built for busy men over 40. Get genuinely strong again on the time you actually have." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;1,600&family=Archivo+Narrow:wght@600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --ink:#0E0E10;
+    --ink-2:#141417;
+    --ink-3:#1B1B1F;
+    --orange:#FF5A1F;
+    --orange-deep:#D9410F;
+    --steel:#9AA0A6;
+    --steel-dim:#6B7075;
+    --off:#F2EFEA;
+    --off-dim:#C9C7C2;
+    --line:rgba(154,160,166,0.16);
+    --line-strong:rgba(154,160,166,0.34);
+    --shadow:0 24px 60px -20px rgba(0,0,0,0.85), 0 4px 14px -6px rgba(0,0,0,0.6);
+    --shadow-orange:0 22px 50px -22px rgba(255,90,31,0.55);
+    --ease:cubic-bezier(0.16,1,0.3,1);
+    --pad:clamp(1.25rem, 5vw, 6rem);
+    --maxw:1240px;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    background:var(--ink);
+    color:var(--off);
+    font-family:'Archivo',system-ui,sans-serif;
+    font-size:clamp(1rem,0.6vw + 0.9rem,1.075rem);
+    line-height:1.65;
+    letter-spacing:0.005em;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* grain overlay */
+  body::before{
+    content:"";
+    position:fixed;inset:0;z-index:9999;pointer-events:none;
+    opacity:0.05;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  ::selection{background:var(--orange);color:var(--ink)}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--pad)}
+
+  h1,h2,h3,.display{
+    font-family:'Anton',Impact,sans-serif;
+    font-weight:400;
+    text-transform:uppercase;
+    line-height:0.92;
+    letter-spacing:0.005em;
+  }
+
+  .eyebrow{
+    font-family:'Archivo Narrow','Archivo',sans-serif;
+    text-transform:uppercase;
+    letter-spacing:0.32em;
+    font-size:0.72rem;
+    font-weight:700;
+    color:var(--orange);
+    display:inline-flex;align-items:center;gap:0.7rem;
+  }
+  .eyebrow::before{content:"";width:34px;height:2px;background:var(--orange);display:inline-block}
+  .eyebrow.center::before{display:none}
+
+  /* ---------- buttons ---------- */
+  .btn{
+    --bg:var(--orange);
+    position:relative;display:inline-flex;align-items:center;gap:0.7rem;
+    font-family:'Archivo Narrow','Archivo',sans-serif;
+    text-transform:uppercase;letter-spacing:0.14em;font-weight:700;
+    font-size:0.95rem;
+    padding:1.05rem 2rem;
+    background:var(--bg);color:var(--ink);
+    border:0;cursor:pointer;
+    clip-path:polygon(0 0,100% 0,100% 100%,14px 100%,0 calc(100% - 14px));
+    transition:transform .35s var(--ease),box-shadow .35s var(--ease),background-color .25s ease;
+    box-shadow:var(--shadow-orange);
+  }
+  .btn .arr{transition:transform .35s var(--ease)}
+  .btn:hover{transform:translateY(-3px);box-shadow:0 28px 56px -20px rgba(255,90,31,0.7)}
+  .btn:hover .arr{transform:translateX(5px)}
+  .btn:active{transform:translateY(0)}
+  .btn:focus-visible{outline:3px solid var(--off);outline-offset:4px}
+
+  .btn--ghost{
+    background:transparent;color:var(--off);
+    border:1px solid var(--line-strong);
+    box-shadow:none;clip-path:none;
+  }
+  .btn--ghost:hover{transform:translateY(-3px);border-color:var(--orange);color:var(--orange);box-shadow:none}
+  .btn--ghost:focus-visible{outline:3px solid var(--orange);outline-offset:4px}
+
+  .linklike{
+    font-family:'Archivo Narrow','Archivo',sans-serif;
+    text-transform:uppercase;letter-spacing:0.16em;font-weight:700;font-size:0.85rem;
+    color:var(--off);position:relative;padding-bottom:3px;
+    transition:color .25s ease;
+  }
+  .linklike::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:100%;background:var(--orange);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
+  .linklike:hover{color:var(--orange)}
+  .linklike:hover::after{transform:scaleX(1)}
+  .linklike:focus-visible{outline:2px solid var(--orange);outline-offset:6px}
+
+  /* ---------- header ---------- */
+  header{
+    position:sticky;top:0;z-index:100;
+    backdrop-filter:blur(10px);
+    background:linear-gradient(180deg, rgba(14,14,16,0.95), rgba(14,14,16,0.72));
+    border-bottom:1px solid var(--line);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;height:74px}
+  .mark{
+    font-family:'Anton',sans-serif;text-transform:uppercase;
+    font-size:1.6rem;letter-spacing:0.04em;display:inline-flex;align-items:center;gap:0.55rem;
+  }
+  .mark .spark{
+    width:13px;height:13px;background:var(--orange);
+    transform:rotate(45deg);box-shadow:0 0 18px var(--orange);
+    flex:0 0 auto;
+  }
+  .mark small{
+    font-family:'Archivo Narrow',sans-serif;font-size:0.6rem;letter-spacing:0.34em;
+    color:var(--steel);font-weight:700;align-self:center;
+  }
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;padding-top:clamp(3rem,7vw,6rem);padding-bottom:clamp(3rem,6vw,5.5rem);overflow:hidden}
+  .hero-bg{position:absolute;inset:0;z-index:0;pointer-events:none}
+  .hero-bg::after{
+    content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(120% 90% at 88% -10%, rgba(255,90,31,0.22), transparent 55%),
+      radial-gradient(80% 70% at -10% 110%, rgba(154,160,166,0.10), transparent 60%);
+  }
+  .stripe{
+    position:absolute;top:-10%;right:-6%;width:46%;height:130%;
+    background:repeating-linear-gradient(135deg, rgba(255,90,31,0.10) 0 2px, transparent 2px 26px);
+    transform:skewX(-8deg);z-index:0;
+  }
+  .hero .wrap{position:relative;z-index:2}
+  .hero-grid{display:grid;grid-template-columns:1.15fr 0.85fr;gap:clamp(2rem,4vw,4rem);align-items:center}
+  .hero h1{
+    font-size:clamp(2.8rem,8.6vw,6.6rem);
+    margin:1.4rem 0 1.5rem;
+    text-wrap:balance;
+  }
+  .hero h1 .hl{color:var(--orange);display:inline-block;position:relative}
+  .hero h1 .hl::after{content:"";position:absolute;left:-2%;right:-2%;bottom:0.06em;height:0.16em;background:var(--orange);opacity:0.22;z-index:-1}
+  .hero .sub{font-size:clamp(1.05rem,1.4vw,1.28rem);color:var(--off-dim);max-width:42ch;margin-bottom:2.2rem}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:1rem;align-items:center}
+  .hero-meta{display:flex;gap:clamp(1.2rem,3vw,2.6rem);margin-top:2.6rem;flex-wrap:wrap}
+  .hero-meta .stat .n{font-family:'Anton',sans-serif;font-size:clamp(2rem,3vw,2.7rem);color:var(--off);line-height:1}
+  .hero-meta .stat .n span{color:var(--orange)}
+  .hero-meta .stat .l{font-family:'Archivo Narrow',sans-serif;text-transform:uppercase;letter-spacing:0.16em;font-size:0.66rem;color:var(--steel);font-weight:700;margin-top:0.5rem}
+  .hero-meta .stat + .stat{padding-left:clamp(1.2rem,3vw,2.6rem);border-left:1px solid var(--line)}
+
+  .hero-visual{position:relative}
+  .hero-visual .frame{
+    position:relative;overflow:hidden;
+    border:1px solid var(--line-strong);
+    clip-path:polygon(0 0,100% 0,100% 92%,92% 100%,0 100%);
+    box-shadow:var(--shadow);
+    background:var(--ink-3);
+  }
+  .hero-visual img{width:100%;height:100%;object-fit:cover;filter:grayscale(0.35) contrast(1.08) brightness(0.82);
+    transition:transform .8s var(--ease),filter .6s ease;}
+  .hero-visual:hover img{transform:scale(1.04);filter:grayscale(0.1) contrast(1.12) brightness(0.9)}
+  .hero-visual .tag{
+    position:absolute;left:0;bottom:0;
+    background:var(--orange);color:var(--ink);
+    font-family:'Archivo Narrow',sans-serif;text-transform:uppercase;
+    letter-spacing:0.14em;font-weight:700;font-size:0.78rem;
+    padding:0.7rem 1.2rem;
+  }
+  .hero-visual .badge{
+    position:absolute;top:1rem;right:1rem;
+    width:96px;height:96px;border-radius:50%;
+    border:1px solid var(--line-strong);
+    background:rgba(14,14,16,0.78);backdrop-filter:blur(4px);
+    display:grid;place-content:center;text-align:center;
+  }
+  .hero-visual .badge b{font-family:'Anton',sans-serif;font-size:1.7rem;color:var(--orange);line-height:0.9}
+  .hero-visual .badge span{font-family:'Archivo Narrow',sans-serif;font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--steel);display:block;margin-top:2px}
+
+  /* ---------- marquee ---------- */
+  .marquee{border-block:1px solid var(--line);background:var(--ink-2);overflow:hidden;padding:1.1rem 0}
+  .marquee-track{display:flex;gap:3rem;white-space:nowrap;width:max-content;animation:scroll 32s linear infinite}
+  .marquee-track span{
+    font-family:'Anton',sans-serif;text-transform:uppercase;font-size:1.5rem;letter-spacing:0.04em;
+    color:transparent;-webkit-text-stroke:1px var(--steel-dim);display:inline-flex;align-items:center;gap:3rem;
+  }
+  .marquee-track span::after{content:"\25C6";-webkit-text-stroke:0;color:var(--orange);font-size:0.7rem}
+  @keyframes scroll{to{transform:translateX(-50%)}}
+  @media (prefers-reduced-motion:reduce){.marquee-track{animation:none}}
+
+  /* ---------- generic section ---------- */
+  section{position:relative}
+  .sec{padding-block:clamp(4rem,9vw,7.5rem)}
+  .sec-head{max-width:62ch}
+  .sec-head h2{font-size:clamp(2.1rem,5.2vw,4rem);margin:1.2rem 0 1.1rem}
+  .sec-head p{color:var(--off-dim);font-size:clamp(1.02rem,1.2vw,1.18rem);max-width:54ch}
+  .index{
+    font-family:'Archivo Narrow',sans-serif;font-size:0.72rem;letter-spacing:0.3em;
+    color:var(--steel-dim);text-transform:uppercase;font-weight:700;
+  }
+
+  /* ---------- problem ---------- */
+  .problem{background:var(--ink-2);border-block:1px solid var(--line)}
+  .prob-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,5rem);align-items:start;margin-top:3rem}
+  .prob-lead{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(1.6rem,3vw,2.4rem);line-height:1.05}
+  .prob-lead em{color:var(--orange);font-style:normal}
+  .prob-list{display:grid;gap:1.1rem}
+  .prob-item{
+    display:grid;grid-template-columns:auto 1fr;gap:1rem;align-items:start;
+    padding:1.25rem 1.4rem;background:var(--ink-3);border:1px solid var(--line);
+    border-left:3px solid var(--orange);
+    transition:transform .3s var(--ease),border-color .3s ease;
+  }
+  .prob-item:hover{transform:translateX(6px);border-left-color:var(--off)}
+  .prob-item .x{font-family:'Anton',sans-serif;color:var(--orange);font-size:1.3rem;line-height:1.2}
+  .prob-item p{color:var(--off-dim);font-size:0.98rem}
+  .prob-item strong{color:var(--off);font-weight:700}
+
+  /* ---------- inside / weeks ---------- */
+  .phase-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:3.2rem}
+  .phase{
+    position:relative;padding:2rem 1.7rem 1.9rem;
+    background:linear-gradient(180deg,var(--ink-2),var(--ink-3));
+    border:1px solid var(--line);overflow:hidden;
+    transition:transform .35s var(--ease),border-color .35s ease;
+  }
+  .phase::before{content:"";position:absolute;inset:0;background:radial-gradient(120% 80% at 100% 0%,rgba(255,90,31,0.10),transparent 55%);opacity:0;transition:opacity .35s ease}
+  .phase:hover{transform:translateY(-6px);border-color:var(--line-strong)}
+  .phase:hover::before{opacity:1}
+  .phase .wk{font-family:'Anton',sans-serif;font-size:3.4rem;color:transparent;-webkit-text-stroke:1.4px var(--orange);line-height:0.85}
+  .phase .wlabel{font-family:'Archivo Narrow',sans-serif;text-transform:uppercase;letter-spacing:0.2em;font-size:0.66rem;color:var(--steel);font-weight:700;margin:0.5rem 0 1.1rem}
+  .phase h3{font-size:1.45rem;margin-bottom:0.7rem}
+  .phase p{color:var(--off-dim);font-size:0.96rem}
+
+  .inc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:3rem}
+  .inc{background:var(--ink);padding:1.6rem 1.7rem;display:flex;gap:1rem;align-items:flex-start;transition:background-color .3s ease}
+  .inc:hover{background:var(--ink-3)}
+  .inc .ic{flex:0 0 auto;width:38px;height:38px;display:grid;place-content:center;border:1px solid var(--line-strong);color:var(--orange)}
+  .inc h4{font-family:'Archivo',sans-serif;text-transform:none;font-size:1.06rem;font-weight:700;letter-spacing:0;margin-bottom:0.3rem}
+  .inc p{color:var(--steel);font-size:0.92rem}
+
+  /* ---------- how it works ---------- */
+  .steps{background:var(--ink-2);border-block:1px solid var(--line)}
+  .step-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:3.2rem;counter-reset:s}
+  .step{padding:0 2rem;position:relative}
+  .step + .step{border-left:1px solid var(--line)}
+  .step .num{font-family:'Anton',sans-serif;font-size:clamp(3.5rem,7vw,5.5rem);color:var(--orange);line-height:0.85;display:block}
+  .step h3{font-size:1.4rem;margin:1.1rem 0 0.7rem}
+  .step p{color:var(--off-dim);font-size:0.98rem;max-width:30ch}
+
+  /* ---------- testimonial ---------- */
+  .testi{position:relative;overflow:hidden}
+  .testi::after{content:"\201C";position:absolute;top:-2rem;right:3%;font-family:'Anton',sans-serif;font-size:24rem;color:rgba(255,90,31,0.07);line-height:1;pointer-events:none}
+  .testi-card{
+    max-width:60ch;margin-top:2.4rem;
+    padding:clamp(2rem,4vw,3.2rem);
+    border:1px dashed var(--line-strong);
+    background:var(--ink-2);position:relative;z-index:2;
+  }
+  .testi-card .ph{
+    font-family:'Archivo Narrow',sans-serif;text-transform:uppercase;letter-spacing:0.22em;
+    font-size:0.64rem;color:var(--steel-dim);font-weight:700;margin-bottom:1.4rem;display:inline-block;
+    border:1px solid var(--line);padding:0.35rem 0.7rem;
+  }
+  .testi-card blockquote{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(1.4rem,2.6vw,2.1rem);line-height:1.08;color:var(--off)}
+  .testi-card blockquote span{color:var(--orange)}
+  .testi-card cite{display:block;margin-top:1.6rem;font-style:normal;font-family:'Archivo Narrow',sans-serif;text-transform:uppercase;letter-spacing:0.14em;color:var(--steel);font-weight:700;font-size:0.88rem}
+  .testi-note{margin-top:1.4rem;color:var(--steel-dim);font-size:0.82rem;font-style:italic;max-width:48ch}
+
+  /* ---------- pricing ---------- */
+  .pricing{background:var(--ink-2);border-block:1px solid var(--line)}
+  .price-grid{display:grid;grid-template-columns:0.9fr 1.1fr;gap:clamp(2rem,4vw,4rem);align-items:center;margin-top:3rem}
+  .price-card{
+    position:relative;background:var(--ink);
+    border:1px solid var(--line-strong);padding:clamp(2rem,4vw,3.2rem);
+    box-shadow:var(--shadow);
+    clip-path:polygon(0 0,100% 0,100% 100%,24px 100%,0 calc(100% - 24px));
+  }
+  .price-card .ribbon{
+    position:absolute;top:1.4rem;right:0;background:var(--orange);color:var(--ink);
+    font-family:'Archivo Narrow',sans-serif;text-transform:uppercase;letter-spacing:0.14em;font-weight:700;
+    font-size:0.72rem;padding:0.5rem 1.1rem;
+  }
+  .price-card .amt{display:flex;align-items:flex-start;gap:0.4rem;margin:0.4rem 0 0.2rem}
+  .price-card .amt .cur{font-family:'Anton',sans-serif;font-size:2rem;color:var(--steel);margin-top:0.5rem}
+  .price-card .amt .big{font-family:'Anton',sans-serif;font-size:clamp(4.5rem,11vw,7rem);line-height:0.8;color:var(--off)}
+  .price-card .once{font-family:'Archivo Narrow',sans-serif;text-transform:uppercase;letter-spacing:0.18em;color:var(--steel);font-weight:700;font-size:0.74rem;margin-bottom:1.7rem}
+  .price-card .strike{color:var(--steel-dim);text-decoration:line-through;font-size:1rem;margin-left:0.4rem;font-family:'Archivo',sans-serif}
+  .price-card .btn{width:100%;justify-content:center;margin-top:0.5rem}
+  .price-card .guar{margin-top:1.2rem;font-size:0.84rem;color:var(--steel);text-align:center}
+
+  .price-includes h3{font-size:clamp(1.8rem,3.4vw,2.6rem);margin-bottom:1.5rem}
+  .price-includes ul{list-style:none;display:grid;gap:0.95rem}
+  .price-includes li{display:grid;grid-template-columns:auto 1fr;gap:0.85rem;align-items:start;color:var(--off-dim);font-size:1.02rem}
+  .price-includes li .ck{color:var(--orange);font-family:'Anton',sans-serif;line-height:1.3}
+  .price-includes li strong{color:var(--off)}
+
+  /* ---------- faq ---------- */
+  .faq-list{margin-top:2.6rem;border-top:1px solid var(--line)}
+  details{border-bottom:1px solid var(--line)}
+  summary{
+    list-style:none;cursor:pointer;
+    display:flex;justify-content:space-between;align-items:center;gap:1.5rem;
+    padding:1.5rem 0.2rem;
+    font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(1.05rem,2vw,1.45rem);
+    color:var(--off);transition:color .25s ease;
+  }
+  summary::-webkit-details-marker{display:none}
+  summary:hover{color:var(--orange)}
+  summary:focus-visible{outline:2px solid var(--orange);outline-offset:4px}
+  summary .sign{flex:0 0 auto;font-family:'Anton',sans-serif;color:var(--orange);font-size:1.5rem;transition:transform .35s var(--ease)}
+  details[open] summary .sign{transform:rotate(45deg)}
+  details .body{padding:0 0.2rem 1.6rem;color:var(--off-dim);max-width:64ch;font-size:1rem}
+
+  /* ---------- final cta ---------- */
+  .final{position:relative;text-align:center;overflow:hidden;border-block:1px solid var(--line)}
+  .final::before{content:"";position:absolute;inset:0;background:
+    radial-gradient(80% 120% at 50% 0%,rgba(255,90,31,0.18),transparent 60%),
+    repeating-linear-gradient(135deg,rgba(255,90,31,0.05) 0 1px,transparent 1px 30px);
+    z-index:0;}
+  .final .wrap{position:relative;z-index:2}
+  .final h2{font-size:clamp(2.6rem,8vw,6rem);margin:1.2rem auto 1.4rem;max-width:18ch}
+  .final h2 span{color:var(--orange)}
+  .final p{color:var(--off-dim);max-width:48ch;margin:0 auto 2.4rem;font-size:1.1rem}
+
+  /* ---------- footer ---------- */
+  footer{padding-block:3rem;border-top:1px solid var(--line);background:var(--ink-2)}
+  .foot{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:1.2rem}
+  .foot .mark{font-size:1.3rem}
+  .foot .built{font-family:'Archivo Narrow',sans-serif;text-transform:uppercase;letter-spacing:0.14em;font-size:0.72rem;color:var(--steel-dim);font-weight:700}
+  .foot .built b{color:var(--orange)}
+  .foot small{display:block;color:var(--steel-dim);font-size:0.78rem;margin-top:0.3rem;letter-spacing:0.04em;text-transform:none;font-family:'Archivo',sans-serif;font-weight:400}
+
+  /* ---------- reveal anim ---------- */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:1000px){
+    .phase-grid,.step-grid{grid-template-columns:1fr 1fr}
+    .step + .step{border-left:1px solid var(--line)}
+    .step:nth-child(3){grid-column:1 / -1;border-left:0;padding-top:2rem;margin-top:2rem;border-top:1px solid var(--line)}
+  }
+  @media (max-width:860px){
+    .hero-grid{grid-template-columns:1fr}
+    .hero-visual{order:-1;max-width:520px}
+    .prob-grid,.price-grid{grid-template-columns:1fr}
+    .inc-grid{grid-template-columns:1fr}
+    .price-includes{order:-1}
+  }
+  @media (max-width:620px){
+    .phase-grid,.step-grid{grid-template-columns:1fr}
+    .step{padding:0}
+    .step + .step{border-left:0;border-top:1px solid var(--line);padding-top:2rem;margin-top:2rem}
+    .step:nth-child(3){border-top:1px solid var(--line);padding-top:2rem;margin-top:2rem}
+    .nav .linklike{display:none}
+    .hero-meta .stat + .stat{padding-left:1.2rem}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header>
+  <div class="wrap nav">
+    <a href="#top" class="mark" aria-label="Forge Athletics home">
+      <span class="spark" aria-hidden="true"></span>FORGE<small>Athletics</small>
+    </a>
+    <a href="#join" class="linklike">Join 40-Strong &rarr;</a>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="top">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="stripe" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="reveal">
+        <span class="eyebrow">For men 40 and up</span>
+        <h1>Get genuinely <span class="hl">strong</span> again&nbsp;&mdash; on the time you actually have.</h1>
+        <p class="sub">The 40-Strong Program is a 12-week strength system for guys juggling a job, a family, and a body that needs a real plan. Three short sessions a week. No fluff. No 25-year-old's schedule required.</p>
+        <div class="hero-cta">
+          <a href="#join" class="btn">Join 40-Strong <span class="arr" aria-hidden="true">&rarr;</span></a>
+          <a href="#inside" class="btn btn--ghost">See what's inside</a>
+        </div>
+        <div class="hero-meta">
+          <div class="stat"><div class="n">12<span>wk</span></div><div class="l">Full system</div></div>
+          <div class="stat"><div class="n">3<span>x</span></div><div class="l">Sessions / week</div></div>
+          <div class="stat"><div class="n">45<span>m</span></div><div class="l">Max per session</div></div>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal">
+        <div class="frame">
+          <img src="https://placehold.co/720x880/141417/FF5A1F?text=FORGE" alt="A focused man over 40 mid-set under a loaded barbell in a dark, gritty strength gym" />
+          <span class="tag">12-week strength build</span>
+          <div class="badge" aria-hidden="true"><b>40+</b><span>built for</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MARQUEE ===== -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Strength over hype</span><span>Train like it counts</span><span>Built for busy men</span><span>Progress, not punishment</span>
+    <span>Strength over hype</span><span>Train like it counts</span><span>Built for busy men</span><span>Progress, not punishment</span>
+  </div>
+</div>
+
+<!-- ===== PROBLEM ===== -->
+<section class="sec problem" id="problem">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="index">001 / The real problem</span>
+      <h2>You're not lazy. The plan was wrong.</h2>
+      <p>You've tried before. You meant it. But every program you found was written for someone with a different life than yours &mdash; and it broke down the second real life showed up.</p>
+    </div>
+
+    <div class="prob-grid">
+      <p class="prob-lead reveal">Somewhere after 40, the old approach stops paying off. <em>The clock changes. The body changes. The plan never did.</em></p>
+      <div class="prob-list">
+        <div class="prob-item reveal"><span class="x" aria-hidden="true">&times;</span><p><strong>There's no time.</strong> Two free hours a day was never the deal. Between work and the kids, you get scraps &mdash; and most programs ignore that.</p></div>
+        <div class="prob-item reveal"><span class="x" aria-hidden="true">&times;</span><p><strong>The dad-bod crept in quietly.</strong> Not all at once. A notch on the belt, a stiffer back, less energy by 8pm. You noticed late.</p></div>
+        <div class="prob-item reveal"><span class="x" aria-hidden="true">&times;</span><p><strong>Old programs were built for 25-year-olds.</strong> Brutal volume, zero recovery thought, joints treated like they're indestructible. Yours aren't anymore.</p></div>
+        <div class="prob-item reveal"><span class="x" aria-hidden="true">&times;</span><p><strong>Motivation isn't the gap.</strong> You don't need another pep talk. You need a system that fits the life you already have.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== INSIDE ===== -->
+<section class="sec" id="inside">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="index">002 / The program</span>
+      <h2>Inside the 40-Strong Program</h2>
+      <p>Twelve weeks, three phases, one direction: stronger every block without wrecking your back or your week. Here's how the build is structured.</p>
+    </div>
+
+    <div class="phase-grid">
+      <div class="phase reveal">
+        <div class="wk">01&ndash;04</div>
+        <div class="wlabel">Phase 1 &mdash; Rebuild</div>
+        <h3>Reset the base</h3>
+        <p>Re-grease the main lifts, fix the movement leaks, and build the work capacity you lost. Light enough to recover, hard enough to matter.</p>
+      </div>
+      <div class="phase reveal">
+        <div class="wk">05&ndash;08</div>
+        <div class="wlabel">Phase 2 &mdash; Load</div>
+        <h3>Add real strength</h3>
+        <p>Progressive overload on the lifts that count. Structured, auto-regulated, and built around the three days you can actually train.</p>
+      </div>
+      <div class="phase reveal">
+        <div class="wk">09&ndash;12</div>
+        <div class="wlabel">Phase 3 &mdash; Forge</div>
+        <h3>Lock in the gains</h3>
+        <p>Peak the numbers, sharpen the conditioning, and set the habits so week 13 isn't a cliff &mdash; it's the start of the rest of it.</p>
+      </div>
+    </div>
+
+    <div class="inc-grid">
+      <div class="inc reveal"><span class="ic" aria-hidden="true">&#9776;</span><div><h4>The full 12-week plan</h4><p>Every session mapped out &mdash; sets, reps, loads, and progressions. Open the app, train, done.</p></div></div>
+      <div class="inc reveal"><span class="ic" aria-hidden="true">&#9201;</span><div><h4>45-minute sessions</h4><p>Engineered to fit before work, after the kids are down, or on a lunch break. No two-hour grinds.</p></div></div>
+      <div class="inc reveal"><span class="ic" aria-hidden="true">&#9654;</span><div><h4>Form video library</h4><p>Short, no-nonsense demos for every lift so you train safe and stop guessing.</p></div></div>
+      <div class="inc reveal"><span class="ic" aria-hidden="true">&#9851;</span><div><h4>Swap-friendly exercises</h4><p>Bad shoulder? Only have dumbbells? Built-in substitutions keep the plan moving anyway.</p></div></div>
+      <div class="inc reveal"><span class="ic" aria-hidden="true">&#9874;</span><div><h4>Simple nutrition guardrails</h4><p>No meal-plan straightjacket. A few rules that actually work for a busy man eating real food.</p></div></div>
+      <div class="inc reveal"><span class="ic" aria-hidden="true">&#9873;</span><div><h4>Progress tracking</h4><p>Log your lifts, watch the numbers climb, and see the proof &mdash; week over week.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HOW IT WORKS ===== -->
+<section class="sec steps" id="how">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="index">003 / How it works</span>
+      <h2>Three steps. That's the whole thing.</h2>
+    </div>
+    <div class="step-grid">
+      <div class="step reveal">
+        <span class="num">01</span>
+        <h3>Join &amp; get the plan</h3>
+        <p>Sign up once and the full 12-week system lands in your hands today. No waiting, no upsell maze.</p>
+      </div>
+      <div class="step reveal">
+        <span class="num">02</span>
+        <h3>Train three days a week</h3>
+        <p>Follow the sessions exactly as written. Forty-five minutes, three times a week. The plan does the thinking.</p>
+      </div>
+      <div class="step reveal">
+        <span class="num">03</span>
+        <h3>Get measurably stronger</h3>
+        <p>Track every lift, hit the progressions, and watch the numbers &mdash; and the way you feel &mdash; change by week 12.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIAL (TEMPLATE PLACEHOLDER) ===== -->
+<section class="sec testi" id="proof">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="index">004 / In their words</span>
+      <h2>Real results, real members.</h2>
+    </div>
+    <div class="testi-card reveal">
+      <span class="ph">Template placeholder &mdash; member quote</span>
+      <blockquote>A real member's words drop in <span>right here</span> &mdash; the before, the 12 weeks, the after.</blockquote>
+      <cite>&mdash; J. M., 12 weeks in</cite>
+    </div>
+    <p class="testi-note reveal">This is example copy showing where a verified member testimonial appears. Swap in a genuine quote and attribution before publishing.</p>
+  </div>
+</section>
+
+<!-- ===== PRICING ===== -->
+<section class="sec pricing" id="join">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="index">005 / The offer</span>
+      <h2>One price. The whole system.</h2>
+      <p>No subscription trap. No tiers to decode. Pay once, own the full 12-week program, and start today.</p>
+    </div>
+
+    <div class="price-grid">
+      <div class="price-card reveal">
+        <span class="ribbon">Founding price</span>
+        <span class="eyebrow center" style="margin-bottom:0.6rem">The 40-Strong Program</span>
+        <div class="amt"><span class="cur">$</span><span class="big">149</span></div>
+        <div class="once">One-time &mdash; full access <span class="strike">$249</span></div>
+        <a href="#join" class="btn">Join 40-Strong <span class="arr" aria-hidden="true">&rarr;</span></a>
+        <p class="guar">30-day "train it and see" guarantee. Not stronger? Full refund.</p>
+      </div>
+
+      <div class="price-includes reveal">
+        <h3>What's included</h3>
+        <ul>
+          <li><span class="ck" aria-hidden="true">&#10003;</span><span>The complete <strong>12-week 40-Strong plan</strong> (Rebuild &rarr; Load &rarr; Forge)</span></li>
+          <li><span class="ck" aria-hidden="true">&#10003;</span><span>Every session mapped &mdash; <strong>sets, reps, loads, progressions</strong></span></li>
+          <li><span class="ck" aria-hidden="true">&#10003;</span><span>Full <strong>form-video library</strong> for every lift</span></li>
+          <li><span class="ck" aria-hidden="true">&#10003;</span><span><strong>Exercise swaps</strong> for bad joints or limited equipment</span></li>
+          <li><span class="ck" aria-hidden="true">&#10003;</span><span><strong>Nutrition guardrails</strong> built for a busy man</span></li>
+          <li><span class="ck" aria-hidden="true">&#10003;</span><span><strong>Progress tracker</strong> &mdash; see the numbers climb</span></li>
+          <li><span class="ck" aria-hidden="true">&#10003;</span><span>Lifetime access &mdash; <strong>repeat the cycle</strong> as long as you want</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="sec" id="faq">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="index">006 / Straight answers</span>
+      <h2>Questions, answered.</h2>
+    </div>
+    <div class="faq-list reveal">
+      <details>
+        <summary>I'm completely out of shape. Is this too advanced?<span class="sign" aria-hidden="true">+</span></summary>
+        <div class="body">No. Phase 1 (Rebuild) exists precisely for this. It re-establishes the basics and your work capacity before anything gets heavy. You start where you are, not where you wish you were.</div>
+      </details>
+      <details>
+        <summary>What equipment do I actually need?<span class="sign" aria-hidden="true">+</span></summary>
+        <div class="body">A barbell or dumbbells and somewhere to do the work &mdash; a basic home setup or any commercial gym. Built-in exercise swaps cover limited equipment, so you're not stuck if you're missing a machine.</div>
+      </details>
+      <details>
+        <summary>I genuinely only have three short blocks a week. Enough?<span class="sign" aria-hidden="true">+</span></summary>
+        <div class="body">That's the entire design. Three 45-minute sessions a week is the program &mdash; not the minimum, the plan. It's engineered to get strong on the time a working dad actually has.</div>
+      </details>
+      <details>
+        <summary>What if it doesn't work for me?<span class="sign" aria-hidden="true">+</span></summary>
+        <div class="body">Train the program for 30 days. If you're not measurably stronger and you don't feel the difference, email for a full refund. The risk sits with us, not you.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FINAL CTA ===== -->
+<section class="sec final">
+  <div class="wrap">
+    <span class="eyebrow center reveal" style="justify-content:center">12 weeks from today</span>
+    <h2 class="reveal">Stop starting over. <span>Forge it for good.</span></h2>
+    <p class="reveal">You know how to work hard. You've just never had a plan built for the life you actually live. Twelve weeks. Three days a week. Start it now.</p>
+    <a href="#join" class="btn reveal" style="font-size:1.05rem;padding:1.2rem 2.4rem">Join the 40-Strong Program <span class="arr" aria-hidden="true">&rarr;</span></a>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="wrap foot">
+    <div>
+      <a href="#top" class="mark" aria-label="Forge Athletics home"><span class="spark" aria-hidden="true"></span>FORGE<small>Athletics</small></a>
+      <small>&copy; 2026 Forge Athletics. The 40-Strong Program. All rights reserved.</small>
+    </div>
+    <div class="built">Example page &middot; built with <b>The Launch Engine</b></div>
+  </div>
+</footer>
+
+<script>
+  // Staggered scroll reveals — transform/opacity only
+  (function(){
+    var els = document.querySelectorAll('.reveal');
+    if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return;}
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){
+          var sibs = Array.prototype.slice.call(en.target.parentNode.querySelectorAll('.reveal'));
+          var i = sibs.indexOf(en.target);
+          en.target.style.transitionDelay = (Math.max(0,i)*0.07)+'s';
+          en.target.classList.add('in');
+          io.unobserve(en.target);
+        }
+      });
+    },{threshold:0.14,rootMargin:'0px 0px -8% 0px'});
+    els.forEach(function(e){io.observe(e)});
+  })();
+</script>
+</body>
+</html>
