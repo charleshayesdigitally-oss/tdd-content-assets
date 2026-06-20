@@ -1,0 +1,15 @@
+{
+  "style": "bold",
+  "type": "hook",
+  "format": "story",
+  "palette": {"accent": "#00AEEF", "accent2": "#8B5CF6"},
+  "content": {
+    "headline_lines": ["Launch", "without the", "overwhelm."],
+    "headline_highlight": "overwhelm.",
+    "script": "page + promos.",
+    "sub": "The sales page and the promos to fill it — built for you, usually same day.",
+    "cta": "Comment LAUNCH",
+    "brand": "THE DIGITAL DAD",
+    "meta": ["Done for you", "Same day"]
+  }
+}

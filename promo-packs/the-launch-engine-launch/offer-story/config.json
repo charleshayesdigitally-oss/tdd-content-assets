@@ -1,0 +1,24 @@
+{
+  "style": "bold",
+  "type": "offer",
+  "format": "story",
+  "palette": {"accent": "#00AEEF", "accent2": "#8B5CF6"},
+  "content": {
+    "headline_lines": ["The Launch", "Engine"],
+    "headline_highlight": "Engine",
+    "script": "page + promos.",
+    "section": "What you get",
+    "features": [
+      {"icon": "check", "label": "Your sales page, built"},
+      {"icon": "check", "label": "A full promo pack"},
+      {"icon": "check", "label": "TikTok + Reels videos"},
+      {"icon": "check", "label": "Same day, your brand"}
+    ],
+    "now": "$97",
+    "was": "$117",
+    "cta": "Comment LAUNCH",
+    "tagline": "Founding price. Page + promos, done.",
+    "brand": "THE DIGITAL DAD",
+    "meta": ["Done for you", "Same day"]
+  }
+}

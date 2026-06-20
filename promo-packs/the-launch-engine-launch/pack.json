@@ -1,0 +1,9 @@
+{
+  "style": "bold",
+  "offer_name": "The Launch Engine",
+  "brand": "THE DIGITAL DAD",
+  "pieces": [
+    {"type": "offer", "format": "story", "png": "offer-story/poster-bold.png"},
+    {"type": "hook", "format": "story", "png": "hook-story/poster-bold.png"}
+  ]
+}
