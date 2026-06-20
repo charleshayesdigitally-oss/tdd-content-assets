@@ -1,16 +1,19 @@
 {
-  "style": "editorial",
+  "style": "light",
   "type": "hook",
   "format": "story",
-  "palette": {"accent": "#ACC6A1", "accent2": "#D8C9B3"},
+  "palette": {
+    "accent": "#8a9a7b",
+    "accent2": "#D8C9B3"
+  },
   "content": {
-    "brand": "Creator Compass Collective",
-    "hero_image": "../qp19D9-IMG_4591.png",
-    "headline_lines": ["You know what", "you need to do."],
-    "headline_highlight": "need",
-    "script": "you're just not sure what to do first",
-    "sub": "Creator Compass Collective gets you moving — one focused step at a time.",
-    "cta": "Join the Waitlist!",
-    "tagline": "Creator Compass — Beginner UGC Coaching"
+    "brand": "CREATOR COMPASS",
+    "headline_lines": [
+      "You know what",
+      "you need to do."
+    ],
+    "headline_highlight": "need to do.",
+    "sub": "You're just not sure what to do first.",
+    "cta": "Join the Waitlist"
   }
 }

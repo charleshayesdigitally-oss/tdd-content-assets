@@ -1,9 +1,21 @@
 {
-  "style": "editorial",
+  "style": "light",
   "offer_name": "Creator Compass Collective",
   "pieces": [
-    {"type": "offer", "format": "story", "png": "offer-story/poster-editorial.png"},
-    {"type": "hook", "format": "story", "png": "hook-story/poster-editorial.png"},
-    {"type": "testimonial", "format": "story", "png": "testimonial-story/poster-editorial.png"}
+    {
+      "type": "offer",
+      "format": "story",
+      "png": "offer-story/poster-light.png"
+    },
+    {
+      "type": "hook",
+      "format": "story",
+      "png": "hook-story/poster-light.png"
+    },
+    {
+      "type": "testimonial",
+      "format": "story",
+      "png": "testimonial-story/poster-light.png"
+    }
   ]
 }
