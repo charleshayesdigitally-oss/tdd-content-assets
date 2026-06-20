@@ -5,6 +5,19 @@ const ROOT=process.cwd();
 const TYPES={'.html':'text/html','.json':'application/json','.jpg':'image/jpeg','.jpeg':'image/jpeg','.png':'image/png','.svg':'image/svg+xml','.webp':'image/webp','.css':'text/css','.js':'text/javascript','.mp4':'video/mp4'};
 const server=http.createServer((req,res)=>{let f=path.join(ROOT,decodeURIComponent(req.url.split('?')[0]));try{if(fs.existsSync(f)&&fs.statSync(f).isFile()){res.setHeader('Content-Type',TYPES[path.extname(f).toLowerCase()]||'application/octet-stream');fs.createReadStream(f).pipe(res);return;}}catch(e){}res.statusCode=404;res.end('nf');});
 await new Promise(r=>server.listen(0,r)); const port=server.address().port;
+// SELF-HEAL: ensure every piece config.json has its poster-<style>.html (copied from
+// /_render-templates) so a worker that skipped the template copy can't cause a silent no-video.
+function healTemplates(root){
+  const TPL=path.join(root,'_render-templates'), base=path.join(root,'promo-packs');
+  if(!fs.existsSync(TPL)||!fs.existsSync(base)) return;
+  (function rec(d){const ents=fs.readdirSync(d,{withFileTypes:true});
+    for(const e of ents){if(e.isDirectory())rec(path.join(d,e.name));}
+    if(ents.some(e=>e.name==='config.json')){try{const style=(JSON.parse(fs.readFileSync(path.join(d,'config.json'),'utf8')).style)||'editorial';
+      const want=path.join(d,`poster-${style}.html`),src=path.join(TPL,`poster-${style}.html`);
+      if(!fs.existsSync(want)&&fs.existsSync(src)){fs.copyFileSync(src,want);console.log('healed template',path.relative(root,want));}}catch(e){}}
+  })(base);
+}
+healTemplates(ROOT);
 const DUR=6000, FPS=30, N=Math.round(DUR/1000*FPS); // 6s @ 30fps
 // only story-format pieces become TikTok videos (vertical 1080x1920)
 function walk(d){let o=[];for(const e of fs.readdirSync(d,{withFileTypes:true})){const fp=path.join(d,e.name);if(e.isDirectory())o=o.concat(walk(fp));else if(/^poster-.*\.html$/.test(e.name)&&path.basename(path.dirname(fp)).endsWith('-story'))o.push(fp);}return o;}

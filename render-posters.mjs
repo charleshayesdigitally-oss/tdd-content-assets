@@ -21,6 +21,29 @@ try{const buf=await new Promise((res,rej)=>{
 if(buf){fs.writeFileSync(dp,buf);console.log('asset fetched',dest);}}
 catch(e){console.log('asset fetch fail',dest,String(e).slice(0,80));}}}}
 }
+// SELF-HEAL: the build worker sometimes writes a piece's config.json but skips copying its
+// poster-<style>.html (the silent no-render bug). Guarantee every config has its template, and
+// every pack (pack.json) has an index.html, by copying from /_render-templates. Additive + safe:
+// pieces that already have their poster html are untouched.
+function healTemplates(root){
+  const TPL=path.join(root,'_render-templates'); const base=path.join(root,'promo-packs');
+  if(!fs.existsSync(TPL)||!fs.existsSync(base)) return;
+  (function rec(d){
+    const ents=fs.readdirSync(d,{withFileTypes:true});
+    for(const e of ents){ if(e.isDirectory()) rec(path.join(d,e.name)); }
+    if(ents.some(e=>e.name==='config.json')){
+      try{ const style=(JSON.parse(fs.readFileSync(path.join(d,'config.json'),'utf8')).style)||'editorial';
+        const want=path.join(d,`poster-${style}.html`), src=path.join(TPL,`poster-${style}.html`);
+        if(!fs.existsSync(want)&&fs.existsSync(src)){fs.copyFileSync(src,want);console.log('healed template',path.relative(root,want));}
+      }catch(e){}
+    }
+    if(ents.some(e=>e.name==='pack.json')){
+      const idx=path.join(d,'index.html'), dsrc=path.join(TPL,'delivery.html');
+      if(!fs.existsSync(idx)&&fs.existsSync(dsrc)){fs.copyFileSync(dsrc,idx);console.log('healed index',path.relative(root,idx));}
+    }
+  })(base);
+}
+healTemplates(ROOT);
 const server=http.createServer((req,res)=>{let f=path.join(ROOT,decodeURIComponent(req.url.split('?')[0]));try{if(fs.existsSync(f)&&fs.statSync(f).isFile()){res.setHeader('Content-Type',TYPES[path.extname(f).toLowerCase()]||'application/octet-stream');fs.createReadStream(f).pipe(res);return;}}catch(e){}res.statusCode=404;res.end('nf');});
 await new Promise(r=>server.listen(0,r)); const port=server.address().port;
 function walk(d){let o=[];for(const e of fs.readdirSync(d,{withFileTypes:true})){const fp=path.join(d,e.name);if(e.isDirectory())o=o.concat(walk(fp));else if(/^poster-.*\.html$/.test(e.name))o.push(fp);}return o;}
@@ -49,3 +72,7 @@ for(const ph of posters){
   await pg.close();
 }
 await browser.close(); server.close(); console.log('done; rendered',n);
+// FAIL LOUD (non-blocking): list any config.json whose poster PNG is still missing — a silent
+// failure would otherwise look like success. Printed to the Action log; doesn't block the commit.
+{const miss=[];(function s(d){for(const e of fs.readdirSync(d,{withFileTypes:true})){const fp=path.join(d,e.name);if(e.isDirectory())s(fp);else if(e.name==='config.json'){try{const st=(JSON.parse(fs.readFileSync(fp,'utf8')).style)||'editorial';if(!fs.existsSync(path.join(d,`poster-${st}.png`)))miss.push(path.relative(ROOT,d));}catch(e){}}}})(path.join(ROOT,'promo-packs'));
+if(miss.length)console.error('::warning:: RENDER INCOMPLETE — pieces with no PNG:',miss.join(', '));}
