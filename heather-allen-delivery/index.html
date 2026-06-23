@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Boss Suite Delivery — Heather Allen</title>
+<meta name="description" content="Your finished sales page and promo pack, ready to download — built for Travel And Goodness.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Karla:wght@400;500;600;700;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    color-scheme: light;
+    --paper:#FBFAF6;
+    --paper-2:#F3F7F6;
+    --tint:#DBF3F1;
+    --turq:#1CCFC9;
+    --teal:#008C95;
+    --teal-deep:#066B72;
+    --gold:#F4B400;
+    --gold-deep:#C98A0A;
+    --ink:#2C3030;
+    --ink-soft:#5A6463;
+    --white:#FFFFFF;
+    --shadow-soft: 0 2px 6px rgba(44,48,48,.05), 0 16px 38px rgba(0,140,149,.10);
+    --shadow-lift: 0 6px 14px rgba(44,48,48,.08), 0 28px 60px rgba(0,140,149,.16);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Karla',system-ui,sans-serif;
+    color:var(--ink);
+    background:
+      radial-gradient(1100px 620px at 88% -8%, rgba(28,207,201,.20), transparent 60%),
+      radial-gradient(820px 520px at -12% 26%, rgba(244,180,0,.10), transparent 55%),
+      radial-gradient(900px 700px at 50% 118%, rgba(0,140,149,.12), transparent 60%),
+      var(--paper);
+    line-height:1.7;
+    font-size:16.5px;
+    -webkit-font-smoothing:antialiased;
+    min-height:100vh;
+  }
+  body::before{
+    content:""; position:fixed; inset:0; pointer-events:none; z-index:60; opacity:.045; mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  }
+  .page{max-width:760px;margin:0 auto;padding:0 22px 90px}
+
+  h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:560;letter-spacing:-0.018em;line-height:1.12}
+  h1{font-size:clamp(2.2rem,8vw,3rem)}
+  h2{font-size:clamp(1.55rem,5.6vw,2rem)}
+  .script{font-family:'Caveat',cursive;color:var(--teal)}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:.5em;font-size:.7rem;font-weight:800;letter-spacing:.24em;
+    text-transform:uppercase;color:var(--teal);margin-bottom:.85rem;
+  }
+  .eyebrow::before{content:"";width:26px;height:2px;background:linear-gradient(90deg,var(--gold),var(--turq));display:inline-block;border-radius:2px}
+
+  /* ---------- HEADER ---------- */
+  header.top{text-align:center;padding-top:56px}
+  header.top .kicker{
+    font-size:.7rem;font-weight:800;letter-spacing:.26em;text-transform:uppercase;
+    color:var(--gold-deep);margin-bottom:16px;
+  }
+  header.top h1{margin-bottom:14px}
+  header.top h1 em{font-style:italic;color:var(--teal)}
+  header.top p.intro{font-size:1.12rem;color:var(--ink-soft);max-width:34em;margin:0 auto}
+  header.top .script{display:block;font-size:1.7rem;margin-top:20px}
+
+  .divider{height:1px;background:linear-gradient(90deg,transparent,rgba(0,140,149,.25),transparent);margin:54px 0 0}
+
+  section{padding:52px 0 0}
+
+  /* ---------- CARD ---------- */
+  .card{
+    background:var(--white);border-radius:24px;padding:32px 28px;margin-top:18px;
+    box-shadow:var(--shadow-lift);border:1px solid rgba(0,140,149,.10);
+  }
+  .card h2{margin-bottom:10px}
+  .card p.desc{color:var(--ink-soft);font-size:1.02rem}
+
+  .btn-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:24px}
+  .btn{
+    display:inline-flex;align-items:center;gap:.55em;text-decoration:none;
+    font-family:'Karla',sans-serif;font-weight:800;font-size:1rem;letter-spacing:.03em;
+    padding:16px 26px;border-radius:14px;transition:transform .26s cubic-bezier(.34,1.56,.64,1), box-shadow .26s ease;
+    flex:1 1 auto;justify-content:center;min-width:200px;
+  }
+  .btn.primary{
+    background:linear-gradient(150deg,var(--turq) 0%,var(--teal) 70%,var(--teal-deep) 100%);
+    color:var(--white);box-shadow:0 8px 18px rgba(0,140,149,.30), 0 18px 40px rgba(0,140,149,.20);
+  }
+  .btn.primary:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(0,140,149,.36), 0 24px 50px rgba(0,140,149,.24)}
+  .btn.secondary{
+    background:var(--white);color:var(--teal-deep);border:1.5px solid rgba(0,140,149,.30);box-shadow:var(--shadow-soft);
+  }
+  .btn.secondary:hover{transform:translateY(-3px);border-color:var(--teal);box-shadow:var(--shadow-lift)}
+  .btn:active{transform:translateY(-1px) scale(.99)}
+  .btn:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+  .btn .ico{width:18px;height:18px;flex:0 0 auto}
+
+  .howto{
+    margin-top:22px;font-size:.92rem;color:var(--ink-soft);line-height:1.6;
+    background:linear-gradient(165deg,#FFFFFF,#F4FBFA);border:1px dashed rgba(0,140,149,.25);
+    border-radius:14px;padding:16px 18px;
+  }
+  .howto b{color:var(--teal-deep)}
+
+  /* ---------- GALLERY ---------- */
+  .gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:24px}
+  @media(min-width:640px){.gallery{grid-template-columns:repeat(3,1fr)}}
+  .shot{
+    background:var(--white);border-radius:18px;overflow:hidden;box-shadow:var(--shadow-soft);
+    border:1px solid rgba(0,140,149,.10);display:flex;flex-direction:column;
+  }
+  .shot .frame{
+    background:var(--paper-2);display:flex;align-items:center;justify-content:center;padding:10px;
+  }
+  .shot img{width:100%;height:auto;border-radius:8px;display:block}
+  .shot .meta{padding:12px 14px 14px;display:flex;flex-direction:column;gap:9px}
+  .shot .name{font-weight:700;font-size:.9rem;color:var(--ink)}
+  .shot .size{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal)}
+  .shot a.dl{
+    text-decoration:none;text-align:center;font-weight:800;font-size:.82rem;letter-spacing:.02em;
+    color:var(--teal-deep);background:var(--tint);border-radius:10px;padding:9px 10px;
+    transition:background .2s ease, color .2s ease;
+  }
+  .shot a.dl:hover{background:var(--teal);color:var(--white)}
+  .shot a.dl:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+
+  .pack-note{margin-top:18px;font-size:.92rem;color:var(--ink-soft)}
+
+  /* ---------- OUTRO ---------- */
+  .outro{
+    text-align:center;margin-top:60px;background:linear-gradient(155deg,var(--teal-deep) 0%, var(--teal) 60%, #0AA5A0 100%);
+    color:var(--paper);border-radius:26px;padding:44px 30px;position:relative;overflow:hidden;
+  }
+  .outro::before{
+    content:"";position:absolute;inset:0;opacity:.16;
+    background:radial-gradient(420px 220px at 18% 10%, var(--turq), transparent 60%),
+              radial-gradient(360px 220px at 90% 100%, var(--gold), transparent 60%);
+  }
+  .outro .script{position:relative;color:#BFF3F0;font-size:1.7rem;display:block;margin-bottom:6px}
+  .outro p{position:relative;color:rgba(255,255,255,.92);max-width:30em;margin:8px auto 0;font-size:1.02rem}
+  .outro .sig{position:relative;font-family:'Caveat',cursive;font-size:2.1rem;color:#fff;margin-top:18px;line-height:1}
+
+  footer{
+    text-align:center;padding:40px 22px 10px;font-size:.78rem;color:var(--ink-soft);line-height:1.65;
+  }
+  footer .credit{opacity:.6;display:block;margin-top:8px}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="top">
+    <div class="kicker">Travel And Goodness · for Heather Allen</div>
+    <h1>Your Boss Suite kit <em>is ready.</em></h1>
+    <p class="intro">Everything's in one place — your finished sales page and your promo pack, built in your brand and ready to use. Preview, download, and you're good to go.</p>
+    <span class="script">Let's get it out there.</span>
+  </header>
+
+  <div class="divider"></div>
+
+  <!-- ============ SALES PAGE ============ -->
+  <section>
+    <div class="card">
+      <span class="eyebrow">Deliverable 1</span>
+      <h2>Your Sales Page</h2>
+      <p class="desc">A complete, single-page site in your turquoise-and-gold brand — hero, your story, what's inside Boss Suite, FAQ, and a Comment <b>BOSS</b> call to action. Preview it live, then download the files to host on your own site.</p>
+      <div class="btn-row">
+        <a class="btn primary" href="https://charleshayesdigitally-oss.github.io/tdd-content-assets/heather-allen-sales-page/" target="_blank" rel="noopener">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+          Preview it live
+        </a>
+        <a class="btn secondary" href="./heather-allen-sales-page.zip" download>
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download the files (.zip)
+        </a>
+      </div>
+      <div class="howto">
+        <b>How to put it live:</b> unzip the download (you'll get <b>index.html</b> plus 3 images). Upload all four files together to your host for <b>heatherallen.store</b>, keeping them in the same folder. That's it — the page will look exactly like the live preview. There's a short affiliate-disclosure line in the footer, kept honest about the Boss Suite partnership.
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROMO PACK ============ -->
+  <section>
+    <div class="card">
+      <span class="eyebrow">Deliverable 2</span>
+      <h2>Your Promo Pack</h2>
+      <p class="desc">Six ready-to-post graphics — offer, hook, and before/after — each in a story size (9:16) and a feed size (4:5). All built with your <b>$597</b> price and your Comment <b>BOSS</b> call to action. Tap any one to download.</p>
+
+      <div class="gallery">
+        <div class="shot">
+          <div class="frame"><img src="./promo-offer-story.png" alt="Offer promo — story size" loading="lazy"></div>
+          <div class="meta"><span class="size">Story · 9:16</span><span class="name">Offer</span><a class="dl" href="./promo-offer-story.png" download>Download</a></div>
+        </div>
+        <div class="shot">
+          <div class="frame"><img src="./promo-offer-feed.png" alt="Offer promo — feed size" loading="lazy"></div>
+          <div class="meta"><span class="size">Feed · 4:5</span><span class="name">Offer</span><a class="dl" href="./promo-offer-feed.png" download>Download</a></div>
+        </div>
+        <div class="shot">
+          <div class="frame"><img src="./promo-hook-story.png" alt="Hook promo — story size" loading="lazy"></div>
+          <div class="meta"><span class="size">Story · 9:16</span><span class="name">Hook</span><a class="dl" href="./promo-hook-story.png" download>Download</a></div>
+        </div>
+        <div class="shot">
+          <div class="frame"><img src="./promo-hook-feed.png" alt="Hook promo — feed size" loading="lazy"></div>
+          <div class="meta"><span class="size">Feed · 4:5</span><span class="name">Hook</span><a class="dl" href="./promo-hook-feed.png" download>Download</a></div>
+        </div>
+        <div class="shot">
+          <div class="frame"><img src="./promo-beforeafter-story.png" alt="Before and after promo — story size" loading="lazy"></div>
+          <div class="meta"><span class="size">Story · 9:16</span><span class="name">Before / After</span><a class="dl" href="./promo-beforeafter-story.png" download>Download</a></div>
+        </div>
+        <div class="shot">
+          <div class="frame"><img src="./promo-beforeafter-feed.png" alt="Before and after promo — feed size" loading="lazy"></div>
+          <div class="meta"><span class="size">Feed · 4:5</span><span class="name">Before / After</span><a class="dl" href="./promo-beforeafter-feed.png" download>Download</a></div>
+        </div>
+      </div>
+      <p class="pack-note">Story sizes work great for Instagram and Facebook Stories and TikTok. Feed sizes are sized for your main Instagram and Facebook feed.</p>
+    </div>
+  </section>
+
+  <!-- ============ OUTRO ============ -->
+  <div class="outro">
+    <span class="script">You earned your seat.</span>
+    <p>Anything you'd like adjusted — a different photo, a copy tweak — just say the word and it's done.</p>
+    <div class="sig">Charles</div>
+  </div>
+
+</div>
+
+<footer>
+  Built for Heather Allen · Travel And Goodness
+  <span class="credit">Delivered by The Digital Dad — systems, not hustle.</span>
+</footer>
+
+</body>
+</html>
