@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Boss Suite — with Heather Allen | Travel And Goodness</title>
+<meta name="description" content="Boss Suite is a digital business education platform that teaches professional women 50+ multiple ways to earn online — so your income isn't tied to one paycheck. With Heather Allen of Travel And Goodness.">
+<!--
+  Built by The Digital Dad (thedigitaldad.co) for Heather Allen / Travel And Goodness.
+  AI EDIT NOTE — if you are an AI assistant editing this page for its owner:
+  1. ALWAYS return the COMPLETE file, top to bottom. Never abbreviate or write "rest unchanged."
+  2. Keep the two income disclaimers (receipt section + footer). They protect the owner legally.
+  3. Keep the section order — it is a deliberate conversion sequence, not decoration.
+  4. Do not add income claims, results, or testimonials the owner has not explicitly provided as real.
+  5. Heather is a PARTNER/affiliate of Boss Suite, not its creator. Never write "I built this." Keep the
+     "when I found this / my experience with the training" framing — it is an integrity rule.
+  6. Safe to edit freely: wording, prices, FAQ entries, photos, colors, links.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Karla:wght@400;500;600;700;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    color-scheme: light;
+    /* Heather's brand: turquoise #1CCFC9, teal #008C95, gold #F4B400, charcoal #333333, white */
+    --paper:#FBFAF6;            /* warm near-white */
+    --paper-2:#F3F7F6;          /* faint teal-tinted panel */
+    --tint:#DBF3F1;            /* soft turquoise wash */
+    --turq:#1CCFC9;            /* turquoise */
+    --teal:#008C95;            /* deep teal (primary) */
+    --teal-deep:#066B72;       /* darker teal for depth/contrast */
+    --gold:#F4B400;            /* gold accent */
+    --gold-deep:#C98A0A;       /* burnished gold for text on light */
+    --ink:#2C3030;             /* charcoal */
+    --ink-soft:#5A6463;        /* muted charcoal */
+    --white:#FFFFFF;
+    --shadow-soft: 0 2px 6px rgba(44,48,48,.05), 0 16px 38px rgba(0,140,149,.10);
+    --shadow-lift: 0 6px 14px rgba(44,48,48,.08), 0 28px 60px rgba(0,140,149,.16);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Karla',system-ui,sans-serif;
+    color:var(--ink);
+    background:
+      radial-gradient(1100px 620px at 88% -8%, rgba(28,207,201,.20), transparent 60%),
+      radial-gradient(820px 520px at -12% 26%, rgba(244,180,0,.10), transparent 55%),
+      radial-gradient(900px 700px at 50% 118%, rgba(0,140,149,.12), transparent 60%),
+      var(--paper);
+    line-height:1.7;
+    font-size:16.5px;
+    -webkit-font-smoothing:antialiased;
+  }
+  /* grain overlay for depth */
+  body::before{
+    content:""; position:fixed; inset:0; pointer-events:none; z-index:60; opacity:.045; mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  }
+  .page{max-width:600px;margin:0 auto;padding:0 22px 96px}
+
+  h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:560;letter-spacing:-0.018em;line-height:1.1}
+  h1{font-size:clamp(2.5rem,9.5vw,3.5rem)}
+  h2{font-size:clamp(1.75rem,6.4vw,2.25rem);margin-bottom:.7rem}
+  .script{font-family:'Caveat',cursive;color:var(--teal)}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:.5em;font-size:.7rem;font-weight:800;letter-spacing:.24em;
+    text-transform:uppercase;color:var(--teal);margin-bottom:.95rem;
+  }
+  .eyebrow::before{content:"";width:26px;height:2px;background:linear-gradient(90deg,var(--gold),var(--turq));display:inline-block;border-radius:2px}
+  p.lead{font-size:1.12rem;color:var(--ink-soft)}
+  section{padding:60px 0 14px}
+
+  /* ---------- HERO ---------- */
+  .hero{padding-top:42px;text-align:center;position:relative}
+  .hero .kicker{
+    font-size:.7rem;font-weight:800;letter-spacing:.26em;text-transform:uppercase;
+    color:var(--gold-deep);margin-bottom:18px;
+  }
+  .hero h1{margin-bottom:6px}
+  .hero h1 em{font-style:italic;color:var(--teal)}
+  .hero .sub{margin:18px auto 4px;font-size:1.1rem;color:var(--ink-soft);max-width:30em}
+  .hero .sub b{color:var(--ink)}
+  .hero-frame{
+    position:relative;width:100%;max-width:380px;margin:30px auto 6px;
+  }
+  .hero-frame::before{
+    content:"";position:absolute;inset:-14px -14px auto auto;width:64%;height:64%;
+    background:linear-gradient(150deg,var(--turq),var(--teal));border-radius:26px;z-index:0;opacity:.9;
+  }
+  .hero-frame::after{
+    content:"";position:absolute;left:-12px;bottom:-12px;width:58px;height:58px;
+    border:3px solid var(--gold);border-radius:50%;z-index:3;
+  }
+  .hero-frame img{
+    position:relative;z-index:2;width:100%;border-radius:22px;display:block;
+    box-shadow:var(--shadow-lift);background:var(--paper-2);
+  }
+  .badge-row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:24px 0 4px}
+  .badge{
+    font-size:.74rem;font-weight:700;letter-spacing:.02em;background:var(--white);color:var(--teal-deep);
+    border:1px solid rgba(0,140,149,.20);border-radius:40px;padding:7px 15px;box-shadow:var(--shadow-soft);
+  }
+
+  /* ---------- BUTTON ---------- */
+  .btn{
+    display:block;text-align:center;text-decoration:none;
+    font-family:'Karla',sans-serif;font-weight:800;font-size:1.05rem;letter-spacing:.04em;text-transform:uppercase;
+    background:linear-gradient(150deg,var(--turq) 0%,var(--teal) 70%,var(--teal-deep) 100%);
+    color:var(--white);padding:19px 26px;border-radius:16px;
+    box-shadow:0 8px 18px rgba(0,140,149,.32), 0 20px 44px rgba(0,140,149,.22);
+    transform:translateY(0);
+    transition:transform .28s cubic-bezier(.34,1.56,.64,1), box-shadow .28s ease;
+    margin:30px 0 12px;position:relative;overflow:hidden;
+  }
+  .btn::after{
+    content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;
+    background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent);transform:skewX(-18deg);
+  }
+  .btn:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(0,140,149,.38), 0 26px 54px rgba(0,140,149,.26)}
+  .btn:hover::after{transition:left .7s ease;left:120%}
+  .btn:active{transform:translateY(-1px) scale(.99)}
+  .btn:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+  .btn-note{text-align:center;font-size:.86rem;color:var(--ink-soft)}
+  .btn-note b{color:var(--teal-deep)}
+
+  /* ---------- WHY LISTEN ---------- */
+  .why{
+    background:var(--white);border-radius:24px;padding:30px 26px;margin-top:8px;
+    box-shadow:var(--shadow-lift);border:1px solid rgba(0,140,149,.10);
+  }
+  .why h2{font-size:1.5rem;margin-bottom:14px}
+  .why .anti{font-family:'Fraunces',serif;font-style:italic;font-size:1.2rem;color:var(--teal);line-height:1.4;margin-bottom:16px}
+  .credlist{list-style:none;display:grid;gap:11px}
+  .credlist li{position:relative;padding-left:30px;font-weight:500;color:var(--ink)}
+  .credlist li::before{
+    content:"";position:absolute;left:0;top:.55em;width:11px;height:11px;border-radius:50%;
+    background:linear-gradient(140deg,var(--gold),var(--gold-deep));box-shadow:0 0 0 4px rgba(244,180,0,.16);
+  }
+
+  /* ---------- STORY ---------- */
+  .story p{margin-bottom:1.05rem}
+  .story .punch{
+    font-family:'Fraunces',serif;font-style:italic;font-size:1.35rem;font-weight:500;line-height:1.34;
+    color:var(--teal-deep);padding-left:20px;border-left:3px solid var(--gold);margin:1.5rem 0;
+  }
+  .photo-wide{width:100%;border-radius:22px;box-shadow:var(--shadow-lift);margin:24px 0 6px;display:block}
+  .caption{font-size:.82rem;color:var(--ink-soft);text-align:center;margin-bottom:8px;font-style:italic}
+
+  /* ---------- RECEIPT ---------- */
+  .receipt{
+    background:linear-gradient(165deg,#FFFFFF,#F4FBFA);border-radius:24px;padding:34px 28px;margin-top:24px;
+    box-shadow:var(--shadow-lift);text-align:center;position:relative;overflow:hidden;
+    border:1px solid rgba(0,140,149,.12);
+  }
+  .receipt::before{content:"";position:absolute;inset:0 0 auto 0;height:6px;background:linear-gradient(90deg,var(--turq),var(--gold),var(--teal))}
+  .receipt .eyebrow{justify-content:center}
+  .receipt .big{
+    font-family:'Fraunces',serif;font-size:clamp(1.6rem,6vw,2.05rem);font-weight:600;color:var(--ink);
+    letter-spacing:-.01em;line-height:1.18;max-width:18em;margin:6px auto 0;
+  }
+  .receipt .big span{color:var(--teal);font-style:italic}
+  .receipt .disclaim{
+    margin-top:18px;font-size:.78rem;color:var(--ink-soft);line-height:1.55;
+    border-top:1px dashed rgba(0,140,149,.25);padding-top:14px;text-align:left;
+  }
+
+  /* ---------- WHO ---------- */
+  ul.check{list-style:none;margin-top:18px}
+  ul.check li{
+    padding:15px 18px 15px 52px;position:relative;background:var(--white);
+    border-radius:16px;margin-bottom:11px;box-shadow:var(--shadow-soft);font-weight:500;
+    border:1px solid rgba(0,140,149,.07);
+  }
+  ul.check li::before{
+    content:"";position:absolute;left:18px;top:18px;width:18px;height:18px;border-radius:6px;
+    background:linear-gradient(140deg,var(--turq),var(--teal));
+  }
+  ul.check li::after{
+    content:"";position:absolute;left:23px;top:21px;width:5px;height:9px;border:solid var(--white);
+    border-width:0 2.5px 2.5px 0;transform:rotate(42deg);
+  }
+
+  /* ---------- MISSION BAND ---------- */
+  .band{
+    margin:64px -22px 0;padding:66px 30px;text-align:center;position:relative;overflow:hidden;
+    background:linear-gradient(155deg,var(--teal-deep) 0%, var(--teal) 60%, #0AA5A0 100%);color:var(--paper);
+  }
+  .band::before{
+    content:"";position:absolute;inset:0;opacity:.16;
+    background:radial-gradient(420px 220px at 18% 10%, var(--turq), transparent 60%),
+              radial-gradient(360px 220px at 90% 100%, var(--gold), transparent 60%);
+  }
+  .band .script{position:relative;color:#BFF3F0;font-size:1.85rem;display:block;margin-bottom:6px}
+  .band h2{position:relative;color:var(--white)}
+
+  /* ---------- STACK ---------- */
+  .stack{margin-top:12px}
+  .stack-item{
+    background:var(--white);border-radius:18px;padding:24px 24px 20px;margin-bottom:14px;
+    box-shadow:var(--shadow-soft);border:1px solid rgba(0,140,149,.10);position:relative;
+  }
+  .stack-item h3{font-size:1.18rem;margin-bottom:8px}
+  .stack-item .tag{
+    display:inline-block;font-size:.66rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;
+    background:var(--tint);color:var(--teal-deep);border-radius:30px;padding:5px 13px;margin-bottom:11px;
+  }
+  .stack-item p{font-size:.96rem;color:var(--ink-soft)}
+  .stack-item ul{list-style:none;margin-top:10px;display:grid;gap:7px}
+  .stack-item ul li{position:relative;padding-left:20px;font-size:.94rem;color:var(--ink-soft)}
+  .stack-item ul li::before{content:"";position:absolute;left:0;top:.6em;width:7px;height:7px;border-radius:50%;background:var(--turq)}
+  .stack-item.bonus{
+    border:1.5px solid transparent;
+    background:
+      linear-gradient(#FFFEFA,#FFFCF2) padding-box,
+      linear-gradient(140deg,var(--gold),var(--turq)) border-box;
+  }
+  .stack-item.bonus .tag{background:rgba(244,180,0,.18);color:var(--gold-deep)}
+
+  /* ---------- NOT LIST ---------- */
+  .notlist{display:grid;gap:11px;margin-top:18px}
+  .notlist div{
+    background:var(--white);border-radius:14px;padding:15px 18px 15px 46px;font-weight:600;
+    box-shadow:var(--shadow-soft);position:relative;border:1px solid rgba(0,140,149,.07);
+  }
+  .notlist div::before{
+    content:"";position:absolute;left:16px;top:50%;transform:translateY(-50%);
+    width:18px;height:18px;border-radius:50%;background:rgba(244,180,0,.16);
+  }
+  .notlist div::after{
+    content:"\00d7";position:absolute;left:20px;top:50%;transform:translateY(-50%);
+    color:var(--gold-deep);font-weight:800;font-size:1.05rem;
+  }
+
+  /* ---------- PROOF / VOICE ---------- */
+  .voicecard{
+    background:var(--white);border-radius:20px;padding:26px 24px;margin-bottom:14px;
+    box-shadow:var(--shadow-soft);border-left:4px solid var(--turq);
+  }
+  .voicecard .label{font-size:.7rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);margin-bottom:8px}
+  .voicecard p{font-family:'Fraunces',serif;font-size:1.08rem;line-height:1.45;color:var(--ink)}
+
+  /* ---------- FAQ ---------- */
+  details{background:var(--white);border-radius:16px;margin-bottom:12px;box-shadow:var(--shadow-soft);overflow:hidden;border:1px solid rgba(0,140,149,.08)}
+  summary{cursor:pointer;font-weight:800;padding:18px 52px 18px 20px;list-style:none;position:relative;color:var(--ink)}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";position:absolute;right:20px;top:13px;font-family:'Fraunces',serif;font-size:1.6rem;color:var(--teal);transition:transform .3s ease}
+  details[open] summary::after{transform:rotate(45deg)}
+  details .a{padding:0 20px 18px;color:var(--ink-soft);font-size:.97rem}
+  details .a a{color:var(--teal-deep);font-weight:700}
+
+  /* ---------- STEPS ---------- */
+  .steps{counter-reset:step;margin-top:18px}
+  .step{position:relative;padding:4px 0 28px 66px}
+  .step::before{
+    counter-increment:step;content:counter(step);
+    position:absolute;left:0;top:0;width:46px;height:46px;border-radius:14px;
+    background:linear-gradient(150deg,var(--turq),var(--teal));color:var(--white);
+    font-family:'Fraunces',serif;font-weight:600;display:flex;align-items:center;justify-content:center;
+    font-size:1.3rem;box-shadow:var(--shadow-soft);
+  }
+  .step:not(:last-child)::after{content:"";position:absolute;left:22px;top:50px;bottom:2px;width:2px;background:linear-gradient(var(--turq),var(--tint))}
+  .step h3{font-size:1.1rem;margin-bottom:2px}
+  .step p{font-size:.96rem;color:var(--ink-soft)}
+  .step .kw{font-weight:800;color:var(--teal-deep);letter-spacing:.04em}
+
+  /* ---------- NOTE ---------- */
+  .note{
+    background:linear-gradient(165deg,#FFFFFF,#F4FBFA);border-radius:26px;padding:38px 30px 34px;
+    box-shadow:var(--shadow-lift);margin-top:24px;position:relative;border:1px solid rgba(0,140,149,.10);
+  }
+  .note .note-photo{width:96px;height:96px;border-radius:50%;object-fit:cover;border:4px solid var(--white);box-shadow:var(--shadow-soft);display:block;margin:0 auto 18px;margin-top:-66px;background:var(--paper-2)}
+  .note p{margin-bottom:1rem}
+  .note .sig{font-family:'Caveat',cursive;font-size:2.3rem;color:var(--teal);margin-top:8px;line-height:1}
+  .note .sig small{display:block;font-family:'Karla',sans-serif;font-size:.8rem;letter-spacing:.04em;color:var(--ink-soft);margin-top:2px}
+
+  footer{
+    text-align:center;padding:48px 22px 30px;font-size:.76rem;color:var(--ink-soft);
+    max-width:600px;margin:0 auto;line-height:1.65;
+  }
+  footer .brand{font-family:'Fraunces',serif;font-size:1.05rem;color:var(--ink);letter-spacing:.01em;display:block;margin-bottom:8px}
+  footer a{color:var(--teal-deep)}
+  footer .credit{opacity:.6;display:block;margin-top:10px}
+
+  /* reveal — hidden ONLY when JS runs; previews/no-JS see everything */
+  html.js .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease, transform .7s cubic-bezier(.22,1,.36,1)}
+  html.js .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion: reduce){html.js .reveal{opacity:1;transform:none;transition:none}}
+
+  @media(min-width:720px){
+    .page{max-width:680px}
+    h1{font-size:3.6rem}
+    .hero-frame{max-width:420px}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ============ 1. HERO ============ -->
+  <section class="hero">
+    <div class="kicker">Travel And Goodness · with Heather Allen</div>
+    <h1>You earned your seat. <em>Now keep your options open.</em></h1>
+    <p class="sub">I'm not a guru. I'm a 59-year-old business owner who didn't want her future tied to a single paycheck. <b>Boss Suite</b> is how I learned to build income online — on my own time, from anywhere.</p>
+    <div class="hero-frame">
+      <img src="./heather-hero.jpg" alt="Heather Allen, founder of Travel And Goodness">
+    </div>
+    <div class="badge-row">
+      <span class="badge">For professional women 50+</span>
+      <span class="badge">Multiple income streams</span>
+      <span class="badge">Work from anywhere</span>
+    </div>
+    <a class="btn" href="https://stan.store/affiliates/3b606767-279d-4322-a5c5-998cdcf51c2d">See what's inside Boss Suite</a>
+    <p class="btn-note">One platform. Several ways to earn online. <b>$507 — that's the whole thing.</b></p>
+  </section>
+
+  <!-- ============ 2. WHY LISTEN ============ -->
+  <section class="reveal">
+    <div class="why">
+      <span class="eyebrow">Why listen to me</span>
+      <p class="anti">I'm not selling you a hustle. I'm a real person who needed options — and found a way to build them.</p>
+      <ul class="credlist">
+        <li>20+ years building a career in meeting planning, hotel sourcing, contract negotiations, and events</li>
+        <li>59, married over 23 years, business owner — still working because I want to, not because I have to</li>
+        <li>Watched my mom battle dementia and faced my own health challenges — I know how fast life changes</li>
+        <li>No huge following, no tech background — I started by learning one skill at a time</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ 3. STORY ============ -->
+  <section class="story reveal">
+    <span class="eyebrow">My story (the real one)</span>
+    <h2>On paper, life looked pretty good.</h2>
+    <p>I'm 59. I've been married more than 23 years, I'm a cat mom, and I spent over two decades building a career in meeting planning, hotel sourcing, and events. By most measures, I'd made it.</p>
+    <p>But like a lot of women in their 50s, I started asking bigger questions. What does retirement actually look like? Do I have enough saved? What if I want more freedom, but I'm not ready to stop working?</p>
+    <p>Then life made the questions urgent. I watched my mom battle dementia and need around-the-clock care. I went through health challenges that changed how I see time and what really matters.</p>
+    <p class="punch">That's when I realized I didn't just want one source of income. I wanted options.</p>
+    <p>I wanted flexibility. Something I could build from my phone — from home, while traveling, or sitting by the pool. When I found Boss Suite, it gave me the roadmap I'd been looking for.</p>
+    <img class="photo-wide" src="./heather-pro.jpg" alt="Heather Allen, dressed for business, walking with confidence">
+    <p class="caption">Heather Allen — Travel And Goodness</p>
+  </section>
+
+  <!-- ============ 4. RECEIPT (the ONE attested claim) ============ -->
+  <section class="reveal">
+    <div class="receipt">
+      <span class="eyebrow">What I was really after</span>
+      <div class="big"><span>Time freedom</span> to work when I want and travel when and where I want to go.</div>
+      <p class="disclaim"><b>Real talk, because I'll always be honest with you:</b> this isn't a paycheck or a guarantee. It's education and a set of skills. What you earn depends on your effort, consistency, and the work you put in — not on signing up. I'm sharing what I was after, and what's possible, not promising it will happen for you.</p>
+    </div>
+  </section>
+
+  <!-- ============ 5. WHO IT'S FOR ============ -->
+  <section class="reveal">
+    <span class="eyebrow">Is this you?</span>
+    <h2>Built for the woman who isn't done yet.</h2>
+    <ul class="check">
+      <li>You're caring for elderly parents, showing up for kids and grandkids, and still tied to a 9-to-5 that won't bend.</li>
+      <li>You've done the loyal, work-hard, retire-on-schedule path — and you're realizing it may not be enough.</li>
+      <li>You don't want to start over or chase the next shiny thing. You want something real you can run on your own time.</li>
+      <li>You'd rather build options now than wonder later whether one paycheck was enough.</li>
+      <li>You want to be available for your family without trading away your income to do it.</li>
+    </ul>
+  </section>
+
+  <!-- ============ 6. MISSION BAND ============ -->
+  <div class="band reveal">
+    <span class="script">Not hustle. Options.</span>
+    <h2>The goal was never just more money.<br>It was more choices.</h2>
+  </div>
+
+  <!-- ============ 7. WHAT'S INSIDE ============ -->
+  <section id="offer" class="reveal">
+    <span class="eyebrow">What's inside Boss Suite</span>
+    <h2>Step-by-step training, the tools, and a community.</h2>
+    <p class="lead">Instead of spending months piecing it together alone, you get a clear path through the income models that actually work online.</p>
+    <div class="stack">
+
+      <div class="stack-item">
+        <span class="tag">Income models</span>
+        <h3>Multiple ways to earn online</h3>
+        <p>The training walks you through real online business models, so you can pick what fits your life:</p>
+        <ul>
+          <li>Affiliate marketing</li>
+          <li>UGC (user-generated content)</li>
+          <li>Amazon Influencer and review programs</li>
+          <li>Digital products and print-on-demand</li>
+          <li>Service-based businesses and content monetization</li>
+        </ul>
+      </div>
+
+      <div class="stack-item">
+        <span class="tag">Content that attracts</span>
+        <h3>Get found without a big following</h3>
+        <p>Learn to create content that brings customers to you organically — through storytelling and real value, not gimmicks:</p>
+        <ul>
+          <li>TikTok and Instagram Reels</li>
+          <li>YouTube Shorts</li>
+          <li>Pinterest</li>
+        </ul>
+      </div>
+
+      <div class="stack-item">
+        <span class="tag">Systems &amp; AI</span>
+        <h3>Automation that saves your time</h3>
+        <p>Set up the back end so your effort scales instead of repeating:</p>
+        <ul>
+          <li>Email marketing and funnels</li>
+          <li>Lead generation and follow-up systems</li>
+          <li>Automations and AI tools like ChatGPT</li>
+        </ul>
+      </div>
+
+      <div class="stack-item bonus">
+        <span class="tag">Why come through me</span>
+        <h3>A woman who gets your season of life</h3>
+        <p>You're not joining a faceless platform. You're starting alongside someone who's 59, juggling a business, family, and caregiving — and learning this right beside you. I'll share what's working, what I'd skip, and the encouragement to keep going when it feels slow. Plus the Boss Suite community that genuinely wants to see you win.</p>
+      </div>
+
+    </div>
+    <a class="btn" href="https://stan.store/affiliates/3b606767-279d-4322-a5c5-998cdcf51c2d">Start Boss Suite — $507</a>
+    <p class="btn-note"><b>$507.</b> One time. That's the whole thing.</p>
+  </section>
+
+  <!-- ============ 8. WHAT THIS IS NOT ============ -->
+  <section class="reveal">
+    <span class="eyebrow">Let's clear this up</span>
+    <h2>What this is <i>not</i>:</h2>
+    <div class="notlist">
+      <div>It's not get-rich-quick. It's skills and options that take real effort.</div>
+      <div>It's not starting over. You build on the experience you already have.</div>
+      <div>It's not for tech experts only. No huge following or tech background required.</div>
+      <div>It's not one more thing chasing you. You work when you want, at your pace.</div>
+    </div>
+    <p style="margin-top:18px">If you wanted overnight success, this isn't it. If you want a real path to more choices, keep reading.</p>
+  </section>
+
+  <!-- ============ 9. PROOF (no testimonials provided — using her own voice as proof) ============ -->
+  <section class="reveal">
+    <span class="eyebrow">In Heather's words</span>
+    <h2>Why I talk about this every day.</h2>
+    <div class="voicecard">
+      <div class="label">On wanting more</div>
+      <p>You can love what you do and still want more freedom. So many women in their 50s are realizing retirement may not look the way they planned — and honestly, most of us aren't ready to sit still anyway.</p>
+    </div>
+    <div class="voicecard">
+      <div class="label">On "I don't have time"</div>
+      <p>I'm a full-time business owner. I manage clients, contracts, travel, family responsibilities, rescue cats, and life — just like everyone else. If you're scrolling anyway, why not learn something that could actually pay you?</p>
+    </div>
+    <div class="voicecard">
+      <div class="label">On the real goal</div>
+      <p>The goal isn't just making money. It's having choices. Choices about your time. Choices about your future. Choices about how you want to live.</p>
+    </div>
+  </section>
+
+  <!-- ============ 10. FAQ ============ -->
+  <section class="reveal">
+    <span class="eyebrow">Questions I'd ask too</span>
+    <h2>FAQ — the honest version</h2>
+
+    <details>
+      <summary>Is this an MLM or a recruiting scheme?</summary>
+      <div class="a">No. Boss Suite is digital business education — training, tools, and community that teach you skills like affiliate marketing, content, and automation. You're learning to build your own income online, not recruiting people to make money.</div>
+    </details>
+
+    <details>
+      <summary>What if I'm not techy and don't have a following?</summary>
+      <div class="a">That was me. You don't need a product, a big audience, or tech skills to start — just a willingness to learn one skill at a time. The training meets beginners where they are.</div>
+    </details>
+
+    <details>
+      <summary>I'm busy and caring for family. Do I have time for this?</summary>
+      <div class="a">You set the pace. The whole point is income that doesn't trade every hour for a paycheck — so you can build it from your phone, around the life you already have.</div>
+    </details>
+
+    <details>
+      <summary>What's the refund policy?</summary>
+      <div class="a">Because this is a digital product, all sales are final — no returns. Please make sure it's the right fit before you join, and reach out with any questions first.</div>
+    </details>
+
+    <details>
+      <summary>Why buy through you specifically?</summary>
+      <div class="a">Because I'm in the same season of life you are. I'm 59, running a business, caring for family, and learning this in real time. You get my honest experience with the training, what I'd focus on first, and someone in your corner — not a hands-off platform.</div>
+    </details>
+
+    <details>
+      <summary>Will I really make money?</summary>
+      <div class="a">I can't promise that, and I won't. This is education and skills. What you earn depends on your effort and consistency. What I can tell you is what I was after: time freedom and options — and the tools to build toward them.</div>
+    </details>
+  </section>
+
+  <!-- ============ 11. STEPS ============ -->
+  <section class="reveal">
+    <span class="eyebrow">What happens next</span>
+    <h2>Three simple steps:</h2>
+    <div class="steps">
+      <div class="step">
+        <h3>Join Boss Suite</h3>
+        <p>One payment of $507 gives you the full training, tools, and community.</p>
+      </div>
+      <div class="step">
+        <h3>Comment <span class="kw">BOSS</span> or message me</h3>
+        <p>I'll point you to where to start so you're not staring at a blank screen wondering what's first.</p>
+      </div>
+      <div class="step">
+        <h3>Build your options, one skill at a time</h3>
+        <p>Pick a path, follow the training, and start creating income that works around your life.</p>
+      </div>
+    </div>
+    <a class="btn" href="https://stan.store/affiliates/3b606767-279d-4322-a5c5-998cdcf51c2d">Yes — I'm ready for options</a>
+    <p class="btn-note">$507, one time. Lifetime access to the training and community.</p>
+  </section>
+
+  <!-- ============ 12. PERSONAL NOTE ============ -->
+  <section class="reveal">
+    <div class="note">
+      <img class="note-photo" src="./heather-note.jpg" alt="Heather Allen">
+      <p><b>If you've read this far, I think we're a lot alike.</b></p>
+      <p>A few years ago, if you'd told me I'd be teaching women how to create income online, I probably would've laughed. My world was meetings, hotels, contracts, and clients. But life has a way of teaching you that leaning on one source of income is risky.</p>
+      <p>Today I help women find new ways to earn — from home, while traveling, wherever life takes them. Not because I want another job. Because I wanted options, and I want that for you too.</p>
+      <p>Your next chapter doesn't have to be stressful. It can be exciting.</p>
+      <p>See you on the inside,</p>
+      <div class="sig">Heather<small>Travel And Goodness</small></div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <span class="brand">Travel And Goodness</span>
+  © 2026 Travel And Goodness · Heather Allen · <a href="https://heatherallen.store">heatherallen.store</a><br><br>
+  Income Disclaimer: Results are not typical and are not guaranteed. Boss Suite is education, not a job or an investment. Heather Allen is an independent affiliate of Boss Suite and may earn a commission. Any results referenced reflect personal experience after significant time, effort, and consistency. Your results depend on your skill, effort, consistency, and market conditions.
+  <span class="credit">Page built by The Digital Dad — systems, not hustle.</span>
+</footer>
+
+<script>
+  const els = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window && location.hash !== '#all') {
+    document.documentElement.classList.add('js');
+    const io = new IntersectionObserver(entries=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+    },{threshold:.12});
+    els.forEach(el=>io.observe(el));
+  }
+</script>
+</body>
+</html>
