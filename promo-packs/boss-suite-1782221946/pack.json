@@ -1,0 +1,10 @@
+{
+  "style": "bold",
+  "offer_name": "Boss Suite",
+  "pieces": [
+    {"type": "offer", "format": "story", "png": "offer-story/poster-bold.png"},
+    {"type": "offer", "format": "feed",  "png": "offer-feed/poster-bold.png"},
+    {"type": "hook",  "format": "story", "png": "hook-story/poster-bold.png"},
+    {"type": "hook",  "format": "feed",  "png": "hook-feed/poster-bold.png"}
+  ]
+}

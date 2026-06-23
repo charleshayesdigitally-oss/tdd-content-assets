@@ -1,0 +1,12 @@
+{
+  "style": "bold",
+  "type": "hook",
+  "format": "feed",
+  "content": {
+    "headline_lines": ["Financially", "ready?"],
+    "headline_highlight": "ready",
+    "script": "A question for the woman over 50.",
+    "sub": "If retirement happened sooner than expected, would you need another source of income?",
+    "cta": "Comment BOSS"
+  }
+}
