@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="color-scheme" content="light" />
+<title>Holiday Miller — Make Real Money Online (Around Your Kids)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,500;1,9..144,600&family=Manrope:wght@400;500;600;700;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    color-scheme: light;
+    --blush:#FBE9EF;
+    --blush-deep:#F6D2DF;
+    --cream:#FFF8F3;
+    --paper:#FFFCFA;
+    --rose:#E0457B;        /* primary punch */
+    --rose-deep:#B41E5B;   /* deepest magenta */
+    --rose-soft:#F49EBE;
+    --ink:#2A1F25;         /* near-charcoal warm */
+    --ink-soft:#6B5860;
+    --gold:#C9A24B;
+    --gold-soft:#E3C988;
+    --white:#ffffff;
+    --shadow-rose: 30px 40px 80px -40px rgba(180,30,91,.45);
+    --shadow-soft: 0 24px 60px -30px rgba(42,31,37,.28);
+    --maxw:1180px;
+    --ease:cubic-bezier(.2,.8,.2,1);
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Manrope',system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+
+  /* ---------- texture / grain overlay ---------- */
+  body::before{
+    content:"";
+    position:fixed;inset:0;z-index:9999;pointer-events:none;
+    opacity:.045;mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(20px,5vw,40px)}
+
+  /* ---------- type system ---------- */
+  h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:600;line-height:1.02;letter-spacing:-.02em}
+  .display{font-weight:900}
+  .script{font-family:'Caveat',cursive;font-weight:700;color:var(--rose);letter-spacing:.01em;line-height:1}
+  .eyebrow{
+    font-family:'Manrope',sans-serif;font-weight:700;text-transform:uppercase;
+    letter-spacing:.22em;font-size:.72rem;color:var(--rose-deep);
+  }
+  em{font-style:italic;color:var(--rose-deep)}
+
+  /* ---------- buttons ---------- */
+  .btn{
+    display:inline-flex;align-items:center;gap:.6em;
+    font-family:'Manrope',sans-serif;font-weight:700;font-size:1.02rem;
+    padding:1.05em 1.9em;border-radius:999px;cursor:pointer;border:none;
+    background:linear-gradient(135deg,var(--rose) 0%,var(--rose-deep) 100%);
+    color:#fff;letter-spacing:.01em;
+    box-shadow:0 16px 34px -14px rgba(180,30,91,.7), inset 0 1px 0 rgba(255,255,255,.25);
+    transition:transform .4s var(--ease), box-shadow .4s var(--ease), filter .3s var(--ease);
+  }
+  .btn:hover{transform:translateY(-3px);box-shadow:0 26px 48px -16px rgba(180,30,91,.78);filter:saturate(1.08)}
+  .btn:active{transform:translateY(-1px)}
+  .btn:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+  .btn .arrow{transition:transform .4s var(--ease)}
+  .btn:hover .arrow{transform:translateX(5px)}
+
+  .btn-ghost{
+    display:inline-flex;align-items:center;gap:.5em;
+    font-weight:700;color:var(--rose-deep);border-bottom:2px solid var(--rose-soft);
+    padding-bottom:2px;transition:border-color .3s var(--ease),color .3s var(--ease);
+  }
+  .btn-ghost:hover{color:var(--rose);border-color:var(--rose)}
+  .btn-ghost:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+
+  /* ---------- nav ---------- */
+  nav{
+    position:absolute;top:0;left:0;right:0;z-index:50;
+    padding:26px 0;
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between}
+  .brandmark{font-family:'Fraunces',serif;font-weight:600;font-size:1.5rem;letter-spacing:-.01em;color:var(--ink)}
+  .brandmark span{color:var(--rose)}
+  nav .btn{padding:.75em 1.4em;font-size:.92rem}
+  @media(max-width:640px){nav .btn{display:none}}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;padding:150px 0 90px;overflow:hidden;
+    background:
+      radial-gradient(900px 600px at 12% -8%, var(--blush) 0%, rgba(251,233,239,0) 60%),
+      radial-gradient(800px 700px at 100% 0%, #FCE7CF 0%, rgba(252,231,207,0) 55%),
+      radial-gradient(700px 700px at 85% 110%, var(--blush-deep) 0%, rgba(246,210,223,0) 55%),
+      var(--cream);
+  }
+  .hero-grid{
+    display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(30px,5vw,70px);align-items:center;
+  }
+  .hero-copy .eyebrow{margin-bottom:18px;display:inline-block}
+  .hero h1{
+    font-size:clamp(2.6rem,6.4vw,5rem);
+    margin-bottom:.45em;
+  }
+  .hero h1 .script{
+    display:block;font-size:clamp(2.4rem,6vw,4.4rem);margin-top:.06em;
+    transform:rotate(-2.5deg);transform-origin:left;
+  }
+  .hero-sub{
+    font-size:clamp(1.05rem,1.6vw,1.22rem);color:var(--ink-soft);
+    max-width:34ch;margin-bottom:2em;
+  }
+  .hero-cta-row{display:flex;align-items:center;gap:clamp(18px,3vw,30px);flex-wrap:wrap}
+  .hero-trust{font-size:.85rem;color:var(--ink-soft);font-weight:600}
+  .hero-trust b{color:var(--rose-deep)}
+
+  .hero-photo{position:relative}
+  .hero-photo .frame{
+    position:relative;border-radius:30px;overflow:hidden;
+    box-shadow:var(--shadow-rose);
+    border:6px solid #fff;
+    transform:rotate(1.5deg);
+  }
+  .hero-photo .frame img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/4.4}
+  .hero-photo .frame::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(160deg,rgba(255,255,255,0) 55%,rgba(180,30,91,.12) 100%);
+  }
+  .hero-badge{
+    position:absolute;left:-26px;bottom:36px;z-index:3;
+    background:#fff;border-radius:20px;padding:16px 20px;
+    box-shadow:var(--shadow-soft);transform:rotate(-3deg);
+    max-width:230px;
+  }
+  .hero-badge .script{font-size:1.5rem;display:block;margin-bottom:2px}
+  .hero-badge small{font-size:.78rem;color:var(--ink-soft);font-weight:600;line-height:1.4;display:block}
+  .hero-deco{
+    position:absolute;top:-30px;right:-30px;width:150px;height:150px;z-index:2;
+    background:radial-gradient(circle at 30% 30%, var(--gold-soft), var(--gold));
+    border-radius:50%;opacity:.22;filter:blur(6px);
+  }
+
+  /* ---------- marquee strip ---------- */
+  .strip{
+    background:linear-gradient(90deg,var(--rose-deep),var(--rose));
+    color:#fff;padding:16px 0;overflow:hidden;white-space:nowrap;
+  }
+  .strip-track{display:inline-flex;gap:48px;animation:marq 26s linear infinite;font-family:'Fraunces',serif;font-style:italic;font-size:1.05rem;font-weight:500}
+  .strip-track span{display:inline-flex;align-items:center;gap:48px}
+  .strip-track .dot{width:7px;height:7px;border-radius:50%;background:var(--gold-soft);display:inline-block}
+  @keyframes marq{to{transform:translateX(-50%)}}
+  @media(prefers-reduced-motion:reduce){.strip-track{animation:none}}
+
+  /* ---------- generic section ---------- */
+  section{position:relative}
+  .pad{padding:clamp(70px,10vw,120px) 0}
+  .section-head{max-width:46ch;margin-bottom:54px}
+  .section-head.center{margin-left:auto;margin-right:auto;text-align:center}
+  .section-head .eyebrow{display:inline-block;margin-bottom:16px}
+  .section-head h2{font-size:clamp(2rem,4.4vw,3.3rem);margin-bottom:.35em}
+  .section-head p{color:var(--ink-soft);font-size:1.08rem}
+
+  /* ---------- STORY ---------- */
+  .story{background:
+    radial-gradient(700px 500px at -5% 50%, var(--blush) 0%, rgba(251,233,239,0) 60%),
+    var(--paper);}
+  .story-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(34px,6vw,80px);align-items:center}
+  .story-photo{position:relative}
+  .story-photo img{border-radius:26px;box-shadow:var(--shadow-soft);border:6px solid #fff;aspect-ratio:1/1;object-fit:cover}
+  .story-photo .tag{
+    position:absolute;right:-18px;top:-18px;background:var(--rose);color:#fff;
+    font-family:'Caveat',cursive;font-size:1.5rem;font-weight:700;
+    padding:10px 22px;border-radius:16px;transform:rotate(4deg);box-shadow:var(--shadow-soft);
+  }
+  .story h2{font-size:clamp(1.9rem,3.8vw,3rem);margin-bottom:.6em}
+  .story p{color:var(--ink-soft);margin-bottom:1.1em;font-size:1.06rem}
+  .story p strong{color:var(--ink)}
+  .story .punch{
+    font-family:'Fraunces',serif;font-style:italic;font-size:clamp(1.3rem,2.4vw,1.7rem);
+    color:var(--rose-deep);line-height:1.35;border-left:3px solid var(--rose-soft);
+    padding-left:22px;margin:1.4em 0;
+  }
+
+  /* ---------- QUIZ ---------- */
+  .quiz{position:relative;overflow:hidden;
+    background:
+      radial-gradient(900px 600px at 100% 0%, var(--blush-deep) 0%, rgba(246,210,223,0) 55%),
+      linear-gradient(180deg,var(--cream),var(--blush));
+  }
+  .quiz-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(34px,6vw,70px);align-items:center}
+  .quiz-card{
+    background:#fff;border-radius:30px;padding:clamp(30px,4vw,52px);
+    box-shadow:var(--shadow-rose);position:relative;overflow:hidden;
+    border:1px solid var(--blush-deep);
+  }
+  .quiz-card::before{
+    content:"";position:absolute;top:-60px;right:-60px;width:180px;height:180px;border-radius:50%;
+    background:radial-gradient(circle,var(--rose-soft),rgba(244,158,190,0));opacity:.5;
+  }
+  .quiz-card .eyebrow{margin-bottom:14px;display:block}
+  .quiz-card h2{font-size:clamp(1.7rem,3.4vw,2.6rem);margin-bottom:.4em;position:relative}
+  .quiz-card .lead{color:var(--ink-soft);margin-bottom:1.6em;position:relative}
+  .quiz-meta{display:flex;gap:26px;margin-bottom:1.8em;flex-wrap:wrap}
+  .quiz-meta div{position:relative}
+  .quiz-meta .n{font-family:'Fraunces',serif;font-weight:900;font-size:1.9rem;color:var(--rose);line-height:1}
+  .quiz-meta .l{font-size:.78rem;text-transform:uppercase;letter-spacing:.12em;color:var(--ink-soft);font-weight:700}
+  .quiz-card .micro{font-size:.82rem;color:var(--ink-soft);margin-top:1.2em;position:relative}
+  .quiz-photo img{border-radius:26px;box-shadow:var(--shadow-soft);border:6px solid #fff;aspect-ratio:1/1.05;object-fit:cover}
+
+  /* ---------- BOSS SUITE ---------- */
+  .boss{background:var(--ink);color:#fff;position:relative;overflow:hidden}
+  .boss::before{
+    content:"";position:absolute;inset:0;opacity:.5;
+    background:
+      radial-gradient(700px 500px at 90% 0%, rgba(224,69,123,.4) 0%, rgba(224,69,123,0) 55%),
+      radial-gradient(600px 600px at 0% 100%, rgba(180,30,91,.35) 0%, rgba(180,30,91,0) 55%);
+  }
+  .boss .wrap{position:relative;z-index:2}
+  .boss-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(34px,6vw,72px);align-items:center}
+  .boss .eyebrow{color:var(--rose-soft)}
+  .boss h2{color:#fff;font-size:clamp(2rem,4.4vw,3.3rem);margin-bottom:.4em}
+  .boss h2 em{color:var(--rose-soft)}
+  .boss-lead{color:rgba(255,255,255,.78);font-size:1.1rem;margin-bottom:1.8em;max-width:42ch}
+  .boss-list{list-style:none;display:grid;gap:16px;margin-bottom:2em}
+  .boss-list li{display:flex;gap:14px;align-items:flex-start;font-size:1.04rem;color:rgba(255,255,255,.9)}
+  .boss-list .ck{
+    flex:0 0 26px;width:26px;height:26px;border-radius:50%;margin-top:2px;
+    background:linear-gradient(135deg,var(--rose),var(--rose-deep));
+    display:grid;place-items:center;color:#fff;font-size:.8rem;font-weight:800;
+    box-shadow:0 6px 14px -6px rgba(224,69,123,.8);
+  }
+  .boss-list li b{color:#fff}
+  .boss-photo{position:relative}
+  .boss-photo img{border-radius:28px;box-shadow:0 40px 80px -30px rgba(0,0,0,.6);border:6px solid rgba(255,255,255,.9);aspect-ratio:4/4.6;object-fit:cover;object-position:center 22%}
+  .boss-price{
+    background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);
+    border-radius:20px;padding:22px 26px;margin-bottom:1.8em;backdrop-filter:blur(6px);
+  }
+  .boss-price .ph{font-family:'Caveat',cursive;color:var(--gold-soft);font-size:1.4rem;font-weight:700}
+  .boss-price .sub{font-size:.9rem;color:rgba(255,255,255,.7)}
+  .confirm{
+    display:inline-block;font-family:'Manrope',sans-serif;font-size:.7rem;font-weight:700;
+    text-transform:uppercase;letter-spacing:.12em;color:var(--ink);
+    background:var(--gold-soft);padding:2px 8px;border-radius:6px;vertical-align:middle;
+  }
+  .boss .btn{background:linear-gradient(135deg,var(--gold) 0%,#B8862F 100%);box-shadow:0 16px 34px -14px rgba(201,162,75,.7)}
+  .boss .btn:hover{filter:saturate(1.1) brightness(1.04)}
+
+  /* ---------- FREEDOM ---------- */
+  .freedom{position:relative;color:#fff;min-height:90vh;display:flex;align-items:center;overflow:hidden}
+  .freedom img.bg{
+    position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 35%;z-index:0;
+  }
+  .freedom::after{
+    content:"";position:absolute;inset:0;z-index:1;
+    background:linear-gradient(105deg, rgba(42,31,37,.78) 0%, rgba(180,30,91,.4) 45%, rgba(42,31,37,.15) 100%);
+  }
+  .freedom .wrap{position:relative;z-index:2;padding:clamp(70px,12vw,140px) clamp(20px,5vw,40px)}
+  .freedom .eyebrow{color:var(--gold-soft)}
+  .freedom h2{color:#fff;font-size:clamp(2.1rem,5vw,3.8rem);max-width:18ch;margin:.3em 0 .5em;text-shadow:0 2px 30px rgba(0,0,0,.3)}
+  .freedom h2 em{color:var(--rose-soft)}
+  .freedom p{max-width:46ch;color:rgba(255,255,255,.92);font-size:1.15rem;margin-bottom:2em;text-shadow:0 1px 14px rgba(0,0,0,.4)}
+
+  /* ---------- FINAL CTA ---------- */
+  .final{
+    text-align:center;overflow:hidden;position:relative;
+    background:
+      radial-gradient(700px 500px at 50% -10%, var(--blush-deep) 0%, rgba(246,210,223,0) 60%),
+      linear-gradient(180deg,var(--blush),var(--cream));
+  }
+  .final .script{font-size:clamp(1.8rem,3.6vw,2.6rem);display:block;margin-bottom:.1em;transform:rotate(-1.5deg)}
+  .final h2{font-size:clamp(2.2rem,5.4vw,4rem);max-width:16ch;margin:.1em auto .5em}
+  .final p{max-width:42ch;margin:0 auto 2.2em;color:var(--ink-soft);font-size:1.1rem}
+  .final .btn{font-size:1.12rem;padding:1.15em 2.4em}
+  .final-trust{margin-top:1.6em;font-size:.85rem;color:var(--ink-soft);font-weight:600}
+
+  /* ---------- footer ---------- */
+  footer{background:var(--ink);color:rgba(255,255,255,.6);padding:46px 0;text-align:center;font-size:.82rem}
+  footer .brandmark{color:#fff;font-size:1.3rem;margin-bottom:10px}
+  footer .brandmark span{color:var(--rose-soft)}
+  footer .disc{max-width:60ch;margin:14px auto 0;line-height:1.6;color:rgba(255,255,255,.45);font-size:.74rem}
+  footer .mock{margin-top:18px;font-size:.72rem;color:var(--gold-soft);letter-spacing:.1em;text-transform:uppercase;font-weight:700}
+
+  /* ---------- reveal motion ---------- */
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease), transform .9s var(--ease)}
+  .reveal.in{opacity:1;transform:none}
+  .reveal.d1{transition-delay:.1s}.reveal.d2{transition-delay:.2s}.reveal.d3{transition-delay:.3s}.reveal.d4{transition-delay:.4s}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+  /* ---------- responsive ---------- */
+  @media(max-width:880px){
+    .hero-grid,.story-grid,.quiz-grid,.boss-grid{grid-template-columns:1fr}
+    .hero-photo{order:-1;max-width:440px;margin:0 auto}
+    .story-photo,.quiz-photo{max-width:460px;margin:0 auto}
+    .boss-photo{max-width:420px;margin:0 auto;order:-1}
+    .hero-sub{max-width:none}
+  }
+  @media(max-width:560px){
+    .hero-badge{left:8px;bottom:8px;max-width:180px;padding:12px 14px}
+    .hero-deco{display:none}
+    .quiz-meta{gap:18px}
+    .story-photo .tag{font-size:1.2rem;right:8px;top:-12px}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="wrap">
+    <div class="brandmark">Holiday<span>.</span></div>
+    <a href="#QUIZ" class="btn">Take the free quiz <span class="arrow">&rarr;</span></a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow reveal">I teach women to make money online</span>
+        <h1 class="reveal d1">
+          Broke cheer mom
+          <span class="script">to six figures.</span>
+        </h1>
+        <p class="hero-sub reveal d2">Real income you build around your kids&rsquo; schedules &mdash; not the other way around. No experience, no fancy degree, no pretending you have it all together.</p>
+        <div class="hero-cta-row reveal d3">
+          <a href="#QUIZ" class="btn">Take the free quiz <span class="arrow">&rarr;</span></a>
+          <span class="hero-trust">2&nbsp;minutes. <b>Free.</b> Find your income style.</span>
+        </div>
+      </div>
+
+      <div class="hero-photo reveal d2">
+        <div class="hero-deco"></div>
+        <div class="frame">
+          <img src="./img/hero-coffee.png" alt="Holiday Miller in a beige suit holding a coffee" />
+        </div>
+        <div class="hero-badge">
+          <span class="script">Hi, I&rsquo;m Holiday.</span>
+          <small>Mom of sports kids. Fired, then free. Now I show women how to do the same.</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- MARQUEE STRIP -->
+<div class="strip" aria-hidden="true">
+  <div class="strip-track">
+    <span>
+      Work around your kids <span class="dot"></span> No experience needed <span class="dot"></span> Built in the in-between moments <span class="dot"></span> Real money, real life <span class="dot"></span> Bleachers &amp; laptops <span class="dot"></span>
+    </span>
+    <span>
+      Work around your kids <span class="dot"></span> No experience needed <span class="dot"></span> Built in the in-between moments <span class="dot"></span> Real money, real life <span class="dot"></span> Bleachers &amp; laptops <span class="dot"></span>
+    </span>
+  </div>
+</div>
+
+<!-- STORY -->
+<section class="story pad">
+  <div class="wrap">
+    <div class="story-grid">
+      <div class="story-photo reveal">
+        <img src="./img/story-bench.png" alt="Holiday Miller outdoors at golden hour" />
+        <span class="tag">my turn</span>
+      </div>
+      <div class="story-copy">
+        <span class="eyebrow reveal">My story</span>
+        <h2 class="reveal d1">I wasn&rsquo;t supposed to be the &ldquo;make money online&rdquo; girl.</h2>
+        <p class="reveal d1">I was a cheer mom. Snack schedules, carpool, away games, the whole thing. I had a corporate job I thought was &ldquo;safe&rdquo; &mdash; right up until the day they let me go.</p>
+        <p class="reveal d2">No backup plan. No savings runway. Just a calendar full of practices and a knot in my stomach about how we&rsquo;d cover it all.</p>
+        <p class="punch reveal d2">So I gave myself one shot at building income that fit around my kids &mdash; instead of squeezing my kids around a job.</p>
+        <p class="reveal d3">I learned digital marketing in the cracks of my day. Early mornings. The bleachers. The pickup line. And it worked &mdash; <strong>I built roughly six figures in my first 6&ndash;9 months online.</strong> <em>(That&rsquo;s my real story, not a promise of yours &mdash; results always depend on the work you put in.)</em></p>
+        <p class="reveal d3">Now? I teach other moms the exact thing I had to figure out alone.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section class="quiz pad" id="QUIZ">
+  <div class="wrap">
+    <div class="quiz-grid">
+      <div class="quiz-card reveal">
+        <span class="eyebrow">Start here &mdash; it&rsquo;s free</span>
+        <h2>What&rsquo;s your online income style?</h2>
+        <p class="lead">Before you buy anything or build anything, find out which kind of online income actually fits your personality, your schedule, and your season of motherhood. Most women guess wrong and burn out. This points you the right direction first.</p>
+        <div class="quiz-meta">
+          <div><div class="n">2 min</div><div class="l">to finish</div></div>
+          <div><div class="n">7</div><div class="l">quick questions</div></div>
+          <div><div class="n">$0</div><div class="l">always free</div></div>
+        </div>
+        <a href="#QUIZ" class="btn">Take the free quiz <span class="arrow">&rarr;</span></a>
+        <p class="micro">Pop in your email at the end and I&rsquo;ll send your result plus the first step. No spam &mdash; just the good stuff.</p>
+      </div>
+      <div class="quiz-photo reveal d2">
+        <img src="./img/quiz-laptop.png" alt="Holiday Miller working on a laptop at a bright desk with pink orchids" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOSS SUITE -->
+<section class="boss pad" id="BOSS-SUITE">
+  <div class="wrap">
+    <div class="boss-grid">
+      <div class="boss-copy">
+        <span class="eyebrow reveal">The main thing &mdash; Boss Suite</span>
+        <h2 class="reveal d1">Everything I used to go from <em>fired</em> to free.</h2>
+        <p class="boss-lead reveal d1">Boss Suite is my complete digital-marketing system for moms who want real online income &mdash; built to run in the margins of a busy family life. The quiz points you here once you know your style. <span class="confirm">[confirm with Holiday]</span></p>
+        <ul class="boss-list">
+          <li class="reveal d1"><span class="ck">&#10003;</span><span><b>A clear, step-by-step path</b> &mdash; so you always know your next move instead of drowning in &ldquo;gurus&rdquo; and free advice. <span class="confirm">[confirm with Holiday]</span></span></li>
+          <li class="reveal d2"><span class="ck">&#10003;</span><span><b>Built for busy schedules</b> &mdash; designed to work in the in-between moments: nap times, the carpool line, after bedtime.</span></li>
+          <li class="reveal d2"><span class="ck">&#10003;</span><span><b>No experience required</b> &mdash; if you can text and follow a recipe, you can do this. <span class="confirm">[confirm with Holiday]</span></span></li>
+          <li class="reveal d3"><span class="ck">&#10003;</span><span><b>Me, in your corner</b> &mdash; the support and real-talk I wish I&rsquo;d had when I started. <span class="confirm">[confirm with Holiday]</span></span></li>
+        </ul>
+        <div class="boss-price reveal d3">
+          <span class="ph">Investment: [confirm with Holiday]</span>
+          <div class="sub">Exact price + what&rsquo;s included to be finalized with Holiday.</div>
+        </div>
+        <a href="#BOSS-SUITE" class="btn reveal d3">Get Boss Suite <span class="arrow">&rarr;</span></a>
+      </div>
+      <div class="boss-photo reveal d2">
+        <img src="./img/boss-pinkdress.png" alt="Holiday Miller in a pink dress surrounded by pink blossoms" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FREEDOM -->
+<section class="freedom">
+  <img class="bg" src="./img/freedom-wildflower.png" alt="Holiday Miller in a wildflower field at golden hour" />
+  <div class="wrap">
+    <span class="eyebrow reveal">The life this builds</span>
+    <h2 class="reveal d1">This was never really about the money. It was about <em>options.</em></h2>
+    <p class="reveal d2">Being at every game. Saying yes to the trip. Not flinching at the grocery total. Building something that keeps working while you&rsquo;re in the stands cheering. That&rsquo;s the whole point &mdash; income that gives you your time back instead of taking more of it.</p>
+    <a href="#QUIZ" class="btn reveal d3">Start with the free quiz <span class="arrow">&rarr;</span></a>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final pad">
+  <div class="wrap">
+    <span class="script reveal">Your move, mama.</span>
+    <h2 class="reveal d1">One small step today. Find your income style.</h2>
+    <p class="reveal d2">You don&rsquo;t have to have it all figured out. You just have to start &mdash; and the quiz is the easiest, lowest-pressure first step there is.</p>
+    <a href="#QUIZ" class="btn reveal d3">Take the free quiz <span class="arrow">&rarr;</span></a>
+    <div class="final-trust reveal d3">2 minutes &middot; completely free &middot; no experience needed</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="brandmark">Holiday<span>.</span></div>
+    <div>&copy; <span id="yr"></span> Holiday Miller. All rights reserved.</div>
+    <p class="disc">Income disclaimer: The income figures referenced reflect Holiday&rsquo;s personal experience and are not a guarantee or promise of your results. Building an online business takes work, time, and consistency. Your results will vary based on your effort, experience, and circumstances. This page is for educational purposes only.</p>
+    <div class="mock">Design mockup &mdash; for Holiday&rsquo;s review only</div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{threshold:.12, rootMargin:'0px 0px -8% 0px'});
+  const revealEls = document.querySelectorAll('.reveal');
+  revealEls.forEach(el=>io.observe(el));
+  // Safety net: if anything is still hidden after load (e.g. no-scroll capture, JS edge cases), reveal it.
+  window.addEventListener('load', ()=>{
+    setTimeout(()=>{ revealEls.forEach(el=>el.classList.add('in')); }, 1200);
+  });
+</script>
+</body>
+</html>
