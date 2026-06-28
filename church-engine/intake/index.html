@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Church Website Engine — Tell Us About Your Church</title>
+<meta name="description" content="Answer a few questions and we'll build your church a clean, modern website — ministries, staff, about, and online giving. By The Digital Dad.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500..700&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FBFAF7; --paper-2:#F2EFE9; --card:#FFFFFF;
+  --ink:#241F1A; --ink-soft:#6B6258; --line:rgba(36,31,26,.14);
+  --accent:#2E6F6A; --accent-deep:#1F4F4B; --gold:#C98A2E;
+  --shadow:0 2px 6px rgba(36,31,26,.04), 0 16px 40px rgba(36,31,26,.07);
+  --ease:cubic-bezier(.34,1.4,.64,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Mulish',system-ui,sans-serif;color:var(--ink);line-height:1.65;background:var(--paper);
+  background-image:radial-gradient(640px 420px at 88% -6%,rgba(46,111,106,.08),transparent 60%);padding:0 0 64px}
+h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:600;line-height:1.15}
+a{color:var(--accent)}
+.wrap{max-width:760px;margin:0 auto;padding:0 22px}
+header{text-align:center;padding:54px 0 14px}
+.eyebrow{font-family:'Mulish';font-weight:700;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+header h1{font-size:clamp(2.1rem,5vw,3rem);margin-bottom:14px}
+header p{color:var(--ink-soft);font-size:1.08rem;max-width:34em;margin:0 auto}
+.by{font-size:.82rem;color:var(--ink-soft);margin-top:14px}
+form{margin-top:34px}
+.fs{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:28px 26px;margin-bottom:20px;box-shadow:var(--shadow)}
+.fs legend{font-family:'Fraunces';font-weight:600;font-size:1.3rem;padding:0;margin-bottom:4px;display:flex;align-items:center;gap:10px}
+.fs .n{width:30px;height:30px;border-radius:50%;background:rgba(46,111,106,.10);color:var(--accent);font-family:'Mulish';font-weight:800;font-size:.85rem;display:inline-flex;align-items:center;justify-content:center}
+.fs .hint{color:var(--ink-soft);font-size:.92rem;margin:2px 0 18px 40px}
+.field{margin-bottom:16px}
+label{display:block;font-weight:700;font-size:.92rem;margin-bottom:6px}
+label .opt{font-weight:400;color:var(--ink-soft);font-size:.84rem}
+input,textarea,select{width:100%;font-family:'Mulish';font-size:1rem;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+input:focus,textarea:focus,select:focus{outline:3px solid rgba(46,111,106,.25);outline-offset:1px;border-color:var(--accent)}
+textarea{min-height:88px;resize:vertical}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:560px){.two{grid-template-columns:1fr}}
+.submit{text-align:center;margin-top:8px}
+.btn{font-family:'Mulish';font-weight:800;font-size:1rem;letter-spacing:.02em;background:linear-gradient(150deg,var(--accent),var(--accent-deep));color:#fff;border:none;border-radius:12px;padding:16px 34px;cursor:pointer;box-shadow:var(--shadow);transition:transform .3s var(--ease)}
+.btn:hover{transform:translateY(-2px)}
+.fine{color:var(--ink-soft);font-size:.85rem;margin-top:14px}
+.done{display:none;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:44px 30px;text-align:center;box-shadow:var(--shadow)}
+.done h2{color:var(--accent);margin-bottom:10px}
+.footer{text-align:center;color:var(--ink-soft);font-size:.82rem;margin-top:30px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <p class="eyebrow">Church Website Engine</p>
+    <h1>Let's build your church a home online.</h1>
+    <p>Answer what you can below — skip anything you're unsure of. We'll turn it into a clean, modern multi-page website with online giving, usually within days. The more you give us, the better it gets.</p>
+    <p class="by">A free / low-cost ministry build by <strong>The Digital Dad</strong></p>
+  </div>
+</header>
+
+<div class="wrap">
+  <form id="intake" onsubmit="document.getElementById('intake').style.display='none';document.getElementById('thanks').style.display='block';window.scrollTo({top:0,behavior:'smooth'});return false;">
+
+    <fieldset class="fs"><legend><span class="n">1</span> Your church</legend>
+      <p class="hint">The basics so people can find and recognize you.</p>
+      <div class="field"><label>Church name</label><input name="church_name" required placeholder="Mustang Creek Community Church"></div>
+      <div class="two">
+        <div class="field"><label>City / area</label><input name="city" placeholder="Forney, TX"></div>
+        <div class="field"><label>Denomination / affiliation <span class="opt">(optional)</span></label><input name="denomination" placeholder="Assemblies of God"></div>
+      </div>
+      <div class="field"><label>Full address</label><input name="address" placeholder="13851 FM 548, Forney, TX 75126"></div>
+      <div class="two">
+        <div class="field"><label>Phone</label><input name="phone" placeholder="(972) 833-2260"></div>
+        <div class="field"><label>Contact email</label><input type="email" name="email" placeholder="info@yourchurch.org"></div>
+      </div>
+      <div class="field"><label>Current website <span class="opt">(if any — we'll pull what's useful)</span></label><input name="current_site" placeholder="www.yourchurch.org"></div>
+    </fieldset>
+
+    <fieldset class="fs"><legend><span class="n">2</span> Gatherings</legend>
+      <p class="hint">When and how you meet.</p>
+      <div class="field"><label>Service times</label><input name="service_times" placeholder="Sundays 9 & 11 AM · Wednesdays 7 PM"></div>
+      <div class="field"><label>What's a first visit like? <span class="opt">(parking, kids, how long, dress)</span></label><textarea name="what_to_expect" placeholder="Come ~15 min early for coffee, secure kids check-in, ~90 min service, come as you are…"></textarea></div>
+    </fieldset>
+
+    <fieldset class="fs"><legend><span class="n">3</span> Who you are</legend>
+      <p class="hint">Your heart in a few sentences — we'll shape the words.</p>
+      <div class="field"><label>Mission / vision or a few values</label><textarea name="mission" placeholder="In This House · Found People Find People · Saved People Serve People · We Never Stop Growing"></textarea></div>
+      <div class="field"><label>What you believe <span class="opt">(paste a statement of faith or a link)</span></label><textarea name="beliefs" placeholder="Paste your statement of faith, or a link to it…"></textarea></div>
+    </fieldset>
+
+    <fieldset class="fs"><legend><span class="n">4</span> Ministries</legend>
+      <p class="hint">List each ministry + one line about it (kids, youth, groups, women, men, etc.).</p>
+      <div class="field"><textarea name="ministries" style="min-height:130px" placeholder="Camp Creek Kids — safe, fun check-in for kids 0–12&#10;MCYTH Youth — middle & high schoolers, Wednesdays 7 PM&#10;Small Groups — life is better connected…"></textarea></div>
+    </fieldset>
+
+    <fieldset class="fs"><legend><span class="n">5</span> Leadership</legend>
+      <p class="hint">Pastors / staff — name, role, and email (one per line). Photos can come later.</p>
+      <div class="field"><textarea name="leadership" style="min-height:120px" placeholder="Robert & Judy Kennedy — Lead Pastors — pastor@yourchurch.org&#10;Joseph & Jorgina Ante — Student Pastors — youth@yourchurch.org…"></textarea></div>
+    </fieldset>
+
+    <fieldset class="fs"><legend><span class="n">6</span> Giving</legend>
+      <p class="hint">We connect a trusted giving platform — you keep full control of the money.</p>
+      <div class="two">
+        <div class="field"><label>Giving platform you use <span class="opt">(or want)</span></label>
+          <select name="giving_platform"><option value="">Choose…</option><option>Pushpay</option><option>Tithe.ly</option><option>Planning Center Giving</option><option>Givebutter</option><option>Givelify</option><option>PayPal</option><option>Zelle</option><option>Not sure — recommend one</option></select></div>
+        <div class="field"><label>Giving link / details <span class="opt">(if you have one)</span></label><input name="giving_link" placeholder="pushpay.com/g/yourchurch or Zelle email"></div>
+      </div>
+    </fieldset>
+
+    <fieldset class="fs"><legend><span class="n">7</span> Connect &amp; brand</legend>
+      <p class="hint">How people stay in touch + your look.</p>
+      <div class="field"><label>Social links <span class="opt">(Instagram / Facebook / YouTube)</span></label><textarea name="socials" placeholder="instagram.com/yourchurch · facebook.com/yourchurch · youtube.com/…"></textarea></div>
+      <div class="field"><label>Logo, brand colors &amp; photos <span class="opt">(paste a link to a Drive/Dropbox folder)</span></label><input name="assets_link" placeholder="Link to your logo + photos folder"></div>
+      <div class="field"><label>Anything else we should know?</label><textarea name="notes" placeholder="A newsletter signup, prayer-request form, events calendar, sermons page…"></textarea></div>
+    </fieldset>
+
+    <div class="submit">
+      <button type="submit" class="btn">Send it — let's build →</button>
+      <p class="fine">No cost to start. We'll review what you sent and reach out with next steps.</p>
+    </div>
+  </form>
+
+  <div class="done" id="thanks">
+    <h2>Thank you. 🙏</h2>
+    <p style="color:var(--ink-soft)">We've got your church's details. We'll review everything and reach out shortly with a first look. Your online presence is on the way.</p>
+  </div>
+</div>
+
+<p class="footer">Church Website Engine · built by The Digital Dad AI Systems · thedigitaldad.co</p>
+</body></html>
