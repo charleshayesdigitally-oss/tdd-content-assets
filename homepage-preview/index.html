@@ -654,32 +654,56 @@
         var renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
         renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.8));
         var scene = new THREE.Scene();
-        var camera = new THREE.PerspectiveCamera(55, innerWidth/innerHeight, 0.1, 100);
-        camera.position.z = 6;
+        var camera = new THREE.PerspectiveCamera(60, innerWidth/innerHeight, 0.1, 100);
+        camera.position.z = 8;
+        var mobile = innerWidth < 760;
+
+        /* starfield — the deep backdrop, like the logo */
+        var starN = mobile ? 450 : 900, sArr = new Float32Array(starN*3);
+        for (var i=0;i<starN;i++){ sArr[i*3] = (Math.random()-0.5)*46; sArr[i*3+1] = (Math.random()-0.5)*30; sArr[i*3+2] = (Math.random()-0.5)*24 - 6; }
+        var sg = new THREE.BufferGeometry(); sg.setAttribute('position', new THREE.BufferAttribute(sArr,3));
+        var stars = new THREE.Points(sg, new THREE.PointsMaterial({ color:0xbcd4ff, size:0.06, transparent:true, opacity:0.75 }));
+        scene.add(stars);
+
+        /* network nodes that connect as they drift (the constellation) */
         var group = new THREE.Group(); scene.add(group);
-
-        var geo = new THREE.IcosahedronGeometry(2.4, 2);
-        group.add(new THREE.LineSegments(new THREE.WireframeGeometry(geo), new THREE.LineBasicMaterial({ color: 0x8B5CF6, transparent: true, opacity: 0.34 })));
-        group.add(new THREE.Points(geo, new THREE.PointsMaterial({ color: 0x00AEEF, size: 0.07, transparent: true, opacity: 0.95 })));
-
-        var n = (innerWidth < 760) ? 130 : 280, pg = new THREE.BufferGeometry(), arr = new Float32Array(n*3);
-        for (var i=0;i<n*3;i++){ arr[i] = (Math.random()-0.5)*14; }
-        pg.setAttribute('position', new THREE.BufferAttribute(arr, 3));
-        var cloud = new THREE.Points(pg, new THREE.PointsMaterial({ color: 0x43c4f5, size: 0.03, transparent: true, opacity: 0.5 }));
-        scene.add(cloud);
+        var NODE = mobile ? 22 : 42, BX=8, BY=4.6, BZ=2.6, THRESH=3.2;
+        var pos = new Float32Array(NODE*3), vel = new Float32Array(NODE*3);
+        for (var i=0;i<NODE;i++){
+          pos[i*3]=(Math.random()-0.5)*2*BX; pos[i*3+1]=(Math.random()-0.5)*2*BY; pos[i*3+2]=(Math.random()-0.5)*2*BZ;
+          vel[i*3]=(Math.random()-0.5)*0.011; vel[i*3+1]=(Math.random()-0.5)*0.011; vel[i*3+2]=(Math.random()-0.5)*0.006;
+        }
+        var ng = new THREE.BufferGeometry(); ng.setAttribute('position', new THREE.BufferAttribute(pos,3));
+        group.add(new THREE.Points(ng, new THREE.PointsMaterial({ color:0x00AEEF, size:0.15, transparent:true, opacity:0.95 })));
+        var lArr = new Float32Array(NODE*NODE*3);
+        var lg = new THREE.BufferGeometry(); var lAttr = new THREE.BufferAttribute(lArr,3); lAttr.setUsage(THREE.DynamicDrawUsage); lg.setAttribute('position', lAttr);
+        group.add(new THREE.LineSegments(lg, new THREE.LineBasicMaterial({ color:0x8B5CF6, transparent:true, opacity:0.3 })));
 
         function resize(){ camera.aspect = innerWidth/innerHeight; camera.updateProjectionMatrix(); renderer.setSize(innerWidth, innerHeight, false); }
         resize(); addEventListener('resize', resize);
 
-        var tx = 0, ty = 0;
-        function loop(){
-          if (!rm){ group.rotation.y += 0.0016; group.rotation.x += 0.0006; cloud.rotation.y -= 0.0004; }
-          tx += (my - tx)*0.05; ty += (mx - ty)*0.05;
-          group.position.x = ty*0.8; group.position.y = -tx*0.8; group.rotation.z = ty*0.12;
+        var rx=0, ry=0;
+        function frame(){
+          if (!rm){
+            for (var i=0;i<NODE;i++){ var a=i*3;
+              pos[a]+=vel[a]; pos[a+1]+=vel[a+1]; pos[a+2]+=vel[a+2];
+              if(pos[a]<-BX||pos[a]>BX)vel[a]*=-1; if(pos[a+1]<-BY||pos[a+1]>BY)vel[a+1]*=-1; if(pos[a+2]<-BZ||pos[a+2]>BZ)vel[a+2]*=-1;
+            }
+            ng.attributes.position.needsUpdate = true;
+          }
+          var c=0;
+          for (var i=0;i<NODE;i++){ for (var j=i+1;j<NODE;j++){
+            var a=i*3, b=j*3, dx=pos[a]-pos[b], dy=pos[a+1]-pos[b+1], dz=pos[a+2]-pos[b+2];
+            if (dx*dx+dy*dy+dz*dz < THRESH*THRESH){ lArr[c++]=pos[a];lArr[c++]=pos[a+1];lArr[c++]=pos[a+2]; lArr[c++]=pos[b];lArr[c++]=pos[b+1];lArr[c++]=pos[b+2]; }
+          } }
+          lg.setDrawRange(0, c/3); lAttr.needsUpdate = true;
+          ry += (mx*0.5 - ry)*0.04; rx += (my*0.4 - rx)*0.04;
+          group.rotation.y = ry; group.rotation.x = rx; group.position.x = ry*1.2;
+          if (!rm) stars.rotation.y += 0.0002;
           renderer.render(scene, camera);
-          if (!rm) requestAnimationFrame(loop);
+          if (!rm) requestAnimationFrame(frame);
         }
-        loop();
+        frame();
       }
 
       /* --- cursor spotlight + parallax + card tilt (desktop pointer only, reduced-motion safe) --- */
