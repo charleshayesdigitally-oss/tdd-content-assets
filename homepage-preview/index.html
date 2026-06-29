@@ -146,6 +146,14 @@
       .proof-tile.txt.purple .go { color: var(--purple); }
       .proof-foot { text-align: center; margin-top: 30px; font-family: 'JetBrains Mono', monospace; font-size: 0.74rem; letter-spacing: 0.02em; color: var(--muted); }
 
+      /* TESTIMONIALS */
+      .tgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 8px 0 44px; }
+      @media (max-width: 900px) { .tgrid { grid-template-columns: 1fr; } }
+      .tcard { background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.008)); border: 1px solid var(--border); border-top: 2px solid var(--blue); border-radius: 16px; padding: 26px 24px; display: flex; flex-direction: column; }
+      .tcard .tq { font-size: 0.95rem; color: var(--text); line-height: 1.62; font-weight: 300; flex: 1; }
+      .tcard .tname { margin-top: 18px; font-weight: 700; color: #fff; font-size: 0.9rem; }
+      .tcard .trole { font-family: 'JetBrains Mono', monospace; font-size: 0.64rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--blue); margin-top: 3px; }
+
       /* WHAT WE BUILD */
       .build-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 56px; }
       @media (max-width: 900px) { .build-grid { grid-template-columns: 1fr 1fr; } }
@@ -538,7 +546,30 @@
         <span class="go">See the setup →</span>
       </a>
     </div>
-    <p class="proof-foot reveal" style="margin-bottom:56px;">Every tile is a working system, not a portfolio mockup.</p>
+    <p class="proof-foot reveal" style="margin-bottom:48px;">Every tile is a working system, not a portfolio mockup.</p>
+
+    <div class="section-header center reveal" style="margin-bottom:30px;">
+      <span class="label center">What people say</span>
+      <h2 class="display" style="font-size:clamp(2rem,4vw,3.4rem);">In Their Words.</h2>
+      <p>Real reactions from people I've built for.</p>
+    </div>
+    <div class="tgrid reveal">
+      <div class="tcard">
+        <p class="tq">"The final page captured my voice so well that I immediately replaced my website homepage with it."</p>
+        <div class="tname">Alison James</div>
+        <div class="trole">Founder, AiLisia Labs</div>
+      </div>
+      <div class="tcard">
+        <p class="tq">"What impressed me most was how accurately he captured my voice, personality, and overall mission. It felt like he truly understood my vision and brought it to life without me having to spend hours explaining every detail."</p>
+        <div class="tname">Jamie O'Connor</div>
+        <div class="trole">Boss VA Academy</div>
+      </div>
+      <div class="tcard">
+        <p class="tq">"It didn't sound like a typical AI sales page. It sounded like someone actually understood my audience and the way I communicate in my content daily!"</p>
+        <div class="tname">Ashley Rivera</div>
+        <div class="trole">The Savvy Mama</div>
+      </div>
+    </div>
 
     <div class="contact-card reveal">
       <span class="label">Start a Conversation</span>
