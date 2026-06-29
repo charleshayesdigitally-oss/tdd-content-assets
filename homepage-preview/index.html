@@ -71,7 +71,9 @@
 
       #nav { position: fixed; top: 0; left: 0; right: 0; z-index: 5000; background: linear-gradient(180deg, rgba(5,8,22,0.95), rgba(5,8,22,0.74)) !important; border-bottom: 1px solid var(--border); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
       .nav-wrap { display: flex; align-items: center; justify-content: space-between; height: 72px; }
-      .nav-logo img { height: 46px; width: auto; display: block; }
+      .nav-logo { text-decoration: none; }
+      .nav-wordmark { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 1.18rem; letter-spacing: 0.005em; color: #fff; white-space: nowrap; }
+      .nav-wordmark:hover { color: var(--blue); }
       .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
       .nav-links a { position: relative; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dim); text-decoration: none; padding-bottom: 3px; transition: color 0.22s ease; }
       .nav-links a::after { content: ''; position: absolute; left: 0; bottom: 0; height: 1.5px; width: 100%; background: var(--blue); transform: scaleX(0); transform-origin: left; transition: transform 0.35s var(--ease); }
@@ -81,7 +83,7 @@
       @media (max-width: 940px) { .nav-links { display: none; } }
 
       #hero { min-height: 100vh; padding: 168px 0 96px; position: relative; overflow: hidden; display: flex; align-items: center; }
-      #hero::before { content: ''; position: absolute; top: -12%; right: -6%; width: 50%; height: 130%; z-index: 0; transform: skewX(-9deg); background: repeating-linear-gradient(135deg, rgba(0,174,239,0.06) 0 2px, transparent 2px 28px); pointer-events: none; }
+      /* (diagonal hatch removed — the 3D starfield network is the hero texture now) */
       .hero-grid { display: grid; grid-template-columns: 1fr 400px; gap: 72px; align-items: center; position: relative; z-index: 1; }
       @media (max-width: 960px) { .hero-grid { grid-template-columns: 1fr; gap: 52px; } }
       .hero-logo { margin-bottom: 32px; }
@@ -248,7 +250,7 @@
       footer { position: relative; z-index: 1; border-top: 1px solid var(--border); padding: 56px 0 32px; background: var(--bg2) !important; }
       .footer-top { display: grid; grid-template-columns: auto 1fr auto; gap: 48px; align-items: start; padding-bottom: 36px; border-bottom: 1px solid var(--border); margin-bottom: 28px; }
       @media (max-width: 768px) { .footer-top { grid-template-columns: 1fr; gap: 28px; } }
-      .footer-logo img { height: 52px; width: auto; }
+      .footer-logo img { height: 88px; width: auto; }
       .footer-pages { display: flex; flex-wrap: wrap; gap: 10px 28px; }
       .footer-pages a { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; color: var(--dim); text-decoration: none; transition: color 0.22s; }
       .footer-pages a:hover { color: var(--blue); }
@@ -269,8 +271,8 @@
       .d1 { animation-delay: 0.08s; } .d2 { animation-delay: 0.18s; } .d3 { animation-delay: 0.28s; }
       .d4 { animation-delay: 0.40s; } .d5 { animation-delay: 0.52s; }
       /* interactivity: particle field + cursor spotlight + parallax + card tilt */
-      #fx { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
-      #spot { position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0; transition: opacity .4s ease; background: radial-gradient(360px 360px at var(--mx,50%) var(--my,30%), rgba(0,174,239,.13), rgba(139,92,246,.05) 40%, transparent 70%); }
+      #fx { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+      #spot { position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: 0; transition: opacity .4s ease; background: radial-gradient(360px 360px at var(--mx,50%) var(--my,30%), rgba(0,174,239,.13), rgba(139,92,246,.05) 40%, transparent 70%); }
       .par { will-change: transform; transition: transform .25s var(--ease); }
       .tiltwrap { perspective: 1000px; }
       #card { transform-style: preserve-3d; will-change: transform; transition: transform .2s var(--ease); }
@@ -288,15 +290,11 @@
     /* ── 3. HTML ── */
     document.body.innerHTML = `
 <div class="dd-bg" aria-hidden="true"></div>
-<canvas id="fx" aria-hidden="true"></canvas>
-<div id="spot" aria-hidden="true"></div>
 
 <header id="nav">
   <div class="wrap">
     <nav class="nav-wrap">
-      <a href="#hero" class="nav-logo">
-        <img src="https://d1yei2z3i6k35z.cloudfront.net/thumb_150/69d8398bb25035.22185544_TheDigitalDadAIlogo.png" alt="The Digital Dad AI Systems" />
-      </a>
+      <a href="#hero" class="nav-logo"><span class="nav-wordmark">The Digital Dad</span></a>
       <ul class="nav-links">
         <li><a href="#stack">The Framework</a></li>
         <li><a href="#about">Our Story</a></li>
@@ -310,18 +308,14 @@
 </header>
 
 <section id="hero">
+  <canvas id="fx" aria-hidden="true"></canvas>
+  <div id="spot" aria-hidden="true"></div>
   <div class="wrap">
     <div class="hero-grid">
       <div class="par" data-depth="16">
-        <div class="hero-logo au d1">
-          <video autoplay muted loop playsinline style="height:200px;width:auto;display:block;">
-            <source src="https://d1yei2z3i6k35z.cloudfront.net/16480309/69dfe6a41a4563.95623963_hf_20260415_192315_d9a49dd8-be6e-4013-8baa-ab8f9865df0b.mp4" type="video/mp4">
-            <img src="https://d1yei2z3i6k35z.cloudfront.net/thumb_150/69d8398bb25035.22185544_TheDigitalDadAIlogo.png" alt="The Digital Dad AI Systems" style="height:200px;width:auto;" />
-          </video>
-        </div>
         <a href="#stack" class="au d2" style="display:inline-flex;align-items:center;gap:7px;font-family:'JetBrains Mono',monospace;font-size:0.72rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--blue);text-decoration:none;margin-bottom:16px;">An AI Systems Agency · Built on the STACK Framework <span aria-hidden="true">→</span></a>
         <h1 class="display hero-h1 au d2">You Don't<br>Need More<br><em class="gblue">Content.</em><br>You Need<br>A System.</h1>
-        <p class="hero-sub au d3">I build the AI infrastructure that gives service businesses, creators, and working dads the leverage to grow sustainably — without burning out, sacrificing what matters most, or chasing hype.</p>
+        <p class="hero-sub au d3">I build the AI infrastructure that gives service businesses, creators, churches, and working dads the leverage to grow sustainably — without burning out, sacrificing what matters most, or chasing hype.</p>
         <div class="hero-actions au d4">
           <a href="https://digital-dad-leverage-score.netlify.app" target="_blank" class="btn btn-blue">Take the 2-min Quiz <span class="arr" aria-hidden="true">→</span></a>
           <a href="#work" class="btn btn-outline">Work With Me <span class="arr" aria-hidden="true">→</span></a>
@@ -476,7 +470,7 @@
     <div class="section-header center reveal">
       <span class="label center">Work With Me</span>
       <h2 class="display">Let Me Build<br>Your System.</h2>
-      <p>An AI systems agency for service businesses, creators, and builders. I architect the system, build it in your brand, and hand it off running.</p>
+      <p>An AI systems agency for service businesses, creators, churches, and builders. I architect the system, build it in your brand, and hand it off running.</p>
     </div>
 
     <div class="audit-card reveal">
@@ -679,7 +673,8 @@
         var lg = new THREE.BufferGeometry(); var lAttr = new THREE.BufferAttribute(lArr,3); lAttr.setUsage(THREE.DynamicDrawUsage); lg.setAttribute('position', lAttr);
         group.add(new THREE.LineSegments(lg, new THREE.LineBasicMaterial({ color:0x8B5CF6, transparent:true, opacity:0.3 })));
 
-        function resize(){ camera.aspect = innerWidth/innerHeight; camera.updateProjectionMatrix(); renderer.setSize(innerWidth, innerHeight, false); }
+        var heroEl = document.getElementById('hero');
+        function resize(){ var w = heroEl ? heroEl.clientWidth : innerWidth, h = heroEl ? heroEl.clientHeight : innerHeight; camera.aspect = w/h; camera.updateProjectionMatrix(); renderer.setSize(w, h, false); }
         resize(); addEventListener('resize', resize);
 
         var rx=0, ry=0;
