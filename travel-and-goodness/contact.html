@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact — Travel & Goodness</title>
+<meta name="description" content="Reach out, or come along with the newsletter.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Karla:wght@400;500;600;700;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="_shared.css">
+</head>
+<body id="top">
+<header><nav>
+  <a class="brand" href="index.html"><img src="./logo.png" alt="Travel & Goodness"><b>Travel &amp; Goodness</b></a>
+  <div class="navlinks"><a href="index.html">Home</a><a href="about.html">About</a><a href="shop.html">Shop</a><a href="guides.html">Guides</a><a href="resources.html">Resources</a><a href="contact.html" class="active">Contact</a></div>
+  <a href="index.html#join" class="nav-cta">Join the list</a>
+  <button class="menu-btn" aria-label="Menu">☰</button>
+</nav></header>
+<main>
+  <section class="page-hero"><div class="wrap">
+    <span class="eyebrow" style="justify-content:center">Say hello</span>
+    <h1>Let's <span class="script" style="font-size:1.15em">connect.</span></h1>
+    <p class="intro">Have a question, or just want to say hi? I read every message — reach out below, or come along with the newsletter.</p>
+  </div></section>
+  <section class="section"><div class="wrap">
+    <form class="form" onsubmit="this.innerHTML='<p class=&quot;center&quot; style=&quot;color:var(--teal);font-weight:700;font-size:1.1rem&quot;>Thank you — your message is on its way. 💌</p>';return false;">
+      <input type="text" placeholder="Your name" required aria-label="Name">
+      <input type="email" placeholder="Your email" required aria-label="Email">
+      <textarea rows="5" placeholder="Your message" required aria-label="Message"></textarea>
+      <button type="submit" class="btn" style="justify-content:center">Send it <span class="arr" aria-hidden="true">→</span></button>
+    </form>
+    <p class="center" style="color:var(--ink-soft);font-size:.9rem;margin-top:16px">Form routes to <span class="pending">her preferred email</span> · or wire to the Systeme list.</p>
+
+    <div class="center mt" style="margin-top:40px">
+      <span class="eyebrow" style="justify-content:center">Prefer the newsletter?</span>
+      <h3 style="font-size:1.5rem;margin-bottom:8px">Come along for the <span class="script" style="font-size:1.15em">ride.</span></h3>
+      <p style="color:var(--ink-soft);margin-bottom:18px">Honest notes on building options and finding the good in the next chapter.</p>
+      <a href="index.html#join" class="btn">Join the list <span class="arr" aria-hidden="true">→</span></a>
+      <p style="color:var(--ink-soft);font-size:.86rem;margin-top:18px">Find me on <span class="pending">Instagram / socials — her handles</span></p>
+    </div>
+  </div></section>
+</main>
+<footer><div class="wrap">
+  <div class="foot-grid">
+    <a class="foot-brand" href="index.html"><img src="./logo.png" alt="Travel & Goodness"><b>Travel &amp; Goodness</b></a>
+    <div class="foot-links"><a href="about.html">About</a><a href="shop.html">Shop</a><a href="guides.html">Guides</a><a href="resources.html">Resources</a><a href="contact.html">Contact</a></div>
+  </div>
+  <div class="disclaim">
+    <p><strong>A note on links:</strong> Some links here are affiliate links — if you buy through them, I may earn a commission at no extra cost to you. I only ever recommend what I actually use and believe in.</p>
+    <p><strong>Income disclaimer:</strong> Nothing here is a promise of results or earnings. Anything you build takes your own work, time, and judgment.</p>
+  </div>
+  <p class="copy">© <span id="yr"></span> Travel &amp; Goodness · Heather Allen · travelandgoodness.com</p>
+</div></footer>
+<script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+</body></html>
