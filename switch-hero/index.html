@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Digital Dad — Switch + Igniting Starfield (mock)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<style>
+  :root{
+    --bg:#05070e;--ink:#eef3ff;--muted:#8592b0;
+    --blue:#00AEEF;--blue-2:#3B82F6;--purple:#8B5CF6;--line:rgba(255,255,255,.08);
+    --ease:cubic-bezier(.2,.8,.2,1);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--bg);color:var(--ink);font-family:"Poppins",system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow:hidden;position:relative}
+
+  #stars{position:fixed;inset:0;z-index:0;display:block}
+  .glow{position:fixed;inset:-20%;z-index:1;opacity:.05;transition:none;pointer-events:none;filter:blur(10px);
+    background:
+      radial-gradient(42% 40% at 22% 18%, rgba(0,174,239,.5), transparent 60%),
+      radial-gradient(46% 44% at 82% 86%, rgba(139,92,246,.48), transparent 62%),
+      radial-gradient(38% 36% at 78% 20%, rgba(59,130,246,.3), transparent 60%);}
+  .grid{position:fixed;inset:0;z-index:1;opacity:0;pointer-events:none;
+    background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+    background-size:64px 64px;
+    -webkit-mask-image:radial-gradient(70% 60% at 50% 45%,#000,transparent 80%);mask-image:radial-gradient(70% 60% at 50% 45%,#000,transparent 80%);}
+  .grain{position:fixed;inset:0;z-index:2;pointer-events:none;opacity:.05;mix-blend-mode:overlay}
+
+  .wrap{position:relative;z-index:3;min-height:100vh;display:grid;grid-template-columns:1.15fr .85fr;align-items:center;gap:2rem;max-width:1180px;margin:0 auto;padding:5vh 6vw}
+  .stage{max-width:600px}
+  .status{font-family:"JetBrains Mono",monospace;font-weight:700;font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);display:inline-flex;align-items:center;gap:.6rem;margin-bottom:1.4rem}
+  .status .dot{width:8px;height:8px;border-radius:50%;background:#3a4155;transition:background .6s,box-shadow .6s}
+  .logo{height:46px;width:auto;display:block;margin-bottom:1.6rem;opacity:.22;filter:grayscale(1) brightness(.7);mix-blend-mode:screen}
+  .kicker{font-weight:600;font-size:clamp(.85rem,1.4vw,1rem);color:var(--muted);text-transform:uppercase;margin-bottom:.5rem}
+  h1{font-family:"Anton",sans-serif;font-weight:400;line-height:.92;letter-spacing:-.01em;font-size:clamp(2.9rem,7vw,5.4rem);text-transform:uppercase;margin-bottom:1.4rem}
+  h1 .row{display:block;overflow:hidden}
+  h1 .lit-word{color:transparent;background:linear-gradient(96deg,var(--blue),var(--blue-2) 55%,var(--purple));-webkit-background-clip:text;background-clip:text}
+  .sub{font-size:clamp(1rem,1.7vw,1.22rem);line-height:1.6;color:#c3ccdf;max-width:33ch;margin-bottom:2.2rem}
+  .cta{display:flex;align-items:center;gap:1.1rem;flex-wrap:wrap}
+  .btn{font-weight:600;font-size:1rem;text-decoration:none;border-radius:12px;padding:.95rem 1.7rem;display:inline-flex;align-items:center;gap:.55rem;transition:transform .18s var(--ease),box-shadow .25s var(--ease)}
+  .btn-primary{color:#04101c;background:linear-gradient(96deg,var(--blue),var(--blue-2));box-shadow:0 10px 30px -8px rgba(0,174,239,.55)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 40px -8px rgba(0,174,239,.7)}
+  .btn-ghost{color:var(--ink);border:1px solid var(--line);background:rgba(255,255,255,.02)}
+  .btn-ghost:hover{transform:translateY(-2px);border-color:rgba(0,174,239,.5)}
+  .btn:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+  .founder{margin-top:2.4rem;font-size:.82rem;color:var(--muted)}
+
+  .switch-col{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.1rem}
+  .switch-label{font-family:"JetBrains Mono",monospace;font-size:.68rem;letter-spacing:.3em;color:var(--muted);text-transform:uppercase}
+  .switch{background:none;border:0;cursor:pointer;padding:0;line-height:0;border-radius:26px;transition:transform .2s var(--ease)}
+  .switch:hover{transform:translateY(-3px)}
+  .switch:focus-visible{outline:2px solid var(--blue);outline-offset:6px}
+  .switch svg{width:min(180px,44vw);height:auto;display:block;overflow:visible}
+  .plate{fill:#0e1320;stroke:rgba(255,255,255,.09);stroke-width:1.5;transition:filter .4s}
+  .screw{fill:#232a3b}
+  .track{fill:#0a0e18;stroke:rgba(255,255,255,.06);stroke-width:1.5;transition:fill .4s}
+  .track-lit{opacity:0;transition:opacity .4s}
+  .knob rect{fill:url(#knobOff)}
+  .hint{font-size:.8rem;color:var(--muted);transition:opacity .3s}
+  .hint .arrow{color:var(--blue)}
+
+  body.lit .glow{opacity:1}
+  body.lit .grid{opacity:.5}
+  body.lit .status{color:#cfe8ff}
+  body.lit .status .dot{background:var(--blue);box-shadow:0 0 12px 2px rgba(0,174,239,.8)}
+  body.lit .logo{opacity:1;filter:drop-shadow(0 0 18px rgba(0,174,239,.35))}
+  body.lit .plate{filter:drop-shadow(0 0 22px rgba(0,174,239,.35))}
+  body.lit .track{fill:#06121f}
+  body.lit .track-lit{opacity:1}
+  body.lit .knob rect{fill:url(#knobOn)}
+  body.lit .hint{opacity:0}
+  .glow{transition:opacity .9s var(--ease)}
+
+  @media (max-width:820px){
+    body{overflow:auto}
+    .wrap{grid-template-columns:1fr;gap:2.5rem;padding:8vh 7vw}
+    .switch-col{order:-1}.sub{max-width:100%}
+  }
+  @media (prefers-reduced-motion:reduce){.switch:hover,.btn:hover{transform:none}}
+</style>
+</head>
+<body>
+  <canvas id="stars" aria-hidden="true"></canvas>
+  <div class="glow" aria-hidden="true"></div>
+  <div class="grid" aria-hidden="true"></div>
+
+  <div class="wrap">
+    <div class="stage">
+      <div class="status"><span class="dot"></span><span id="statusText">System status: Offline</span></div>
+      <img class="logo" src="./logo.png" alt="The Digital Dad AI Systems" />
+      <p class="kicker" data-reveal>Stop running on manual.</p>
+      <h1>
+        <span class="row"><span class="word" data-reveal>Switch on</span></span>
+        <span class="row"><span class="word lit-word" data-reveal>the system.</span></span>
+      </h1>
+      <p class="sub" data-reveal>Systems create leverage. Leverage creates freedom. Build the backend that runs without you.</p>
+      <div class="cta">
+        <a class="btn btn-primary" data-reveal href="https://thedigitaldadnews.beehiiv.com/?modal=signup">Join the list</a>
+        <a class="btn btn-ghost" data-reveal href="https://digital-dad-leverage-score.netlify.app">Take the AI Leverage Score</a>
+      </div>
+      <p class="founder" data-reveal>Founded by a working dad. Built for everyone still building.</p>
+    </div>
+
+    <div class="switch-col">
+      <span class="switch-label">Power</span>
+      <button class="switch" id="switch" aria-pressed="false" aria-label="Flip the switch to power the system on">
+        <svg viewBox="0 0 120 210" role="img" aria-hidden="true">
+          <defs>
+            <linearGradient id="knobOff" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#39415a"/><stop offset="1" stop-color="#1c2231"/></linearGradient>
+            <linearGradient id="knobOn" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7fe4ff"/><stop offset="1" stop-color="#2a9fe0"/></linearGradient>
+            <linearGradient id="trackLit" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#00AEEF"/><stop offset="1" stop-color="#8B5CF6"/></linearGradient>
+          </defs>
+          <rect class="plate" x="14" y="8" width="92" height="194" rx="18"/>
+          <circle class="screw" cx="60" cy="20" r="3"/><circle class="screw" cx="60" cy="190" r="3"/>
+          <rect class="track" x="42" y="44" width="36" height="122" rx="18"/>
+          <rect class="track-lit" x="42" y="44" width="36" height="122" rx="18" fill="url(#trackLit)"/>
+          <g class="knob" id="knobG"><rect x="46" y="112" width="28" height="46" rx="14"/></g>
+        </svg>
+      </button>
+      <span class="hint" id="hint"><span class="arrow">↑</span> Click the switch</span>
+    </div>
+  </div>
+
+  <svg class="grain" aria-hidden="true"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2"/></filter><rect width="100%" height="100%" filter="url(#n)"/></svg>
+
+<script>
+  /* ---------- igniting starfield ---------- */
+  const cv = document.getElementById('stars');
+  const ctx = cv.getContext('2d');
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const state = { intensity: 0.14 };   // 0.14 = dim/off, 1 = fully lit
+  let stars = [], W=0, H=0, dpr=1, raf=0;
+
+  function seed(){
+    dpr = Math.min(window.devicePixelRatio||1, 2);
+    W = cv.width = Math.floor(innerWidth*dpr);
+    H = cv.height = Math.floor(innerHeight*dpr);
+    cv.style.width = innerWidth+'px'; cv.style.height = innerHeight+'px';
+    const count = Math.round((innerWidth*innerHeight)/9000);
+    stars = Array.from({length:count}, () => {
+      const purple = Math.random() < 0.22;
+      return {
+        x: Math.random()*W, y: Math.random()*H,
+        r: (Math.random()*1.3 + 0.4)*dpr,
+        a: Math.random()*0.7 + 0.3,
+        tw: Math.random()*1.6 + 0.4, ph: Math.random()*Math.PI*2,
+        vx: (Math.random()-0.5)*0.12*dpr, vy: (Math.random()*0.10+0.02)*dpr,
+        col: purple ? '213,190,255' : '219,233,255',
+        glow: purple ? '#8B5CF6' : '#00AEEF'
+      };
+    });
+  }
+  function frame(t){
+    ctx.clearRect(0,0,W,H);
+    const I = state.intensity;
+    for (const s of stars){
+      s.x += s.vx; s.y += s.vy;
+      if (s.y > H+2) s.y = -2; if (s.x < -2) s.x = W+2; if (s.x > W+2) s.x = -2;
+      const tw = 0.6 + 0.4*Math.sin(t*0.001*s.tw + s.ph);
+      const alpha = Math.min(1, s.a * tw * (0.18 + I*1.05));
+      ctx.globalAlpha = alpha;
+      ctx.fillStyle = 'rgb('+s.col+')';
+      ctx.shadowBlur = I*7*s.r; ctx.shadowColor = s.glow;
+      ctx.beginPath(); ctx.arc(s.x, s.y, s.r*(0.8+I*0.5), 0, 6.2832); ctx.fill();
+    }
+    ctx.globalAlpha = 1; ctx.shadowBlur = 0;
+    raf = requestAnimationFrame(frame);
+  }
+  seed();
+  if (reduce){ state.intensity = 0.85; ctx.clearRect(0,0,W,H);
+    for(const s of stars){ ctx.globalAlpha=Math.min(1,s.a*0.9); ctx.fillStyle='rgb('+s.col+')'; ctx.beginPath(); ctx.arc(s.x,s.y,s.r,0,6.2832); ctx.fill(); } ctx.globalAlpha=1;
+  } else { raf = requestAnimationFrame(frame); }
+  addEventListener('resize', seed);
+
+  /* ---------- switch + reveal ---------- */
+  const body=document.body, sw=document.getElementById('switch'), knob=document.getElementById('knobG'), statusText=document.getElementById('statusText');
+  const reveals=gsap.utils.toArray('[data-reveal]');
+  let on=false, autoTimer;
+  gsap.set(reveals,{y:18,opacity:0});
+
+  function powerOn(){
+    on=true; body.classList.add('lit'); sw.setAttribute('aria-pressed','true'); statusText.textContent='System status: Online';
+    if(reduce){ gsap.set(reveals,{y:0,opacity:1}); gsap.set(knob,{y:-58}); state.intensity=1; return; }
+    gsap.to(state,{intensity:1,duration:1.15,ease:'power2.out'});
+    gsap.timeline()
+      .to(knob,{y:-58,duration:.45,ease:'back.out(2.4)'},0)
+      .fromTo(sw,{scale:1},{scale:1.06,duration:.12,yoyo:true,repeat:1,ease:'power2.inOut'},0)
+      .to(reveals,{y:0,opacity:1,duration:.7,stagger:.09,ease:'power3.out'},.12);
+  }
+  function powerOff(){
+    on=false; body.classList.remove('lit'); sw.setAttribute('aria-pressed','false'); statusText.textContent='System status: Offline';
+    if(reduce){ gsap.set(reveals,{y:18,opacity:0}); gsap.set(knob,{y:0}); state.intensity=.14; return; }
+    gsap.to(state,{intensity:.14,duration:.7,ease:'power2.inOut'});
+    gsap.to(knob,{y:0,duration:.35,ease:'power2.inOut'});
+    gsap.to(reveals,{y:14,opacity:0,duration:.3,ease:'power2.in'});
+  }
+  function toggle(){ clearTimeout(autoTimer); on?powerOff():powerOn(); }
+  sw.addEventListener('click',toggle);
+  autoTimer=setTimeout(()=>{ if(!on) powerOn(); },1500);
+</script>
+</body>
+</html>
