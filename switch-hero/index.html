@@ -54,11 +54,14 @@
   .switch:hover{transform:translateY(-3px)}
   .switch:focus-visible{outline:2px solid var(--blue);outline-offset:6px}
   .switch svg{width:min(180px,44vw);height:auto;display:block;overflow:visible}
-  .plate{fill:#0e1320;stroke:rgba(255,255,255,.09);stroke-width:1.5;transition:filter .4s}
-  .screw{fill:#232a3b}
-  .track{fill:#0a0e18;stroke:rgba(255,255,255,.06);stroke-width:1.5;transition:fill .4s}
-  .track-lit{opacity:0;transition:opacity .4s}
-  .knob rect{fill:url(#knobOff)}
+  .plate{fill:url(#plateG);stroke:rgba(255,255,255,.10);stroke-width:1.5;transition:filter .4s}
+  .bevel{fill:none;stroke:rgba(255,255,255,.05);stroke-width:1}
+  .screw circle{fill:#2b3346}
+  .screw line{stroke:#5a6377;stroke-width:1.4;stroke-linecap:round}
+  .slot{fill:url(#slotG);stroke:rgba(0,0,0,.55);stroke-width:1.5;transition:filter .4s}
+  .handle{fill:url(#handleOff);transition:filter .4s}
+  .handle-hi{fill:rgba(255,255,255,.22)}
+  .lever{filter:drop-shadow(0 3px 4px rgba(0,0,0,.5))}
   .hint{font-size:.8rem;color:var(--muted);transition:opacity .3s}
   .hint .arrow{color:var(--blue)}
 
@@ -68,9 +71,9 @@
   body.lit .status .dot{background:var(--blue);box-shadow:0 0 12px 2px rgba(0,174,239,.8)}
   body.lit .logo{opacity:1;filter:drop-shadow(0 0 18px rgba(0,174,239,.35))}
   body.lit .plate{filter:drop-shadow(0 0 22px rgba(0,174,239,.35))}
-  body.lit .track{fill:#06121f}
-  body.lit .track-lit{opacity:1}
-  body.lit .knob rect{fill:url(#knobOn)}
+  body.lit .slot{filter:drop-shadow(0 0 10px rgba(0,174,239,.5))}
+  body.lit .handle{fill:url(#handleOn)}
+  body.lit .lever{filter:drop-shadow(0 0 16px rgba(0,174,239,.6))}
   body.lit .hint{opacity:0}
   .glow{transition:opacity .9s var(--ease)}
 
@@ -109,15 +112,24 @@
       <button class="switch" id="switch" aria-pressed="false" aria-label="Flip the switch to power the system on">
         <svg viewBox="0 0 120 210" role="img" aria-hidden="true">
           <defs>
-            <linearGradient id="knobOff" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#39415a"/><stop offset="1" stop-color="#1c2231"/></linearGradient>
-            <linearGradient id="knobOn" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7fe4ff"/><stop offset="1" stop-color="#2a9fe0"/></linearGradient>
-            <linearGradient id="trackLit" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#00AEEF"/><stop offset="1" stop-color="#8B5CF6"/></linearGradient>
+            <linearGradient id="plateG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#182031"/><stop offset="1" stop-color="#0b101b"/></linearGradient>
+            <linearGradient id="handleOff" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#525b72"/><stop offset=".5" stop-color="#3a4256"/><stop offset="1" stop-color="#252d3d"/></linearGradient>
+            <linearGradient id="handleOn" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cbf1ff"/><stop offset=".5" stop-color="#5cc4f5"/><stop offset="1" stop-color="#1c8ad2"/></linearGradient>
+            <linearGradient id="slotG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#05080f"/><stop offset="1" stop-color="#111828"/></linearGradient>
           </defs>
-          <rect class="plate" x="14" y="8" width="92" height="194" rx="18"/>
-          <circle class="screw" cx="60" cy="20" r="3"/><circle class="screw" cx="60" cy="190" r="3"/>
-          <rect class="track" x="42" y="44" width="36" height="122" rx="18"/>
-          <rect class="track-lit" x="42" y="44" width="36" height="122" rx="18" fill="url(#trackLit)"/>
-          <g class="knob" id="knobG"><rect x="46" y="112" width="28" height="46" rx="14"/></g>
+          <!-- faceplate -->
+          <rect class="plate" x="16" y="6" width="88" height="198" rx="12"/>
+          <rect class="bevel" x="24" y="14" width="72" height="182" rx="8"/>
+          <!-- slotted screws -->
+          <g class="screw"><circle cx="60" cy="27" r="5.5"/><line x1="55.5" y1="27" x2="64.5" y2="27"/></g>
+          <g class="screw"><circle cx="60" cy="183" r="5.5"/><line x1="55.5" y1="183" x2="64.5" y2="183"/></g>
+          <!-- recessed switch housing -->
+          <rect class="slot" x="45" y="62" width="30" height="86" rx="9"/>
+          <!-- bat handle (JS sets off/on tilt) -->
+          <g class="lever" id="leverG">
+            <rect class="handle" x="49" y="71" width="22" height="48" rx="7"/>
+            <rect class="handle-hi" x="52.5" y="74" width="6" height="42" rx="3"/>
+          </g>
         </svg>
       </button>
       <span class="hint" id="hint"><span class="arrow">↑</span> Click the switch</span>
@@ -176,30 +188,31 @@
   addEventListener('resize', seed);
 
   /* ---------- switch + reveal ---------- */
-  const body=document.body, sw=document.getElementById('switch'), knob=document.getElementById('knobG'), statusText=document.getElementById('statusText');
+  const body=document.body, sw=document.getElementById('switch'), lever=document.getElementById('leverG'), statusText=document.getElementById('statusText');
   const reveals=gsap.utils.toArray('[data-reveal]');
   let on=false, autoTimer;
   gsap.set(reveals,{y:18,opacity:0});
+  gsap.set(lever,{transformOrigin:'50% 50%', y:20, rotation:14});  // OFF = handle tilted down
 
   function powerOn(){
     on=true; body.classList.add('lit'); sw.setAttribute('aria-pressed','true'); statusText.textContent='System status: Online';
-    if(reduce){ gsap.set(reveals,{y:0,opacity:1}); gsap.set(knob,{y:-58}); state.intensity=1; return; }
+    if(reduce){ gsap.set(reveals,{y:0,opacity:1}); gsap.set(lever,{y:-20,rotation:-14}); state.intensity=1; return; }
     gsap.to(state,{intensity:1,duration:1.15,ease:'power2.out'});
     gsap.timeline()
-      .to(knob,{y:-58,duration:.45,ease:'back.out(2.4)'},0)
+      .to(lever,{y:-20,rotation:-14,duration:.4,ease:'back.out(3)'},0)
       .fromTo(sw,{scale:1},{scale:1.06,duration:.12,yoyo:true,repeat:1,ease:'power2.inOut'},0)
       .to(reveals,{y:0,opacity:1,duration:.7,stagger:.09,ease:'power3.out'},.12);
   }
   function powerOff(){
     on=false; body.classList.remove('lit'); sw.setAttribute('aria-pressed','false'); statusText.textContent='System status: Offline';
-    if(reduce){ gsap.set(reveals,{y:18,opacity:0}); gsap.set(knob,{y:0}); state.intensity=.14; return; }
+    if(reduce){ gsap.set(reveals,{y:18,opacity:0}); gsap.set(lever,{y:20,rotation:14}); state.intensity=.14; return; }
     gsap.to(state,{intensity:.14,duration:.7,ease:'power2.inOut'});
-    gsap.to(knob,{y:0,duration:.35,ease:'power2.inOut'});
+    gsap.to(lever,{y:20,rotation:14,duration:.32,ease:'back.out(2)'});
     gsap.to(reveals,{y:14,opacity:0,duration:.3,ease:'power2.in'});
   }
   function toggle(){ clearTimeout(autoTimer); on?powerOff():powerOn(); }
   sw.addEventListener('click',toggle);
-  autoTimer=setTimeout(()=>{ if(!on) powerOn(); },1500);
+  if(location.hash!=='#off'){ autoTimer=setTimeout(()=>{ if(!on) powerOn(); },1500); }
 </script>
 </body>
 </html>
