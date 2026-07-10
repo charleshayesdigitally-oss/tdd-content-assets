@@ -1,0 +1,27 @@
+{
+  "_README": "Brand config for Mustang Creek Community Church — first instance of the Church Website Engine. Sampled from their live site (mustangcreek.org) + logo 2026-06-28. This doubles as the engine's church-template reference.",
+  "brand_name": "Mustang Creek Community Church",
+  "slug": "mustang-creek",
+  "mode": "dark",
+  "colors": {
+    "core": ["#F4A81C", "#0C0D11"],
+    "_core_note": "Gold #F4A81C (the cross / primary accent) on a near-black canvas #0C0D11 — matches their existing dark+gold site. White warm ink. One accent (gold) rationed; the CTA color.",
+    "bg": "#0C0D11"
+  },
+  "fonts": {
+    "display": "Archivo",
+    "body": "Mulish",
+    "_note": "Contemporary-worship: bold modern display + warm readable body. Distinct from TDD (Anton) + Heather (Fraunces)."
+  },
+  "logo": {
+    "path": "logo.png",
+    "_note": "Their real gold-cross logo (downloaded from Wix). Gold on transparent — sits on the dark canvas perfectly."
+  },
+  "voice": ["warm", "welcoming", "faith-filled", "spirit-filled (Assemblies of God)", "In This House"],
+  "vibe": ["dark", "contemporary worship", "gold accent", "energetic + warm", "inviting"],
+  "brand_language": ["In This House", "Found People Find People", "Saved People Serve People", "We Never Stop Growing", "The Coffee Bar", "Kid City", "Encounter Sunday", "MCYTH"],
+  "do": ["lead with welcome + a clear Plan-a-Visit path", "service times + location obvious everywhere", "warm worship imagery (swap in their real photos)", "sticky Give + Plan-a-Visit CTAs"],
+  "dont": ["no stuffy/traditional church look", "no scattered multi-accent tiles (their current site's weak spot)", "no invented beliefs/staff/mission — flag what's missing", "no Canva"],
+  "deploy_target": "test (Netlify) for now",
+  "notes": "Forney, TX · Sun 9 & 11am, Wed 7pm · Lead Pastors Robert & Judy Kennedy · Giving: Pushpay + Zelle (give@mustangcreek.org). MISSING (ask Charles/church): official mission statement, full beliefs/statement-of-faith text, some ministry detail copy (Real Women/Men/Young Adults/Camp Creek/Growth Track), whether a newsletter/prayer-request form exists. STACK gate: capture (connect/newsletter) is the pillar their current site is missing — added here."
+}
