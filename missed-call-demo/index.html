@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Call Recovery — Live Demo</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0b0f16;--panel:#121826;--panel2:#0e1420;--line:rgba(255,255,255,.08);
+  --ink:#eef2f8;--mut:#8a97ab;--accent:#00AEEF;--accent2:#22d39a;--danger:#ff5a6a;
+  --shadow:0 30px 70px -40px rgba(0,0,0,.9);
+}
+html,body{background:
+  radial-gradient(900px 500px at 88% -8%,rgba(0,174,239,.10),transparent 60%),
+  radial-gradient(800px 500px at -6% 106%,rgba(34,211,154,.08),transparent 60%),var(--bg);
+  color:var(--ink);font-family:'Poppins',sans-serif;line-height:1.55;min-height:100vh}
+.wrap{max-width:1120px;margin:0 auto;padding:28px 20px 60px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:8px}
+.brandline{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--mut);font-weight:600}
+.pill-live{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:600;color:var(--accent2);
+  border:1px solid rgba(34,211,154,.35);border-radius:999px;padding:5px 11px;text-transform:uppercase;letter-spacing:.12em}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--accent2);box-shadow:0 0 0 0 rgba(34,211,154,.6);animation:pulse 1.8s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(34,211,154,.5)}70%{box-shadow:0 0 0 8px rgba(34,211,154,0)}100%{box-shadow:0 0 0 0 rgba(34,211,154,0)}}
+h1{font-size:clamp(24px,3.4vw,34px);font-weight:800;letter-spacing:-.02em;margin:14px 0 4px;line-height:1.08}
+h1 .g{background:linear-gradient(100deg,#fff 30%,var(--accent) 95%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{color:var(--mut);font-size:15px;max-width:640px;margin-bottom:20px}
+/* controls */
+.controls{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;background:var(--panel);border:1px solid var(--line);
+  border-radius:16px;padding:16px 18px;margin-bottom:22px;box-shadow:var(--shadow)}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--mut);font-weight:600}
+.field input,.field select{background:var(--panel2);border:1px solid var(--line);color:var(--ink);border-radius:10px;
+  padding:11px 13px;font-family:inherit;font-size:14px;min-width:200px;transition:border-color .2s,box-shadow .2s}
+.field input:focus,.field select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(0,174,239,.18)}
+.btn{margin-left:auto;background:linear-gradient(100deg,var(--accent),#37c6f4);color:#04121b;border:none;border-radius:12px;
+  padding:13px 22px;font-family:inherit;font-weight:700;font-size:15px;cursor:pointer;white-space:nowrap;
+  box-shadow:0 16px 34px -16px rgba(0,174,239,.85);transition:transform .15s,box-shadow .2s,opacity .2s}
+.btn:hover{transform:translateY(-1px)}
+.btn:disabled{opacity:.5;cursor:default;transform:none}
+.btn.reset{background:transparent;color:var(--mut);border:1px solid var(--line);box-shadow:none;margin-left:10px}
+/* stage */
+.stage{display:grid;grid-template-columns:340px 1fr;gap:22px}
+@media(max-width:860px){.stage{grid-template-columns:1fr}.controls .btn{margin-left:0}}
+/* phone */
+.phone{background:var(--panel2);border:1px solid var(--line);border-radius:30px;padding:14px 12px 18px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.phone-head{display:flex;align-items:center;gap:10px;padding:6px 8px 12px;border-bottom:1px solid var(--line);margin-bottom:12px}
+.pfp{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-weight:700;color:#04121b;font-size:15px}
+.phone-head .nm{font-weight:600;font-size:14px}.phone-head .st{font-size:11px;color:var(--mut)}
+.thread{min-height:380px;display:flex;flex-direction:column;gap:9px;padding:2px 4px}
+.sys{align-self:center;font-size:11.5px;color:var(--danger);background:rgba(255,90,106,.1);border:1px solid rgba(255,90,106,.25);
+  border-radius:999px;padding:5px 12px;font-weight:600}
+.bub{max-width:80%;padding:9px 13px;border-radius:16px;font-size:13.5px;line-height:1.4;animation:pop .35s ease}
+.bub.in{align-self:flex-start;background:#1b2433;border-bottom-left-radius:5px}
+.bub.out{align-self:flex-end;background:linear-gradient(100deg,var(--accent),#37c6f4);color:#04121b;border-bottom-right-radius:5px;font-weight:500}
+.bub .t{display:block;font-size:10px;opacity:.7;margin-top:3px}
+.typing{align-self:flex-start;background:#1b2433;border-radius:16px;border-bottom-left-radius:5px;padding:12px 15px;display:flex;gap:4px}
+.typing i{width:6px;height:6px;border-radius:50%;background:var(--mut);animation:bounce 1.2s infinite}
+.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+@keyframes bounce{0%,60%,100%{transform:translateY(0);opacity:.4}30%{transform:translateY(-5px);opacity:1}}
+@keyframes pop{from{opacity:0;transform:translateY(8px) scale(.97)}to{opacity:1;transform:none}}
+/* dashboard */
+.dash{display:flex;flex-direction:column;gap:16px}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:16px 18px;box-shadow:var(--shadow)}
+.stat .k{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--mut);font-weight:600;margin-bottom:6px}
+.stat .v{font-family:'JetBrains Mono',monospace;font-weight:600;font-size:30px;font-variant-numeric:tabular-nums}
+.stat .v.rec{color:var(--accent2)}.stat .v.mon{color:var(--accent)}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:var(--shadow)}
+.panel h3{font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--mut);font-weight:600;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.leads{display:flex;flex-direction:column;gap:10px;min-height:120px}
+.empty{color:var(--mut);font-size:13.5px;padding:14px 4px;text-align:center;border:1px dashed var(--line);border-radius:12px}
+.lead{background:var(--panel2);border:1px solid var(--line);border-left:3px solid var(--accent2);border-radius:12px;padding:12px 14px;animation:slide .45s ease}
+@keyframes slide{from{opacity:0;transform:translateX(14px)}to{opacity:1;transform:none}}
+.lead .lh{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:4px}
+.lead .lh b{font-size:14px}.lead .val{font-family:'JetBrains Mono',monospace;font-weight:600;color:var(--accent2);font-size:13px}
+.lead .need{font-size:13px;color:var(--mut)}
+.lead .tag{display:inline-block;margin-top:7px;font-size:10.5px;font-weight:600;color:var(--accent2);
+  background:rgba(34,211,154,.1);border:1px solid rgba(34,211,154,.25);border-radius:999px;padding:3px 9px}
+.mathline{background:linear-gradient(180deg,rgba(0,174,239,.07),transparent);border:1px solid var(--line);border-radius:14px;padding:14px 16px;font-size:13.5px;color:#c7d2e0}
+.mathline b{color:#fff}.mathline .big{color:var(--accent);font-weight:700}
+.punch{opacity:0;transition:opacity .5s;background:var(--panel);border:1px solid rgba(34,211,154,.3);border-radius:14px;
+  padding:14px 16px;font-size:14px;font-weight:500}
+.punch.show{opacity:1}.punch b{color:var(--accent2)}
+/* toast */
+.toast{position:fixed;right:22px;bottom:22px;background:#0e1622;border:1px solid rgba(34,211,154,.35);border-radius:14px;
+  padding:13px 16px;box-shadow:0 20px 50px -20px rgba(0,0,0,.9);display:flex;gap:11px;align-items:center;max-width:320px;
+  transform:translateY(140%);transition:transform .4s cubic-bezier(.2,.9,.3,1.2);z-index:50}
+.toast.show{transform:none}
+.toast .ic{width:34px;height:34px;border-radius:9px;background:rgba(34,211,154,.15);display:flex;align-items:center;justify-content:center;font-size:17px;flex:0 0 auto}
+.toast .tt{font-weight:600;font-size:13.5px}.toast .ts{font-size:12px;color:var(--mut)}
+.foot{margin-top:34px;text-align:center;color:var(--mut);font-size:12px;border-top:1px solid var(--line);padding-top:16px}
+.foot b{color:#cdd7e5;font-weight:600}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <div class="brandline">Missed-Call Recovery · Live Demo</div>
+    <div class="pill-live"><span class="dot"></span> Running live</div>
+  </div>
+  <h1>Every missed call, <span class="g">answered in seconds.</span></h1>
+  <p class="sub">When a call goes unanswered, the customer texts back automatically, gets taken care of, and lands in your dashboard as a booked lead — before they call your competitor. Personalize it below and run a live call.</p>
+
+  <div class="controls">
+    <div class="field">
+      <label for="biz">Business name</label>
+      <input id="biz" value="Terrell Home Services" spellcheck="false" autocomplete="off">
+    </div>
+    <div class="field">
+      <label for="trade">Trade</label>
+      <select id="trade">
+        <option value="hvac">HVAC / Air Conditioning</option>
+        <option value="plumbing">Plumbing</option>
+        <option value="roofing">Roofing</option>
+        <option value="auto">Auto Repair</option>
+        <option value="electric">Electrician</option>
+        <option value="salon">Salon / Spa</option>
+      </select>
+    </div>
+    <button class="btn" id="run">▶ Simulate a missed call</button>
+    <button class="btn reset" id="reset" style="display:none">Reset</button>
+  </div>
+
+  <div class="stage">
+    <!-- phone -->
+    <div class="phone">
+      <div class="phone-head">
+        <div class="pfp" id="pfp">TH</div>
+        <div><div class="nm" id="phName">Terrell Home Services</div><div class="st">Text message · now</div></div>
+      </div>
+      <div class="thread" id="thread">
+        <div class="empty" style="margin:auto;color:#8a97ab">Press “Simulate a missed call” to watch it work.</div>
+      </div>
+    </div>
+    <!-- dashboard -->
+    <div class="dash">
+      <div class="stats">
+        <div class="stat"><div class="k">Missed calls recovered today</div><div class="v rec" id="recCount">0</div></div>
+        <div class="stat"><div class="k">Revenue recovered</div><div class="v mon" id="recRev">$0</div></div>
+      </div>
+      <div class="panel">
+        <h3>📥 Incoming leads</h3>
+        <div class="leads" id="leads"><div class="empty">No leads yet — run a call.</div></div>
+      </div>
+      <div class="mathline" id="math"></div>
+      <div class="punch" id="punch"></div>
+    </div>
+  </div>
+
+  <div class="foot">Demo built with Claude · A working preview of what we install for you. <b>The Digital Dad AI Systems</b> — systems carry the weight.</div>
+</div>
+
+<div class="toast" id="toast">
+  <div class="ic">📲</div>
+  <div><div class="tt">New lead — you've been notified</div><div class="ts" id="toastSub">Owner texted + emailed instantly</div></div>
+</div>
+
+<script>
+const TRADES = {
+  hvac:{init:38,need:"My AC just died and it's 98° out — can someone come today?",job:380,book:"Absolutely — I can have a tech out this afternoon.",tag:"AC repair · urgent"},
+  plumbing:{init:38,need:"My water heater burst and it's leaking everywhere — can you come now?!",job:450,book:"On it — I can get a plumber to you within the hour.",tag:"Water heater · emergency"},
+  roofing:{init:38,need:"I've got a roof leak after last night's storm — how soon can you quote it?",job:1200,book:"Sorry to hear it — I can come quote it tomorrow morning.",tag:"Storm leak · quote"},
+  auto:{init:38,need:"My car won't start and I need it for work tomorrow — can you look at it?",job:520,book:"Yep — bring it by or I'll send a tow. We'll get you going.",tag:"No-start · next-day"},
+  electric:{init:38,need:"Half my house lost power and the breaker won't reset — can someone come out?",job:340,book:"For sure — I can have an electrician out this afternoon.",tag:"Power loss · same-day"},
+  salon:{init:38,need:"Hi! Any openings for a cut and color this week?",job:160,book:"We'd love to fit you in — I've got Thursday at 2 or Friday at 10.",tag:"Cut & color · booking"}
+};
+const $=id=>document.getElementById(id);
+const bizEl=$('biz'),tradeEl=$('trade'),thread=$('thread'),leads=$('leads');
+let running=false, rec=0, rev=0, timers=[];
+const money=n=>'$'+n.toLocaleString('en-US');
+function initials(s){return (s.trim().split(/\s+/).map(w=>w[0]).join('').slice(0,2)||'TH').toUpperCase();}
+function syncName(){const b=bizEl.value.trim()||'Your Business';$('phName').textContent=b;$('pfp').textContent=initials(b);updateMath();}
+bizEl.addEventListener('input',syncName);
+tradeEl.addEventListener('change',updateMath);
+function updateMath(){
+  const t=TRADES[tradeEl.value], b=bizEl.value.trim()||'your business';
+  $('math').innerHTML=`Service businesses miss about <b>30% of inbound calls.</b> At ${b}'s ~<b>${money(t.job)}</b> average job, recovering just <b>5 missed calls a month</b> is <span class="big">${money(t.job*5)}/mo</span> you're currently letting walk away.`;
+}
+function clearTimers(){timers.forEach(clearTimeout);timers=[];}
+function at(ms,fn){timers.push(setTimeout(fn,ms));}
+function typing(){const d=document.createElement('div');d.className='typing';d.innerHTML='<i></i><i></i><i></i>';d.id='typing';thread.appendChild(d);scroll();return d;}
+function stopTyping(){const t=$('typing');if(t)t.remove();}
+function bubble(cls,html,time){stopTyping();const d=document.createElement('div');d.className='bub '+cls;d.innerHTML=html+(time?`<span class="t">${time}</span>`:'');thread.appendChild(d);scroll();}
+function sys(html){const d=document.createElement('div');d.className='sys';d.innerHTML=html;thread.appendChild(d);scroll();}
+function scroll(){thread.scrollTop=thread.scrollHeight;}
+function toast(){const el=$('toast');el.classList.add('show');at(4200,()=>el.classList.remove('show'));}
+
+function run(){
+  if(running)return; running=true;
+  const t=TRADES[tradeEl.value], biz=bizEl.value.trim()||'Your Business';
+  $('run').disabled=true; $('reset').style.display='inline-block';
+  thread.innerHTML='';
+  // 1 missed call
+  sys(`📞 Missed call — (469) 555-0142`);
+  // 2 auto text-back
+  at(900,()=>{const ty=typing();});
+  at(2000,()=>bubble('out',`Hi! This is ${biz}. So sorry we missed your call — how can we help? Just text us right here and we'll take care of you.`,'auto-reply · 2s later'));
+  // 3 customer replies
+  at(3600,()=>typing());
+  at(5200,()=>bubble('in',t.need,'customer'));
+  // 4 business books it
+  at(6400,()=>typing());
+  at(7800,()=>bubble('out',`${t.book} What's the best address and callback number?`,'you (or your AI) · instantly'));
+  // 5 lead lands + notify + counters
+  at(8600,()=>{
+    if(leads.querySelector('.empty'))leads.innerHTML='';
+    const card=document.createElement('div');card.className='lead';
+    card.innerHTML=`<div class="lh"><b>Recovered lead</b><span class="val">~${money(t.job)}</span></div>
+      <div class="need">${t.need}</div><span class="tag">✓ ${t.tag}</span>`;
+    leads.prepend(card);
+    rec++; rev+=t.job; $('recCount').textContent=rec; $('recRev').textContent=money(rev);
+    toast();
+  });
+  // 6 punchline
+  at(9400,()=>{
+    $('punch').innerHTML=`That's a customer you would have <b>lost.</b> Captured in under a minute — <b>automatically,</b> even if you were on a ladder, under a sink, or asleep.`;
+    $('punch').classList.add('show');
+    running=false; $('run').disabled=false; $('run').textContent='▶ Run another call';
+  });
+}
+function reset(){clearTimers();running=false;rec=0;rev=0;
+  $('recCount').textContent='0';$('recRev').textContent='$0';
+  leads.innerHTML='<div class="empty">No leads yet — run a call.</div>';
+  thread.innerHTML='<div class="empty" style="margin:auto;color:#8a97ab">Press “Simulate a missed call” to watch it work.</div>';
+  $('punch').classList.remove('show');$('punch').innerHTML='';
+  $('run').disabled=false;$('run').textContent='▶ Simulate a missed call';$('reset').style.display='none';
+}
+$('run').addEventListener('click',run);
+$('reset').addEventListener('click',reset);
+syncName();updateMath();
+</script>
+</body>
+</html>
