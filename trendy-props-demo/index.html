@@ -329,6 +329,13 @@
     color: var(--muted);
     text-align: center;
   }
+  .fine-print a {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: color 200ms var(--ease);
+  }
+  .fine-print a:hover, .fine-print a:focus-visible { color: var(--accent-deep); }
+  .fine-print a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
   /* ---------- Mobile ---------- */
   @media (max-width: 860px) {
@@ -447,7 +454,7 @@
       <a href="https://www.facebook.com/profile.php?id=61581566930538" target="_blank" rel="noopener">Facebook</a>
       <span>Dallas · Fort Worth · Mansfield, TX</span>
     </div>
-    <div class="fine-print">&copy; 2026 Trendy Props. All rights reserved.</div>
+    <div class="fine-print">&copy; 2026 Trendy Props. All rights reserved. &nbsp;·&nbsp; Built by <a href="https://www.thedigitaldad.co" target="_blank" rel="noopener">The Digital Dad</a></div>
   </div>
 </footer>
 
