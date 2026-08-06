@@ -1,0 +1,139 @@
+name: Deploy pages (HTML only)
+
+# WHY THIS EXISTS
+# ---------------
+# This repo is two things at once: a MEDIA HOST served over raw.githubusercontent.com
+# (reels, stills, promo media — ~1.2 GB) and a small set of HTML pages served over
+# GitHub Pages (client pages, demos, previews — ~110 MB).
+#
+# The default "deploy from a branch" Pages build publishes the ENTIRE working tree,
+# which is 1.4 GB and over GitHub's 1 GB published-site limit. On 2026-08-06 that
+# started failing: build succeeded in ~3 min, then the deploy sat in
+# `deployment_queued` and was killed at exactly 10 minutes, twice in a row,
+# with error_count: 10 from the deployment API.
+#
+# This workflow publishes ONLY the directories that actually contain HTML, so every
+# existing Pages URL keeps working while the media stays out of the artifact.
+#
+# ⚠️ raw.githubusercontent.com is NOT affected by any of this — it serves from the
+# git object store, independent of Pages. Nothing here touches the asset rail that
+# the Make one-shots depend on.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Makes the Pages source explicit from the workflow side, so this can be
+      # merged without first flipping Settings -> Pages -> Source by hand.
+      - uses: actions/configure-pages@v5
+
+      - name: Stage only the directories that contain HTML
+        run: |
+          set -euo pipefail
+          mkdir -p _site
+
+          # Root-level .html files (if any) go straight across.
+          # No `|| true` — a failed copy here must fail the build, not vanish.
+          find . -maxdepth 1 -name '*.html' -exec cp {} _site/ \;
+
+          # Any TOP-LEVEL directory holding at least one .html anywhere inside it
+          # is a page directory and is copied whole (so its css/js/images come too).
+          # Everything else — reels/, gen-stills/, dated asset folders — is media
+          # and is deliberately left out of the artifact.
+          #
+          # This is self-maintaining: a new preview folder is picked up on its next
+          # push with no edit here, and a new media folder is never picked up.
+          for d in */ ; do
+            d="${d%/}"
+            case "$d" in
+              .git|.github|node_modules|_site) continue ;;
+            esac
+            # ⚠️ Decide on OUTPUT, never on find's exit status. Under `pipefail`,
+            # `find … | grep -q .` returns non-zero if find hits ANY traversal
+            # error (unreadable dir, entry vanishing mid-walk) even when it
+            # already matched and printed. That reads as "no HTML here", silently
+            # drops a live client directory, and still deploys a green build.
+            # Command substitution sidesteps it: we test the string, not the code.
+            if [ -n "$(find "$d" -name '*.html' -print -quit)" ]; then
+              cp -r "$d" _site/
+            fi
+          done
+
+          # node_modules is committed to this repo and contains vendored HTML from
+          # playwright-core, which would otherwise drag ~2.5 MB of junk into the
+          # artifact and match the HTML test above. Belt and braces.
+          rm -rf _site/node_modules
+
+          # Pages runs Jekyll over the artifact unless told not to; underscore-
+          # prefixed dirs (_render-templates) would be silently dropped without this.
+          touch _site/.nojekyll
+
+          echo "--- staged size ---"
+          du -sh _site
+          echo "--- page directories published ---"
+          ls -1 _site
+
+      - name: Assert every known-live page directory made it into the artifact
+        run: |
+          set -euo pipefail
+          # Every check in this workflow except this one is NEGATIVE (a size
+          # ceiling). Without a positive assertion, a directory silently going
+          # missing deploys green and takes a client page offline. Failing here
+          # is safe: `deploy` needs `build`, so a failure leaves the previously
+          # deployed site untouched and serving.
+          missing=0
+          for required in travel-and-goodness heather-allen-sales-page \
+                          heather-allen-affiliate heather-allen-recs \
+                          heather-allen-delivery switch-hero demos \
+                          missed-call-demo trendy-props-demo chamber-checklist \
+                          mustang-creek church-engine case-studies ; do
+            if [ ! -d "_site/$required" ]; then
+              echo "::error::required page directory '$required' is missing from the artifact"
+              missing=1
+            fi
+          done
+          [ "$missing" -eq 0 ] || exit 1
+          echo "all 13 known-live page directories present"
+
+      - name: Fail loudly if the artifact is still too large
+        run: |
+          set -euo pipefail
+          # Hard stop well under GitHub's 1 GB limit. If this ever trips, a media
+          # folder has grown an .html file and is being swept in — find it rather
+          # than raising this number.
+          SIZE_MB=$(du -sm _site | cut -f1)
+          echo "artifact is ${SIZE_MB} MB"
+          if [ "$SIZE_MB" -gt 400 ]; then
+            echo "::error::_site is ${SIZE_MB} MB, over the 400 MB guard. A media directory is probably being included — check the listing above before raising this limit."
+            exit 1
+          fi
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
