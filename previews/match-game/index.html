@@ -8,7 +8,6 @@
 <meta property="og:title" content="Which system do you need first?">
 <meta property="og:description" content="Six questions match you to the one system worth building first, plus something free to start it with.">
 <meta property="og:type" content="website">
-<meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@300;400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
@@ -85,7 +84,7 @@ input:focus-visible,.btn:focus-visible,.opt:focus-visible{outline:2px solid var(
 </style>
 </head>
 <body>
-<div class="preview" id="previewBadge">Preview, not public. Built 10/08 for review.</div>
+<div class="preview" id="previewBadge" hidden>Preview, not public. Built 10/08 for review.</div>
 <a class="logo" href="https://www.thedigitaldad.co" aria-label="The Digital Dad home"><img src="logo-mark.png" alt="The Digital Dad logo" width="40" height="40"><span>The Digital Dad</span></a>
 <main class="shell"><div class="panel">
 
@@ -151,9 +150,11 @@ input:focus-visible,.btn:focus-visible,.opt:focus-visible{outline:2px solid var(
 <script>
 (function(){
 "use strict";
+if(/github\.io$|^localhost$|^127\.0\.0\.1$/.test(location.hostname)){var pb=document.getElementById("previewBadge");if(pb)pb.hidden=false;var m=document.createElement("meta");m.name="robots";m.content="noindex";document.head.appendChild(m)}
 // Capture endpoint: EMPTY in the preview. Preview mode never sends data and says so on screen.
 // The real endpoint is a NEW Make hook (not the live quiz/site hook 2567671), wired after Charles's review.
-var CAPTURE_URL = "";
+var CAPTURE_URL = "__WEBHOOK_URL__"; // real URL substituted at deploy time, never committed (Make hook 2912322 -> scenario 6564763)
+if(CAPTURE_URL.indexOf("__")===0)CAPTURE_URL="";
 
 var SYSTEMS = {
  S1:{name:"A list you own",pillar:"Trust",why:"Someone likes what you made and leaves without giving you an email, and that visit is gone. Build the net first. Everything else on this list pours into it.",item:"The Build Order",url:"https://resources.thedigitaldad.co/build-order/",step:"01"},
@@ -264,7 +265,7 @@ $("f-email").addEventListener("submit",function(e){
   if(!CAPTURE_URL){$("prevnote").style.display="block";setTimeout(function(){if(run===state.run)unlock(true)},900);return}
   var btn=$("emailBtn");state.busy=true;btn.disabled=true;$("err").style.display="none";
   var ctl=window.AbortController?new AbortController():null;var tmr=setTimeout(function(){if(ctl)ctl.abort()},15000);
-  var payload={email:em,first_name:state.name,source:"match",match_1:state.top[0],match_2:state.top[1],match_3:state.top[2],answers:"v1:"+state.ans.join(",")};
+  var payload={email:em,first_name:state.name,source:"match",match_1:SYSTEMS[state.top[0]].name,match_2:SYSTEMS[state.top[1]].name,match_3:SYSTEMS[state.top[2]].name,answers:"v1:"+state.ans.join(",")};
   fetch(CAPTURE_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload),signal:ctl?ctl.signal:undefined})
    .then(function(r){if(!r.ok)throw new Error("status "+r.status);if(run===state.run)unlock(false)})
    .catch(function(){if(run===state.run)$("err").style.display="block"})
