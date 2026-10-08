@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What to automate first: a free 6-question quiz | The Digital Dad</title>
+<meta name="description" content="Six questions match you to the one system worth building first, plus something free to start it with.">
+<meta property="og:title" content="Which system do you need first?">
+<meta property="og:description" content="Six questions match you to the one system worth building first, plus something free to start it with.">
+<meta property="og:type" content="website">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@300;400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0A0E14; --surface:#0E141D; --card:#141B26; --elevated:#1B2430;
+  --line:rgba(147,167,190,.16); --line-strong:rgba(147,167,190,.28);
+  --ink:#F3F8FF; --muted:#AFC0D3; --accent:#00AEEF; --accent2:#3B82F6; --glow:#8B5CF6;
+  --r1:8px; --r2:16px; --r3:24px;
+  --shadow-soft:0 2px 6px rgba(0,0,0,.04), 0 16px 38px rgba(0,174,239,.10);
+  --ease:cubic-bezier(.34,1.56,.64,1); --dur:240ms;
+  --fd:'Anton',sans-serif; --fb:'Poppins',system-ui,sans-serif; --fm:'JetBrains Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{min-height:100vh;background:var(--bg);color:var(--ink);font-family:var(--fb);font-weight:300;-webkit-font-smoothing:antialiased;line-height:1.65;
+  display:flex;flex-direction:column;align-items:center;padding:28px 16px 64px;overflow-x:hidden;
+  background-image:radial-gradient(680px 460px at 86% -4%,rgba(0,174,239,.16),transparent 60%),radial-gradient(620px 520px at 6% 104%,rgba(139,92,246,.15),transparent 62%);background-attachment:fixed}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;opacity:.045;z-index:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.preview{position:relative;z-index:3;font-family:var(--fm);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:#FFD27A;border:1px solid rgba(255,210,122,.35);border-radius:999px;padding:6px 14px;margin-bottom:18px;text-align:center}
+.logo{min-height:44px;position:relative;z-index:2;margin-bottom:22px;display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo img{height:40px;width:40px;display:block}
+.logo span{font-weight:600;font-size:17px;color:#fff}
+.shell{position:relative;z-index:2;width:100%;max-width:620px}
+.panel{background:linear-gradient(180deg,var(--card),var(--surface));border:1px solid var(--line);border-radius:var(--r3);padding:38px 34px;box-shadow:var(--shadow-soft)}
+@media(max-width:520px){.panel{padding:28px 20px}}
+.screen{display:none}.screen.active{display:block;animation:rise var(--dur) var(--ease) both}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.eyebrow{font-family:var(--fm);font-weight:600;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+h1{font-family:var(--fd);font-weight:400;font-size:clamp(2.3rem,7vw,3.4rem);line-height:1;letter-spacing:-.01em;text-transform:uppercase;margin-bottom:16px}
+h2{font-family:var(--fd);font-weight:400;font-size:clamp(1.9rem,6vw,2.6rem);line-height:1.02;text-transform:uppercase;margin-bottom:12px}
+.lead{font-size:1.02rem;color:var(--muted);margin-bottom:12px}
+.because{font-size:.95rem;color:var(--ink);border-left:2px solid var(--accent);padding-left:14px;margin:20px 0 26px}
+label.fl{display:block;font-weight:500;margin-bottom:8px}
+input[type=text],input[type=email]{width:100%;background:var(--elevated);border:1px solid var(--line-strong);border-radius:var(--r1);color:var(--ink);font-family:var(--fb);font-size:1rem;padding:14px 16px;margin-bottom:14px}
+input:focus-visible,.btn:focus-visible,.opt:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.btn{text-align:center;hyphens:none;overflow-wrap:normal;text-wrap:balance;font-family:var(--fm);font-weight:600;font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;border:none;cursor:pointer;border-radius:var(--r1);padding:15px 24px;min-height:48px;display:inline-flex;align-items:center;justify-content:center;gap:9px;text-decoration:none;transition:transform var(--dur) var(--ease),box-shadow var(--dur)}
+.btn-primary{background:linear-gradient(100deg,var(--accent),var(--accent2));color:#00111A;box-shadow:0 14px 40px -12px rgba(0,174,239,.55);width:100%}
+.btn-primary:hover{transform:translateY(-2px)}
+.btn-primary[disabled]{opacity:.55;cursor:wait;transform:none}
+.btn-ghost{background:transparent;color:var(--muted);border:1px solid var(--line-strong)}
+.progress{height:4px;background:var(--elevated);border-radius:4px;overflow:hidden;margin-bottom:22px}
+.progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--glow));transition:width var(--dur) ease}
+.qnum{font-family:var(--fm);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.qtext{font-weight:500;font-size:1.25rem;line-height:1.35;margin-bottom:20px}
+.opts{display:grid;gap:10px}
+.opt{text-align:left;background:var(--elevated);border:1px solid var(--line);border-radius:var(--r2);color:var(--ink);font-family:var(--fb);font-size:.98rem;font-weight:400;padding:15px 18px;min-height:52px;cursor:pointer;transition:border-color var(--dur),transform var(--dur) var(--ease)}
+.opt:hover{border-color:var(--accent);transform:translateX(3px)}
+.back{padding:12px 16px;margin-top:18px;background:none;border:none;color:var(--muted);font-family:var(--fm);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;padding:10px 0;min-height:44px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:20px 0 6px}
+.chipcard{border:1px solid var(--line);border-radius:var(--r1);padding:10px 12px;font-size:.84rem;background:var(--elevated);transition:opacity .5s ease,transform .5s ease,border-color .3s}
+.chipcard.out{opacity:.12;transform:scale(.96)}
+.chipcard.keep{border-color:var(--accent);box-shadow:0 0 0 1px rgba(0,174,239,.35)}
+.status{font-family:var(--fm);font-size:.78rem;letter-spacing:.06em;color:var(--accent);min-height:1.4em;margin-top:14px}
+.pill{display:inline-block;font-family:var(--fm);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;border:1px solid var(--line-strong);border-radius:999px;padding:4px 10px;color:var(--muted);margin-bottom:12px}
+.why{font-size:1rem;margin-bottom:12px}
+.note{font-size:.92rem;color:var(--muted);margin-bottom:12px}
+.next{margin:20px 0 16px;padding:18px;border:1px solid var(--line-strong);border-radius:var(--r2);background:rgba(0,174,239,.05)}
+.next .lbl{font-family:var(--fm);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+.next .item{font-weight:600;margin-bottom:12px}
+.limit{font-size:.86rem;color:var(--muted);border-top:1px solid var(--line);padding-top:14px;margin-top:6px}
+.locked{margin-top:30px}
+.lockcard{position:relative;border:1px solid var(--line);border-radius:var(--r2);padding:16px 18px;margin-bottom:10px;background:var(--elevated)}
+.lockcard .nm{filter:blur(7px);user-select:none;font-weight:600}
+.gate{margin-top:18px;padding:22px;border:1px solid var(--line-strong);border-radius:var(--r2)}
+.fine{font-size:.78rem;color:var(--muted);margin-top:8px;text-align:center}
+.err{color:#FF9A9A;font-size:.88rem;margin-bottom:10px;display:none}
+.prevnote{font-size:.8rem;color:#FFD27A;margin-top:10px;display:none}
+.full{border:1px solid var(--line);border-radius:var(--r2);padding:20px;margin-top:14px;background:var(--elevated)}
+.full h3{font-family:var(--fd);font-weight:400;font-size:1.5rem;text-transform:uppercase;margin-bottom:8px}
+.foot{text-align:center;margin-top:22px;font-size:.88rem}
+.foot a{color:var(--accent);display:inline-block;padding:12px 8px;min-height:44px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="preview" id="previewBadge">Preview, not public. Built 10/08 for review.</div>
+<a class="logo" href="https://www.thedigitaldad.co" aria-label="The Digital Dad home"><img src="logo-mark.png" alt="The Digital Dad logo" width="40" height="40"><span>The Digital Dad</span></a>
+<main class="shell"><div class="panel">
+
+<section class="screen active" id="s-intro" aria-labelledby="h-intro">
+  <div class="eyebrow">Free · 6 questions</div>
+  <h1 id="h-intro">Which system do you need <span style="color:var(--accent)">first?</span></h1>
+  <p class="lead">Six questions. One system to build first, and something free to build it with.</p>
+  <p class="lead">You'll leave knowing which one to build first. Not everything. The first one.</p>
+  <p class="because">Four layoffs taught me what it means when everything depends on one person.</p>
+  <form id="f-name" novalidate>
+    <label class="fl" for="name">First, what should I call you?</label>
+    <input type="text" id="name" name="first_name" placeholder="First name" autocomplete="given-name" maxlength="40">
+    <button class="btn btn-primary" type="submit">Start</button>
+  </form>
+</section>
+
+<section class="screen" id="s-q" aria-live="polite">
+  <div class="progress" aria-hidden="true"><i id="bar"></i></div>
+  <div class="qnum" id="qnum"></div>
+  <div class="qtext" id="qtext"></div>
+  <div class="opts" id="opts"></div>
+  <button class="back" id="back" type="button">Back</button>
+</section>
+
+<section class="screen" id="s-narrow">
+  <div class="eyebrow">Matching</div>
+  <div class="grid" id="ngrid"></div>
+  <div class="status" id="nstatus" aria-live="polite"></div>
+</section>
+
+<section class="screen" id="s-result">
+  <div class="eyebrow">Your first system</div>
+  <div id="r1"></div>
+  <div class="locked" id="lockedWrap">
+    <p class="lead" id="teaser">Your second and third are right below.</p>
+    <div id="lockcards"></div>
+    <div class="gate">
+      <h2 style="font-size:1.7rem">Want the other two?</h2>
+      <p class="note">Your email address opens them here. You'll also get my Wednesday email: what I built that week, what worked, what broke, plus the AI news worth your time.</p>
+      <form id="f-email" novalidate>
+        <label class="sr" for="email">Email address</label>
+        <div class="err" id="err" role="alert">Couldn't confirm that went through. Check your connection and try again.</div>
+        <input type="email" id="email" name="email" placeholder="Your email" autocomplete="email" required>
+        <button class="btn btn-primary" id="emailBtn" type="submit">Show my other two</button>
+      </form>
+      <p class="fine">No spam. Unsubscribe anytime.</p>
+      <p class="prevnote" id="prevnote">Preview mode: this didn't send anywhere. The real capture connects after review.</p>
+    </div>
+  </div>
+  <div id="unlocked" style="display:none;margin-top:28px">
+    <p class="prevnote" id="previewDone" style="display:none">Preview mode: nothing was sent and nobody joined a list. The real capture connects after review.</p>
+    <p class="lead" id="thanks1"></p>
+    <p class="note">Start with #1 anyway. The other two can wait until it's done.</p>
+    <p class="note" id="wedNext">Wednesday's email comes next.</p>
+    <div id="fullcards"></div>
+  </div>
+  <p class="foot"><a href="https://resources.thedigitaldad.co/" target="_blank" rel="noopener">Everything else is on the free board.</a></p>
+  <p class="foot"><button class="back" id="restart" type="button">Start over</button></p>
+</section>
+
+</div></main>
+
+<script>
+(function(){
+"use strict";
+// Capture endpoint: EMPTY in the preview. Preview mode never sends data and says so on screen.
+// The real endpoint is a NEW Make hook (not the live quiz/site hook 2567671), wired after Charles's review.
+var CAPTURE_URL = "";
+
+var SYSTEMS = {
+ S1:{name:"A list you own",pillar:"Trust",why:"Someone likes what you made and leaves without giving you an email, and that visit is gone. Build the net first. Everything else on this list pours into it.",item:"The Build Order",url:"https://resources.thedigitaldad.co/build-order/",step:"01"},
+ S2:{name:"A welcome that sends itself",pillar:"Activate",why:"A list nobody hears from is the same as no list. One email that goes out on its own, so someone can join at 2am and hear from you without you touching anything.",item:"The Build Order",url:"https://resources.thedigitaldad.co/build-order/",step:"02"},
+ S3:{name:"A test before you launch",pillar:"Trust",why:"A form on my own site once dropped every lead it got, and it looked perfect the whole time. Before yours goes live, be your own first lead and watch it arrive.",item:"The Funnel Launch Checklist",url:"https://raw.githubusercontent.com/charleshayesdigitally-oss/tdd-content-assets/main/lead-magnets/funnel-launch-checklist.pdf",ext:true},
+ S4:{name:"An automation check-up",pillar:"Coordinate",why:"For about two weeks the sign-up form on my free library lost every email, and the automation kept telling me it worked. If you set something up and walked away, check where it actually lands, not what the tool says.",item:"The Automation Check-Up",url:"https://resources.thedigitaldad.co/automation-checkup/"},
+ S5:{name:"Posts that go out without you",pillar:"Coordinate",why:"Posting by hand fails on the days you have the least time. Mine go out on a schedule. TikTok I still post from my phone.",item:"Instagram on Autopilot",url:"https://resources.thedigitaldad.co/ig-autopilot/"},
+ S6:{name:"One piece, every platform",pillar:"Signal",why:"One piece living in one place gets one shot. The Content Repurposer writes a native version for each platform instead of a copy-paste. It runs in Claude Code, so you'll need that set up.",item:"The Skills Pack",url:"https://resources.thedigitaldad.co/skills/"},
+ S7:{name:"A site that answers when you can't",pillar:"Trust",why:"Same questions, all week. Let a chat agent take the first pass. The one on my site answers questions about my work and takes your details if you want me to follow up.",item:"The Website Chat Agent Guide",url:"https://chat-agent-guide-dd.netlify.app",ext:true},
+ S8:{name:"AI that knows your business",pillar:"Knowledge",why:"Explaining your business from scratch every time you open a chat gets old. Give it the context once. A Claude Project built around your actual work keeps it.",item:"Claude Foundations",url:"https://resources.thedigitaldad.co/claude-foundations/"},
+ S9:{name:"A first AI habit",pillar:"Knowledge",why:"Start with the plain-English basics and one thing to try this week. The tool lists can wait.",item:"The AI Starter Guide",url:"https://digital-dad-ai-guide.netlify.app",ext:true},
+ S10:{name:"A finish line",pillar:"",why:"Three half-built things don't help anybody yet. Run four checks. If they're all yes, it ships.",item:"The Ship-It Checklist",url:"https://resources.thedigitaldad.co/ship-it/"}
+};
+var ORDER=["S1","S2","S3","S4","S5","S6","S7","S8","S9","S10"];
+var QS=[
+ {q:"Where do most new people find you right now?",a:["My social posts","My website or a sales page","A community I'm in, or word of mouth","Honestly, not many people find me yet"]},
+ {q:"When someone gives you their email, what happens next?",a:["There's nowhere for them to give it yet","It lands on my list, and they don't hear from me until I send something","A welcome email goes out, but I've never signed up myself to check it","A welcome email goes out, and I've tested it myself"]},
+ {q:"What runs without you right now?",a:["Nothing. I do it all by hand","An automation or two I set up and haven't looked at since","Something I'm still building. It isn't live yet","A few things, and I check on them"]},
+ {q:"Which one sounds most like your week?",a:["I post by hand, usually the morning of","I make one piece and it never goes anywhere else","I've got three things half-built and none of them finished","I answer the same questions over and over"]},
+ {q:"How do you use AI right now?",a:["Barely. I'm not sure where to start","In a chat now and then, and I explain my business from scratch every time","Most days, in a chat app","I build with Claude Code"]},
+ {q:"If one thing ran without you next week, which would you pick?",a:["Every new sign-up caught and welcomed","My posts going out on schedule","Questions answered when I'm not around","Knowing nothing broke while I wasn't looking"]}
+];
+var MAP={"1a":{"S1":1,"S5":1,"S6":1},"1b":{"S3":1,"S7":2},"1c":{"S1":1,"S2":1},"1d":{"S9":1,"S10":2},
+ "2a":{"S1":7},"2b":{"S2":5},"2c":{"S3":2,"S4":2},"2d":{"S5":1,"S7":1,"S8":1},
+ "3a":{"S1":1,"S2":1,"S9":1},"3b":{"S4":4},"3c":{"S3":4,"S10":1},"3d":{"S6":1,"S7":1,"S8":2},
+ "4a":{"S5":4},"4b":{"S6":4},"4c":{"S10":4},"4d":{"S7":3,"S8":1},
+ "5a":{"S9":5},"5b":{"S8":4},"5c":{"S6":1,"S8":2},"5d":{"S6":3},
+ "6a":{"S1":2,"S2":2},"6b":{"S5":3,"S6":1},"6c":{"S7":3},"6d":{"S3":1,"S4":3}};
+var LIMIT="Six questions can't see your business. Treat this as a place to start, and if it lands wrong, trust what you know.";
+
+var state={name:"",ans:[],top:[],run:0,busy:false};
+function $(id){return document.getElementById(id)}
+function esc(s){return String(s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
+function show(id){var s=document.querySelectorAll(".screen");for(var i=0;i<s.length;i++)s[i].classList.remove("active");var el=$(id);el.classList.add("active");window.scrollTo(0,0);el.setAttribute("tabindex","-1");try{el.focus({preventScroll:true})}catch(e){}}
+var reduced=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+function score(ans){
+  var sc={};ORDER.forEach(function(s){sc[s]=0});
+  ans.forEach(function(a){var m=MAP[a];for(var k in m)sc[k]+=m[k]});
+  var pool=ORDER.slice();
+  // S6 needs Claude Code: only offered to people who build with it (Q5 = d).
+  if(ans.indexOf("5d")<0)pool=pool.filter(function(s){return s!=="S6"});
+  pool.sort(function(x,y){return (sc[y]-sc[x])||(ORDER.indexOf(x)-ORDER.indexOf(y))});
+  return pool;
+}
+window.__matchScore=score;
+
+$("f-name").addEventListener("submit",function(e){e.preventDefault();state.run++;state.busy=false;state.name=$("name").value.trim().slice(0,40);state.ans=[];renderQ()});
+function renderQ(){
+  var i=state.ans.length;
+  if(i>=QS.length){return runNarrow()}
+  show("s-q");
+  $("bar").style.width=(i/QS.length*100)+"%";
+  $("qnum").textContent="Question "+(i+1)+" of "+QS.length;
+  $("qtext").textContent=QS[i].q;
+  var o=$("opts");o.innerHTML="";
+  QS[i].a.forEach(function(t,j){var b=document.createElement("button");b.type="button";b.className="opt";b.textContent=t;
+    b.addEventListener("click",function(){if(state.ans.length!==i)return;state.ans.push((i+1)+"abcd"[j]);renderQ()});o.appendChild(b)});
+  $("back").style.visibility=i===0?"hidden":"visible";
+}
+$("back").addEventListener("click",function(){if(state.ans.length>0&&state.ans.length<QS.length){state.ans.pop();renderQ()}});
+
+function runNarrow(){
+  var ranked=score(state.ans);state.top=ranked.slice(0,3);
+  show("s-narrow");
+  var g=$("ngrid");g.innerHTML="";
+  ranked.slice().sort(function(x,y){return ORDER.indexOf(x)-ORDER.indexOf(y)}).forEach(function(s){var d=document.createElement("div");d.className="chipcard";d.id="c-"+s;d.textContent=SYSTEMS[s].name;g.appendChild(d)});
+  var st=$("nstatus");
+  var nm=state.name?", "+state.name:"";
+  if(reduced){st.textContent="Three left.";return setTimeout(showResult,400)}
+  st.textContent="Checking "+(ranked.length===10?"ten":"nine")+" systems against your six answers"+nm+".";
+  var out=ranked.slice(3).reverse(); // lowest first
+  var t=900;
+  out.forEach(function(s,k){setTimeout(function(){$("c-"+s).classList.add("out");if(k===2)st.textContent="Setting aside the ones that don't fit yet."},t+k*260)});
+  setTimeout(function(){state.top.forEach(function(s){$("c-"+s).classList.add("keep")});st.textContent="Three left."},t+out.length*260+200);
+  setTimeout(showResult,t+out.length*260+1500);
+}
+
+function card(s,rank,full){
+  var x=SYSTEMS[s],h="";
+  if(full)h+='<div class="full"><div class="pill">#'+rank+(x.pillar?" · "+esc(x.pillar):"")+'</div><h3>'+esc(x.name)+'</h3>';
+  else h+=(x.pillar?'<div class="pill">'+esc(x.pillar)+'</div>':'')+'<h2>'+esc(x.name)+'</h2>';
+  h+='<p class="why">'+esc(x.why)+'</p>';
+  if(x.step)h+='<p class="note">Start at step '+x.step+'.</p>';
+  if(s==="S1"&&!full&&(state.top.indexOf("S5")>0||state.top.indexOf("S6")>0))h+='<p class="note">Posting made your top three. It comes after this for a reason: people who find you before you can catch their email just leave.</p>';
+  h+='<div class="next"><div class="lbl">Start here, free:</div><div class="item">'+esc(x.item)+'</div><a class="btn btn-primary" href="'+esc(x.url)+'"'+(x.ext?' target="_blank" rel="noopener"':'')+'>Open '+esc(x.item)+'</a></div>';
+  if(!full)h+='<p class="limit">'+esc(LIMIT)+'</p>';
+  if(full)h+='</div>';
+  return h;
+}
+function showResult(){
+  show("s-result");
+  $("r1").innerHTML=card(state.top[0],1,false);
+  $("lockcards").innerHTML=state.top.slice(1).map(function(s,i){var p=SYSTEMS[s].pillar;return '<div class="lockcard" aria-label="Locked result '+(i+2)+'"><div class="pill">#'+(i+2)+(p?" · "+esc(p):"")+'</div><div class="nm" aria-hidden="true">'+(i?'Your third system is here':'Your second system sits here')+'</div></div>'}).join("");
+  $("lockedWrap").style.display="block";$("unlocked").style.display="none";$("err").style.display="none";$("prevnote").style.display="none";$("previewDone").style.display="none";$("wedNext").style.display="block";
+}
+function unlock(preview){
+  $("lockedWrap").style.display="none";$("unlocked").style.display="block";
+  $("previewDone").style.display=preview?"block":"none";$("wedNext").style.display=preview?"none":"block";
+  $("thanks1").textContent="You're in"+(state.name?", "+state.name:"")+". Your other two are open below.";
+  $("fullcards").innerHTML=state.top.slice(1).map(function(s,i){return card(s,i+2,true)}).join("");
+}
+$("f-email").addEventListener("submit",function(e){
+  e.preventDefault();var em=$("email").value.trim();
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)){$("email").focus();$("email").setCustomValidity("Enter a valid email");$("email").reportValidity();$("email").setCustomValidity("");return}
+  if(state.busy)return;
+  var run=state.run;
+  if(!CAPTURE_URL){$("prevnote").style.display="block";setTimeout(function(){if(run===state.run)unlock(true)},900);return}
+  var btn=$("emailBtn");state.busy=true;btn.disabled=true;$("err").style.display="none";
+  var ctl=window.AbortController?new AbortController():null;var tmr=setTimeout(function(){if(ctl)ctl.abort()},15000);
+  var payload={email:em,first_name:state.name,source:"match",match_1:state.top[0],match_2:state.top[1],match_3:state.top[2],answers:"v1:"+state.ans.join(",")};
+  fetch(CAPTURE_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload),signal:ctl?ctl.signal:undefined})
+   .then(function(r){if(!r.ok)throw new Error("status "+r.status);if(run===state.run)unlock(false)})
+   .catch(function(){if(run===state.run)$("err").style.display="block"})
+   .then(function(){clearTimeout(tmr);if(run===state.run){state.busy=false;btn.disabled=false}});
+});
+$("restart").addEventListener("click",function(){state.run++;state.busy=false;$("emailBtn").disabled=false;state.ans=[];state.top=[];show("s-intro")});
+})();
+</script>
+</body>
+</html>
