@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jessie Socials · Grow your brand. Or build your own.</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blush:#FFDAE4; --blush-2:#FFC4D4; --butter:#FFF4C5; --linen:#F7F1EA; --paper:#FFFCF8;
+  --ink:#1E1A1C; --ink-2:#4A3F44; --rose:#B4466A; --rose-ink:#8E2E50; --line:rgba(30,26,28,.12);
+  --serif:"Instrument Serif",Georgia,serif; --sans:"DM Sans",system-ui,sans-serif;
+  --r:28px; --r-sm:16px;
+  --shadow:0 1px 2px rgba(142,46,80,.06),0 8px 24px -8px rgba(142,46,80,.18),0 28px 60px -28px rgba(142,46,80,.22);
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--ink);background:var(--paper);line-height:1.65;font-size:17px;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{width:min(1180px,100% - 40px);margin-inline:auto}
+.serif{font-family:var(--serif);font-weight:400;letter-spacing:-.01em}
+.kicker{font:700 12px/1.5 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--rose-ink)}
+:focus-visible{outline:3px solid var(--rose);outline-offset:3px;border-radius:8px}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 26px;border-radius:999px;font:700 15px var(--sans);text-decoration:none;transition:transform .2s var(--ease),box-shadow .2s var(--ease),background-color .2s var(--ease)}
+.btn:hover{transform:translateY(-2px)} .btn:active{transform:translateY(0)}
+.btn-ink{background:var(--rose-ink);color:#fff;box-shadow:0 10px 24px -10px rgba(142,46,80,.55)}
+.btn-ink:hover{background:#74223f}
+.btn-soft{background:var(--blush);color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--rose-ink)}
+.btn-soft:hover{background:var(--butter)}
+.arrow{transition:transform .2s var(--ease)} .btn:hover .arrow{transform:translateX(3px)}
+
+/* header */
+header{position:sticky;top:0;z-index:20;background:rgba(255,252,248,.86);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:20px;height:72px}
+.logo img{height:62px;width:auto;border-radius:10px} @media (max-width:600px){.logo img{height:50px}}
+nav ul{display:flex;gap:6px;list-style:none;align-items:center}
+nav a{display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border-radius:999px;font-weight:500;font-size:15px;text-decoration:none;color:var(--ink-2)}
+nav a:hover{background:var(--blush);color:var(--ink)}
+nav .btn{margin-left:8px;min-height:44px;padding:0 20px;color:#fff}
+@media (max-width:860px){nav .hide-sm{display:none}}
+
+/* hero */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(700px 520px at 85% 20%,var(--blush) 0%,transparent 70%),
+  radial-gradient(600px 480px at 10% 90%,var(--butter) 0%,transparent 70%),var(--paper)}
+.hero .wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:56px;align-items:center;padding:72px 0 88px}
+.hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(50px,6.6vw,96px);line-height:.95;letter-spacing:-.025em}
+.hero h1 span{white-space:nowrap}
+.hero h1 em{color:var(--rose-ink)}
+.hero p.lede{margin-top:26px;font-size:19px;color:var(--ink-2);max-width:34ch}
+.fork{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.portrait{position:relative;justify-self:end;width:min(440px,100%)}
+.portrait .arch{border-radius:240px 240px var(--r) var(--r);overflow:hidden;box-shadow:var(--shadow);aspect-ratio:4/5;background:var(--blush)}
+.portrait .arch img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+.chip{position:absolute;background:#fff;border-radius:var(--r-sm);padding:14px 18px;box-shadow:var(--shadow);max-width:220px}
+.chip b{display:block;font-family:var(--serif);font-weight:400;font-size:34px;line-height:1;color:var(--rose-ink)}
+.chip span{font-size:13px;line-height:1.35;color:var(--ink-2)}
+.chip.c1{left:-48px;top:18%} .chip.c2{right:-24px;bottom:12%}
+@media (max-width:900px){
+  .hero .wrap{grid-template-columns:1fr;padding:44px 0 64px;gap:40px}
+  .portrait{justify-self:center;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .portrait .arch{grid-column:1/-1}
+  .chip{position:static;max-width:none}
+}
+
+/* paths: the signature fork */
+.paths{padding:96px 0;background:linear-gradient(180deg,var(--butter) 0%,#FFF9E3 100%)}
+.paths-head{display:flex;flex-direction:column;align-items:flex-start;gap:22px;margin-bottom:36px}
+.paths-head h2{font-family:var(--serif);font-weight:400;font-size:clamp(40px,5vw,64px);line-height:1;letter-spacing:-.02em;max-width:14ch}
+.toggle{position:relative;display:inline-grid;grid-template-columns:1fr 1fr;background:#fff;border-radius:999px;padding:6px;box-shadow:inset 0 0 0 1px var(--line)}
+.toggle button{position:relative;z-index:1;min-height:56px;padding:0 30px;font-size:17px!important;border:0;background:transparent;border-radius:999px;font:700 15px var(--sans);color:var(--ink-2);cursor:pointer;transition:color .25s var(--ease)}
+.toggle button[aria-selected="true"]{color:#fff}
+.toggle .pill{position:absolute;top:6px;bottom:6px;left:6px;width:calc(50% - 6px);background:var(--rose-ink);border-radius:999px;transition:transform .35s var(--ease)}
+.toggle[data-active="build"] .pill{transform:translateX(100%)}
+.panel{display:grid;grid-template-columns:.85fr 1.15fr;gap:28px;align-items:stretch}
+.panel[hidden]{display:none}
+.panel .photo{border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);min-height:420px}
+.panel .photo img{width:100%;height:100%;object-fit:cover}
+.offers{display:grid;gap:20px}
+.offer{background:#fff;border-radius:var(--r);padding:34px 34px 30px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:14px}
+.offer.blush{background:var(--blush)} .offer.butter{background:var(--butter)}
+.num{font-family:var(--sans);font-weight:700;font-size:.82em;letter-spacing:0}.offer h3{font-family:var(--serif);font-weight:400;font-size:clamp(30px,3.2vw,40px);line-height:1.05;letter-spacing:-.015em}
+.offer p{color:var(--ink-2)}
+.offer .btn{align-self:flex-start;margin-top:6px}
+.tag{display:inline-block;font:700 11px var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--rose-ink)}
+.fade-in{animation:rise .5s var(--ease) both}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@media (max-width:900px){.panel{grid-template-columns:1fr}.panel .photo{min-height:300px}}
+@media (max-width:480px){.toggle{width:100%}.toggle button{padding:0 12px;font-size:15px!important;white-space:nowrap}}
+
+/* proof */
+.proof{padding:96px 0}
+.proof .grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:36px}
+.proof figure{background:var(--linen);border-radius:var(--r);padding:28px;box-shadow:var(--shadow)}
+.proof figure img{border-radius:var(--r-sm);margin-inline:auto;max-height:560px;width:auto}
+.section-title{font-family:var(--serif);font-weight:400;font-size:clamp(40px,5vw,64px);line-height:1;letter-spacing:-.02em;margin-top:14px}
+@media (max-width:800px){.proof .grid{grid-template-columns:1fr}}
+
+/* reviews */
+.reviews{padding:96px 0;background:linear-gradient(180deg,var(--blush) 0%,#FFE9EF 100%)}
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px;align-items:stretch}
+.quote{background:#fff;border-radius:var(--r);padding:32px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:16px}
+
+.stars{color:var(--rose);letter-spacing:.2em;font-size:15px}
+.quote blockquote .pull{font-family:var(--serif);font-size:28px;line-height:1.12;letter-spacing:-.01em;color:var(--ink);display:block;margin-bottom:12px}
+.quote blockquote p{font-size:15.5px;color:#3A3034;margin-top:10px}.quote blockquote p:first-child{margin-top:0}
+.who{display:flex;align-items:center;gap:12px;margin-top:6px;font-weight:700}
+.who img{width:48px;height:48px;border-radius:50%;object-fit:cover}
+@media (max-width:960px){.quotes{grid-template-columns:1fr}.quote:nth-child(2){margin-top:0}}
+
+/* about */
+.about{padding:104px 0}
+.about .wrap{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+.about p.big{font-size:clamp(28px,3vw,38px)!important;line-height:1.15!important;max-width:18ch}
+.about .pic{border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);aspect-ratio:4/5}
+.about .pic img{width:100%;height:100%;object-fit:cover}
+.about h2{font-family:var(--serif);font-weight:400;font-size:clamp(44px,5.4vw,72px);line-height:1;letter-spacing:-.02em;margin:14px 0 22px}
+.about .banner{border-radius:var(--r);box-shadow:var(--shadow);margin-bottom:34px;width:100%;max-width:520px;height:auto!important;aspect-ratio:2033/774;object-fit:cover}.about p{color:var(--ink-2);margin-top:16px;max-width:60ch}
+.about p.big{font-family:var(--serif);font-size:26px;line-height:1.25;color:var(--ink)}
+@media (max-width:900px){.about .wrap{grid-template-columns:1fr;gap:36px}.about .pic{max-width:420px}}
+
+/* close */
+.close{padding:0 0 96px}
+.close .card{background:linear-gradient(135deg,var(--rose-ink) 0%,#5E1F38 100%);color:#fff;border-radius:36px;padding:72px 56px;text-align:center;position:relative;overflow:hidden}
+.close .card::before{content:"";position:absolute;inset:0;background:radial-gradient(500px 300px at 15% 0%,rgba(255,218,228,.25),transparent 70%),radial-gradient(500px 300px at 90% 100%,rgba(255,244,197,.18),transparent 70%)}
+.close h2{position:relative;font-family:var(--serif);font-weight:400;font-size:clamp(44px,6vw,80px);line-height:1;letter-spacing:-.02em}
+.close .row{position:relative;display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:34px}
+.close .btn-light{background:var(--blush);color:var(--ink)} .close .btn-light:hover{background:#fff}
+.close .btn-line{color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.7)} .close .btn-line:hover{background:rgba(255,255,255,.08)}
+footer{padding:28px 0 40px;border-top:1px solid var(--line);font-size:14px;color:var(--ink-2)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center}
+footer a{display:inline-flex;align-items:center;min-height:44px;font-weight:700;text-decoration:none}
+footer a:hover{color:var(--rose-ink)}
+
+/* load reveal */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="#top" aria-label="Jessie Socials, home"><img src="img/src08.jpeg" alt="Jessie Socials" width="137" height="52"></a>
+    <nav aria-label="Main">
+      <ul>
+        <li class="hide-sm"><a href="#paths" data-path="grow">Hire me</a></li>
+        <li class="hide-sm"><a href="#paths" data-path="build">Mentorship</a></li>
+        <li class="hide-sm"><a href="#reviews">Reviews</a></li>
+        <li class="hide-sm"><a href="#about">About</a></li>
+        <li><a class="btn btn-ink" href="https://calendly.com/jessietheaffiliate/discovery-call">Book a free call</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <p class="kicker reveal">Social media · Business management · Mentorship</p>
+        <h1 class="reveal"><span>Grow your brand.</span><br><em><span>Or build</span> <span>your own.</span></em></h1>
+        <p class="lede reveal">Done-for-you social media, business management, and VA services for established brands, plus one-on-one mentorship for aspiring online entrepreneurs.</p>
+        <div class="fork reveal">
+          <a class="btn btn-ink" href="#paths" data-path="grow">Grow my brand <span class="arrow" aria-hidden="true">→</span></a>
+          <a class="btn btn-soft" href="#paths" data-path="build">Build my own <span class="arrow" aria-hidden="true">→</span></a>
+        </div>
+      </div>
+      <div class="portrait reveal">
+        <div class="arch"><img src="img/src01.jpeg" alt="Jessie at her desk at home with her laptop" width="1122" height="1402"></div>
+        <div class="chip c1"><b>700K+</b><span>followers grown across accounts</span></div>
+        <div class="chip c2"><b>$1M+</b><span>combined revenue generated for brands</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="paths" id="paths" aria-labelledby="paths-h">
+    <div class="wrap">
+      <div class="paths-head">
+        <div>
+          <p class="kicker">Two ways to work with me</p>
+          <h2 id="paths-h" class="section-title">Which one are you?</h2>
+        </div>
+        <div class="toggle" role="tablist" aria-label="Choose a path" data-active="grow">
+          <span class="pill" aria-hidden="true"></span>
+          <button role="tab" id="tab-grow" aria-controls="panel-grow" aria-selected="true">Grow my brand</button>
+          <button role="tab" id="tab-build" aria-controls="panel-build" aria-selected="false" tabindex="-1">Build my own</button>
+        </div>
+      </div>
+
+      <div class="panel" id="panel-grow" role="tabpanel" aria-labelledby="tab-grow">
+        <div class="photo"><img src="img/src10.jpeg" alt="A tidy home office desk with a monitor, notebook and keyboard" loading="lazy" width="1200" height="1600"></div>
+        <div class="offers">
+          <article class="offer blush">
+            <span class="tag">For established brands</span>
+            <h3>Looking for an expert to help with your socials and back end business management? I'm your girl.</h3>
+            <p>Done-for-you social media, business management, and VA services. I manage social media and business operations for influencers, major brands, and Amazon companies.</p>
+            <a class="btn btn-ink" href="https://calendly.com/jessietheaffiliate/discovery-call">Book a free discovery call <span class="arrow" aria-hidden="true">→</span></a>
+          </article>
+          <article class="offer">
+            <span class="tag">What clients say</span>
+            <p class="serif" style="font-size:26px;line-height:1.2;color:var(--ink)">"Once something is handed to her, you can rest easy knowing it will be managed thoughtfully, communicated clearly, and executed with care."</p>
+            <p>Elizabeth Marcelena</p>
+          </article>
+        </div>
+      </div>
+
+      <div class="panel" id="panel-build" role="tabpanel" aria-labelledby="tab-build" hidden>
+        <div class="photo"><img src="img/src09.jpeg" alt="Jessie holding her phone" loading="lazy" width="1122" height="1402"></div>
+        <div class="offers">
+          <article class="offer butter">
+            <span class="tag">1:1 mentorship</span>
+            <h3><span class="num">1:1</span> Discovery Call: learn how to build your online business</h3>
+            <p>This is for you if you are ready to earn a consistent income from home as a virtual assistant, social media manager or business manager, with income potential of $1k-$10k+ a month.</p>
+            <a class="btn btn-ink" href="https://jessie-socials.kit.com/products/1-1-discovery-call-learn-how-to-build-you">Book now <span class="arrow" aria-hidden="true">→</span></a>
+          </article>
+          <article class="offer">
+            <span class="tag">AI mentorship</span>
+            <h3>AI Mentorship Call</h3>
+            <p>Want to not only build an AI Avatar for business and marketing, as well as learn the skills to add back end business management and support all with AI? Then this is for you. 1:1 education with follow up video education to help you feel confident using AI in your business.</p>
+            <a class="btn btn-ink" href="https://jessie-socials.kit.com/products/ai-mentorship-call">Book now <span class="arrow" aria-hidden="true">→</span></a>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="proof" aria-labelledby="proof-h">
+    <div class="wrap">
+      <p class="kicker">Proof</p>
+      <h2 id="proof-h" class="section-title">Brands and creators I've worked with</h2>
+      <div class="grid">
+        <figure class="reveal"><img src="img/src02.jpeg" alt="Brands I've worked with: Amazon, Lane Linen, L'Oréal, The Beauty Room, The New York Times, Forbes" loading="lazy" width="1792" height="2240"></figure>
+        <figure class="reveal"><img src="img/src03.jpeg" alt="Influencers and creators I've worked with: Andrea Logan, Tonia Ryan, Elizabeth Marcelena, Courtney Milam, Rachell Jova, Akemi Sue Fisher, Katie Cross" loading="lazy" width="1600" height="2000"></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="reviews" id="reviews" aria-labelledby="reviews-h">
+    <div class="wrap">
+      <p class="kicker">Reviews</p>
+      <h2 id="reviews-h" class="section-title">In their words</h2>
+      <div class="quotes">
+        <article class="quote reveal">
+          <span class="stars" aria-label="5 out of 5 stars">★★★★★</span>
+          <blockquote>
+            <p>Where do I begin? Jess was a God-send and essentially ran my business behind the scenes which allowed me to focus on other aspects of my life that needed attention.</p>
+            <p>She made me feel like I didn't need to worry about anything and she just took care of it. She helped me build my business to over 700K in revenue! So thankful she supported not only me but my community.</p>
+            <p>Jess was like a true extension of me and treated my business like it was her own. If you're on the fence about working with her don't hesitate!! She's INCREDIBLE</p>
+          </blockquote>
+          <div class="who"><img src="img/src04.jpeg" alt="" loading="lazy">Katie Cross</div>
+        </article>
+        <article class="quote reveal">
+          <span class="stars" aria-label="5 out of 5 stars">★★★★★</span>
+          <blockquote>
+            <p>Jess is the kind of virtual assistant every business owner hopes to find detail-oriented, dependable, and genuinely invested in seeing projects through with excellence.</p>
+            <p>She has a sharp eye for organization and strategy, which makes her especially skilled in project management and building systems inside your CRM (I use Go High Level).</p>
+            <p>What sets Jess apart is trust. Once something is handed to her, you can rest easy knowing it will be managed thoughtfully, communicated clearly, and executed with care. She doesn't just complete tasks-she brings calm, clarity, and structure to growing businesses that need reliable support behind the scenes. If you're looking for a virtual assistant or to learn from one who is kind, proactive, and deeply committed to helping your business run smoothly, she is it! Jess is truly a gem.</p>
+          </blockquote>
+          <div class="who"><img src="img/src05.jpeg" alt="" loading="lazy">Elizabeth Marcelena</div>
+        </article>
+        <article class="quote reveal">
+          <span class="stars" aria-label="5 out of 5 stars">★★★★★</span>
+          <blockquote>
+            <p>Jess is a God-send. Truly. She has been one of the greatest blessings in my business. She is hard-working, fast, detail-oriented, and incredibly intuitive-the kind of virtual assistant every founder prays for but rarely finds. She doesn't just complete tasks; she carries vision.</p>
+            <p>She anticipates needs before I say a word, executes with excellence, and brings calm, clarity, and consistency to everything she touches.</p>
+            <p>Beyond her skill, she has the most beautiful heart. She shows up with integrity, kindness, loyalty, and a servant-leader spirit that is rare in today's world. She is dependable, proactive, and deeply committed to doing things the right way. I can't recommend her enough!</p>
+          </blockquote>
+          <div class="who"><img src="img/src06.png" alt="" loading="lazy">Andrea Logan</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="about" aria-labelledby="about-h">
+    <div class="wrap">
+      <div class="reveal">
+        <img class="banner" src="img/src08.jpeg" alt="Jessie Socials: social media manager, virtual assistant, business management" loading="lazy" width="2033" height="774">
+        <p class="kicker">A little about me</p>
+        <h2 id="about-h">Hi, I'm Jessie.</h2>
+        <p class="big">I'm a mom of two who left healthcare to build a six-figure business from home.</p>
+      </div>
+      <div>
+        <p>As the first in my family to graduate college, I knew how to work hard. I just wanted that work to give me freedom.</p>
+        <p>Today I manage social media and business operations for influencers, major brands, and Amazon companies. I've helped brands generate over $1+ million in combined revenue and grown accounts to 700K+ followers and millions of organic views. Want a business bestie to help run your biz? Book a free discovery call.</p>
+        <p>Want to learn how you can build your online empire? I help women build online businesses of their own through one-on-one mentorship. If I can go from healthcare to six-figure CEO, so can you!</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="close" aria-labelledby="close-h">
+    <div class="wrap">
+      <div class="card">
+        <h2 id="close-h">Grow your brand.<br>Or build your own.</h2>
+        <div class="row">
+          <a class="btn btn-light" href="https://calendly.com/jessietheaffiliate/discovery-call">Book a free discovery call</a>
+          <a class="btn btn-line" href="#paths" data-path="build">Explore mentorship</a>
+          <a class="btn btn-line" href="https://www.instagram.com/jessiesocials/">Follow @jessiesocials</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© Jessie Socials</span>
+    <a href="https://www.instagram.com/jessiesocials/">Follow me on Instagram @jessiesocials</a>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const toggle = document.querySelector('.toggle');
+  const tabs = [...toggle.querySelectorAll('[role="tab"]')];
+  function select(path, focus) {
+    toggle.dataset.active = path;
+    tabs.forEach(t => {
+      const on = t.id === 'tab-' + path;
+      t.setAttribute('aria-selected', on);
+      t.tabIndex = on ? 0 : -1;
+      const panel = document.getElementById(t.getAttribute('aria-controls'));
+      panel.hidden = !on;
+      if (on) { panel.classList.remove('fade-in'); void panel.offsetWidth; panel.classList.add('fade-in'); if (focus) t.focus(); }
+    });
+  }
+  tabs.forEach(t => {
+    t.addEventListener('click', () => select(t.id.replace('tab-', '')));
+    t.addEventListener('keydown', e => {
+      if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { e.preventDefault(); select(toggle.dataset.active === 'grow' ? 'build' : 'grow', true); }
+    });
+  });
+  document.querySelectorAll('[data-path]').forEach(a => a.addEventListener('click', () => select(a.dataset.path)));
+  const io = 'IntersectionObserver' in window ? new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' }) : null;
+  document.querySelectorAll('.reveal').forEach((el, i) => { el.style.transitionDelay = (el.closest('.hero') ? i * 90 : 0) + 'ms'; io ? io.observe(el) : el.classList.add('in'); });
+})();
+</script>
+</body>
+</html>
