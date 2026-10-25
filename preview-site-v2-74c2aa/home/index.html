@@ -371,6 +371,8 @@ body{margin:0;background:#050816}
 #tdd .case-shots figure{display:flex;flex-direction:column}
 #tdd .case-shots figcaption{position:static;align-self:flex-start;margin:0;padding:6px 10px;border-radius:0;background:transparent;color:var(--muted);font-size:.8rem}
 @media (max-width:960px){#tdd .cases.cases-2{grid-template-columns:1fr}}
+#tdd .case-shots-stack{grid-template-columns:1fr}
+#tdd .case-shots-1 img{aspect-ratio:5/4}
 </style>
 </head>
 <body>
@@ -484,9 +486,9 @@ body{margin:0;background:#050816}
       <article class="card case" data-reveal>
         <p class="kicker">Client project &middot; Stan store, quiz and welcome emails</p>
         <h3>A Stan store that started keeping its visitors.</h3>
-        <div class="case-shots">
-          <figure><img src="https://raw.githubusercontent.com/charleshayesdigitally-oss/tdd-content-assets/main/site/v2/rhonni-before.webp" width="800" height="500" loading="lazy" alt="Rhonni's Stan store before the build: the first thing under her profile was a course graphic, with no email capture."><figcaption>Before: a course graphic up top</figcaption></figure>
-          <figure><img src="https://raw.githubusercontent.com/charleshayesdigitally-oss/tdd-content-assets/main/site/v2/rhonni-after.webp" width="800" height="500" loading="lazy" alt="Rhonni's Stan store after the build: a free guide sign-up form and a quiz are the first things under her profile."><figcaption>After: free guide sign-up up top</figcaption></figure>
+        <div class="case-shots case-shots-stack">
+          <figure><img src="https://raw.githubusercontent.com/charleshayesdigitally-oss/tdd-content-assets/main/site/v2/rhonni-before.webp" width="800" height="500" loading="lazy" alt="Rhonni's Stan store before the build: the first thing under her profile was a course graphic, with no email capture."><figcaption>Before: a course graphic came first</figcaption></figure>
+          <figure><img src="https://raw.githubusercontent.com/charleshayesdigitally-oss/tdd-content-assets/main/site/v2/rhonni-after.webp" width="800" height="500" loading="lazy" alt="Rhonni's Stan store after the build: a free guide sign-up form and a quiz are the first things under her profile."><figcaption>After: the free guide sign-up comes first</figcaption></figure>
         </div>
         <dl class="case-facts">
           <div><dt>Before</dt><dd>There was no email capture anywhere on it.</dd></div>
@@ -500,7 +502,7 @@ body{margin:0;background:#050816}
       <article class="card case" data-reveal>
         <p class="kicker">Tester run &middot; Sales page written from an intake</p>
         <h3>The sales page that became Alison's homepage.</h3>
-        <div class="case-shots case-shots-1"><figure><img src="https://raw.githubusercontent.com/charleshayesdigitally-oss/tdd-content-assets/main/site/v2/ailisia-home.webp" width="800" height="500" loading="lazy" alt="The top of the AiLisia Labs homepage, live on Alison's own domain."><figcaption>Live on her domain</figcaption></figure></div>
+        <div class="case-shots case-shots-1"><figure><img src="https://raw.githubusercontent.com/charleshayesdigitally-oss/tdd-content-assets/main/site/v2/ailisia-home.webp" width="800" height="640" loading="lazy" alt="The top of the AiLisia Labs homepage, live on Alison's own domain."><figcaption>Live on her domain</figcaption></figure></div>
         <dl class="case-facts">
           <div><dt>Before</dt><dd>She had already tried it with ChatGPT and with Claude. The page still didn't exist.</dd></div>
           <div><dt>What happened</dt><dd>She swapped it in as her homepage herself, on her own domain, no developer.</dd></div>
