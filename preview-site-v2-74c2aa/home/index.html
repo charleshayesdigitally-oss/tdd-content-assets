@@ -356,6 +356,16 @@ body{margin:0;background:#050816}
   #tdd .portrait{max-width:200px}
 }
 #tdd .quotes{margin-top:40px}
+/* round 3: real screenshots on the case cards + a second color moment at the close */
+#tdd .case-shots{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:4px 0 20px}
+#tdd .case-shots-1{grid-template-columns:1fr}
+#tdd .case-shots figure{margin:0;position:relative;border-radius:10px;overflow:hidden;border:1px solid var(--line);background:#050816}
+#tdd .case-shots img{display:block;width:100%;height:auto;aspect-ratio:8/5;object-fit:cover;object-position:top}
+#tdd .case-shots figcaption{position:absolute;left:8px;bottom:8px;padding:3px 9px;border-radius:999px;background:rgba(5,8,22,.86);color:#fff;font:500 .78rem/1.4 var(--body)}
+#tdd .closing{background:linear-gradient(135deg,#3B82F6 0%,#6D5DF6 55%,#8B5CF6 100%);color:#fff}
+#tdd .closing h2{color:#fff}
+#tdd .closing .close-sub{color:#fff;font-size:1.5rem;line-height:1.35}
+#tdd .closing .close-grid>div:last-child{background:var(--bg);border-radius:18px;padding:28px;box-shadow:0 24px 60px -24px rgba(5,8,22,.6)}
 </style>
 </head>
 <body>
@@ -469,6 +479,10 @@ body{margin:0;background:#050816}
       <article class="card case" data-reveal>
         <p class="kicker">Client project &middot; Stan store, quiz and welcome emails</p>
         <h3>A Stan store that started keeping its visitors.</h3>
+        <div class="case-shots">
+          <figure><img src="https://raw.githubusercontent.com/charleshayesdigitally-oss/tdd-content-assets/main/site/v2/rhonni-before.webp" width="800" height="500" loading="lazy" alt="Rhonni's Stan store before the build: product graphics and no email capture."><figcaption>Before</figcaption></figure>
+          <figure><img src="https://raw.githubusercontent.com/charleshayesdigitally-oss/tdd-content-assets/main/site/v2/rhonni-after.webp" width="800" height="500" loading="lazy" alt="Rhonni's Stan store after the build, opening on her profile with the free guide below."><figcaption>After</figcaption></figure>
+        </div>
         <dl class="case-facts">
           <div><dt>Before</dt><dd>There was no email capture anywhere on it.</dd></div>
           <div><dt>Built</dt><dd>A free-guide opt-in, a two-path quiz and a three-email welcome flow.</dd></div>
@@ -481,6 +495,7 @@ body{margin:0;background:#050816}
       <article class="card case" data-reveal>
         <p class="kicker">Tester run &middot; Sales page written from an intake</p>
         <h3>The sales page that became Alison's homepage.</h3>
+        <div class="case-shots case-shots-1"><figure><img src="https://raw.githubusercontent.com/charleshayesdigitally-oss/tdd-content-assets/main/site/v2/ailisia-home.webp" width="800" height="500" loading="lazy" alt="The top of the AiLisia Labs homepage, live on Alison's own domain."><figcaption>Live on her domain</figcaption></figure></div>
         <dl class="case-facts">
           <div><dt>Before</dt><dd>She had already tried it with ChatGPT and with Claude. The page still didn't exist.</dd></div>
           <div><dt>What happened</dt><dd>She swapped it in as her homepage herself, on her own domain, no developer.</dd></div>
