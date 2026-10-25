@@ -1,0 +1,916 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex,nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Systems and Funnels by a Working Dad | The Digital Dad</title>
+<meta name="description" content="Charles builds funnels, automations and AI systems for one-person businesses, before and after his 9-5. Free newsletter every Wednesday.">
+<link rel="canonical" href="https://www.thedigitaldad.co/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="AI Systems and Funnels by a Working Dad | The Digital Dad">
+<meta property="og:description" content="Charles builds funnels, automations and AI systems for one-person businesses, before and after his 9-5. Free newsletter every Wednesday.">
+<meta property="og:url" content="https://www.thedigitaldad.co/">
+<meta property="og:image" content="https://raw.githubusercontent.com/charleshayesdigitally-oss/tdd-content-assets/main/site/og-home.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>/* ==========================================================================
+   The Digital Dad, site rebuild 2026-10-01. SHARED layer: tokens, header,
+   footer, buttons, forms, cards, quotes, the handoff slip, placeholder flags.
+   Tokens from content/design-engine/clients/the-digital-dad/DESIGN.md;
+   hex from brand-assets/guidelines/The Digital Dad Brand Guide.txt.
+   Everything is scoped under #tdd so Systeme's own styles can't leak in.
+   ========================================================================== */
+#tdd{
+  --bg:#050816; --surface:#0E141D; --card:#141B26; --elevated:#1B2430;
+  --line:rgba(147,167,190,.14); --line-2:rgba(147,167,190,.30);
+  --ink:#F3F8FF; --muted:#93A7BE; --placeholder:#7F93AB;
+  --blue:#00AEEF; --blue-2:#3B82F6; --purple:#8B5CF6;
+  --danger:#FF8A7A; --ok:#7CE0B0; --flag:#FFC857;
+  --shadow-soft:0 2px 6px rgba(0,0,0,.05),0 16px 38px rgba(0,174,239,.10);
+  --shadow-lift:0 6px 14px rgba(0,0,0,.06),0 28px 60px rgba(0,174,239,.16);
+  --ease:cubic-bezier(.16,1,.3,1);
+  --display:'Anton',Impact,'Arial Narrow',sans-serif;
+  --body:'Poppins',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,Consolas,monospace;
+  background:var(--bg); color:var(--ink); font:400 17px/1.7 var(--body);
+  min-height:100vh; isolation:isolate; overflow-x:clip;
+  /* Anton ships one weight. No faux bold, no subpixel colour fringe on mobile. */
+  font-synthesis:none; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+}
+html{scroll-behavior:smooth;scroll-padding-top:96px}
+body{margin:0;background:#050816}
+#tdd *,#tdd *::before,#tdd *::after{box-sizing:border-box}
+#tdd h1,#tdd h2,#tdd h3,#tdd p,#tdd figure,#tdd blockquote,#tdd ul,#tdd ol,#tdd dl,#tdd dd{margin:0}
+#tdd ul,#tdd ol{padding:0;list-style:none}
+#tdd img{max-width:100%;height:auto;display:block}
+#tdd a{color:inherit}
+#tdd button,#tdd input,#tdd select,#tdd textarea{font:inherit;color:inherit}
+#tdd a,#tdd button,#tdd summary,#tdd label{touch-action:manipulation}
+#tdd :focus-visible{outline:3px solid var(--blue);outline-offset:4px;border-radius:4px}
+
+/* ---------- layout + type ---------- */
+#tdd .wrap{width:min(1120px,calc(100% - 64px));margin-inline:auto}
+#tdd .section{padding-block:112px;position:relative}
+#tdd .band{background:var(--surface);border-block:1px solid var(--line)}
+#tdd .label{display:flex;align-items:center;gap:14px;margin-bottom:28px;font:500 12px/1.6 var(--mono);letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+#tdd .label::before{content:'';width:32px;height:1px;background:var(--line-2);flex-shrink:0}
+#tdd .kicker{font:500 11px/1.6 var(--mono);letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+/* Anton: weight 400 only, slightly open tracking (validator 10/01: tight tracking read as crushed). */
+#tdd h1,#tdd h2{font-family:var(--display);font-weight:400;text-transform:uppercase;letter-spacing:.01em;line-height:1.06;color:var(--ink);text-shadow:none}
+#tdd h1{font-size:clamp(2.5rem,6vw,4.5rem)}
+#tdd h2{font-size:clamp(2rem,4vw,3rem)}
+#tdd h3{font:500 1.25rem/1.4 var(--body);color:var(--ink)}
+#tdd p{color:var(--muted)}
+#tdd p + p{margin-top:18px}
+#tdd .lede{font-size:1.2rem;line-height:1.7;color:var(--ink)}
+#tdd .ink{color:var(--ink)}
+#tdd .margin-line{margin-top:40px;max-width:40em;font-size:1.15rem;line-height:1.6;color:var(--ink)}
+#tdd .limit{color:var(--ink)}
+
+/* ---------- skip link ---------- */
+#tdd .skip{position:absolute;left:16px;top:-80px;z-index:60;padding:12px 20px;border-radius:8px;background:var(--blue);color:#050816;font-weight:600;text-decoration:none}
+#tdd .skip:focus{top:12px}
+
+/* ---------- header (one source: shared/header.html) ---------- */
+#tdd .site-header{position:sticky;top:0;z-index:40;background:rgba(14,20,29,.92);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+#tdd .bar{display:flex;align-items:center;gap:24px;min-height:76px}
+#tdd .brand{display:inline-flex;align-items:center;gap:12px;min-height:44px;flex-shrink:0;text-decoration:none}
+#tdd .brand img{width:40px;height:40px}
+#tdd .brand-name{font:600 15px/1.2 var(--body);color:var(--ink)}
+#tdd .brand-name small{display:block;margin-top:2px;font:500 10px/1.6 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+#tdd .site-nav{margin-left:auto}
+#tdd .menu{display:flex;gap:4px}
+#tdd .menu a{display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border-radius:8px;font:500 14px/1 var(--body);color:var(--muted);text-decoration:none;transition:color 180ms var(--ease),background-color 180ms var(--ease)}
+#tdd .menu a:hover{color:var(--ink);background:var(--card)}
+#tdd .menu a[aria-current="page"]{color:var(--ink);box-shadow:inset 0 -2px 0 var(--blue)}
+#tdd .menu-toggle{display:none}
+
+/* ---------- buttons + links ---------- */
+#tdd .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:14px 22px;border:1px solid transparent;border-radius:8px;background:var(--blue);color:#050816;font:600 15px/1.2 var(--body);text-decoration:none;cursor:pointer;box-shadow:var(--shadow-soft);transition:transform 200ms var(--ease),box-shadow 200ms var(--ease),filter 200ms var(--ease),background-color 200ms var(--ease),color 200ms var(--ease),border-color 200ms var(--ease)}
+#tdd .btn:hover{transform:translateY(-2px);box-shadow:var(--shadow-lift);filter:brightness(1.06)}
+#tdd .btn:active{transform:translateY(1px)}
+#tdd .btn[disabled]{cursor:default;opacity:.75;transform:none;filter:none}
+#tdd .btn-ghost{background:transparent;color:var(--ink);border-color:var(--line-2);box-shadow:none}
+#tdd .btn-ghost:hover{border-color:var(--blue);box-shadow:none;filter:none}
+#tdd .nav-cta{min-height:44px;padding:10px 16px;font-size:14px;white-space:nowrap}
+/* The quiet CTA: while a form with a filled submit is on screen, the header button
+   steps back to an outline so there is only ever one filled button in view. */
+#tdd .nav-cta.is-quiet{background:transparent;color:var(--ink);border-color:var(--line-2);box-shadow:none}
+#tdd .text-link{display:inline-flex;align-items:center;gap:8px;min-height:44px;color:var(--ink);text-decoration:underline;text-decoration-color:var(--line-2);text-underline-offset:6px;transition:text-decoration-color 180ms var(--ease)}
+#tdd .text-link:hover{text-decoration-color:var(--blue)}
+#tdd .arrow{display:inline-block;transition:transform 200ms var(--ease)}
+#tdd a:hover .arrow{transform:translateX(4px)}
+
+/* ---------- forms ---------- */
+#tdd .capture{position:relative;display:grid;gap:10px}
+#tdd .field-label{display:block;font:500 14px/1.4 var(--body);color:var(--ink)}
+#tdd .capture-row{display:flex;gap:10px}
+#tdd input[type="email"],#tdd input[type="text"],#tdd select,#tdd textarea{width:100%;min-height:52px;padding:12px 16px;background:var(--elevated);border:1px solid var(--line-2);border-radius:8px;color:var(--ink);transition:border-color 180ms var(--ease),box-shadow 180ms var(--ease)}
+#tdd textarea{min-height:132px;resize:vertical;line-height:1.6}
+#tdd select{appearance:none;-webkit-appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--muted) 50%),linear-gradient(135deg,var(--muted) 50%,transparent 50%);background-position:calc(100% - 22px) 50%,calc(100% - 16px) 50%;background-size:6px 6px;background-repeat:no-repeat;padding-right:44px}
+#tdd input[type="checkbox"]{accent-color:#00AEEF}
+#tdd input::placeholder,#tdd textarea::placeholder{color:var(--placeholder)}
+#tdd input:focus,#tdd select:focus,#tdd textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(0,174,239,.25)}
+#tdd input[disabled]{opacity:.6}
+#tdd [aria-invalid="true"]{border-color:var(--danger)!important}
+#tdd .capture-row .btn{flex-shrink:0}
+#tdd .form-status{font-size:14px;line-height:1.6}
+#tdd .form-status:empty{display:none}
+#tdd .form-status.is-error{color:var(--danger)}
+#tdd .form-status.is-ok{color:var(--ok)}
+#tdd .form-status.is-pending{color:var(--muted)}
+#tdd .form-status a{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+#tdd .fine{font-size:13px;line-height:1.6;color:var(--muted)}
+#tdd .hp{position:absolute!important;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden}
+
+/* ---------- cards ---------- */
+#tdd .card{position:relative;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:28px;box-shadow:var(--shadow-soft)}
+#tdd .card-featured{border-color:transparent;background:linear-gradient(var(--card),var(--card)) padding-box,linear-gradient(135deg,var(--purple),var(--blue)) border-box}
+
+/* ---------- quotes (verbatim testimonials, honestly labelled) ---------- */
+#tdd .quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+#tdd .quote{display:flex;flex-direction:column;gap:20px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:28px}
+#tdd .quote blockquote{font-size:1rem;line-height:1.7;color:var(--ink)}
+#tdd .quote blockquote::before{content:'\201C';display:block;margin-bottom:8px;font:400 2.4rem/.6 var(--display);color:var(--blue);opacity:.6}
+#tdd .quote figcaption{margin-top:auto;padding-top:16px;border-top:1px solid var(--line);font-size:14px;line-height:1.5}
+#tdd .quote .who{display:block;color:var(--ink);font-weight:500}
+#tdd .quote .role{display:block;color:var(--muted)}
+#tdd .quote .scope{display:block;margin-top:10px;font:500 11px/1.6 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+/* ---------- the handoff slip (signature move) ---------- */
+#tdd .slip{position:relative;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:28px 28px 22px;box-shadow:var(--shadow-soft)}
+#tdd .slip-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:6px 16px;padding-bottom:16px;border-bottom:1px dashed var(--line-2)}
+#tdd .slip-head h3{font-size:1.1rem}
+#tdd .slip-list li{display:grid;grid-template-columns:26px 1fr;gap:14px;padding:16px 0;border-bottom:1px solid var(--line)}
+#tdd .slip-list li:last-child{border-bottom:0}
+#tdd .slip-list strong{display:block;color:var(--ink);font-weight:500}
+#tdd .slip-list p{margin-top:4px;font-size:15px}
+#tdd .slip-foot{display:grid;grid-template-columns:26px 1fr;gap:14px;padding-top:16px;border-top:1px dashed var(--line-2);color:var(--ink)}
+#tdd .tick{display:grid;place-items:center;width:24px;height:24px;margin-top:2px;border:1px solid var(--line-2);border-radius:6px;color:var(--blue)}
+#tdd .tick svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+/* Ticks are drawn by default. JS only "arms" them (hidden) when motion is allowed,
+   then ticks them in once, so nothing ever depends on the animation running. */
+#tdd .slip.is-armed .tick svg{opacity:0;transform:scale(.4)}
+#tdd .slip.is-armed.is-ticked .tick svg{opacity:1;transform:scale(1);transition:opacity 240ms var(--ease),transform 420ms var(--ease)}
+#tdd .slip.is-ticked .slip-list li:nth-child(2) .tick svg{transition-delay:120ms}
+#tdd .slip.is-ticked .slip-list li:nth-child(3) .tick svg{transition-delay:240ms}
+#tdd .slip.is-ticked .slip-list li:nth-child(4) .tick svg{transition-delay:360ms}
+#tdd .slip.is-ticked .slip-foot .tick svg{transition-delay:480ms}
+#tdd .chip{display:inline-block;margin-left:8px;padding:1px 8px;border:1px solid var(--line);border-radius:999px;background:var(--surface);font:500 10px/1.7 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);vertical-align:2px}
+
+/* ---------- owner placeholders (.todo): loud on purpose, removed before ship ---------- */
+#tdd .todo{display:inline-block;margin-top:10px;padding:4px 10px;border:1px dashed var(--flag);border-radius:8px;color:var(--flag);font:500 12px/1.5 var(--mono);letter-spacing:0;text-transform:none}
+
+/* ---------- footer (one source: shared/footer.html) ---------- */
+#tdd .site-footer{padding:56px 0 32px;background:var(--surface);border-top:1px solid var(--line)}
+#tdd .footer-top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px;padding-bottom:28px;border-bottom:1px solid var(--line)}
+#tdd .footer-line{font-size:14px}
+#tdd .footer-nav{display:flex;flex-wrap:wrap;gap:0 4px;padding-top:16px}
+#tdd .footer-nav a{display:inline-flex;align-items:center;min-height:44px;min-width:44px;padding:0 10px;font-size:13px;color:var(--muted);text-decoration:none}
+#tdd .footer-nav a:first-child{padding-left:0}
+#tdd .footer-nav a:hover{color:var(--ink)}
+#tdd .footer-legal{margin-top:12px;font-size:12px}
+
+/* ---------- responsive ---------- */
+@media (max-width:960px){
+  #tdd .quotes{grid-template-columns:1fr}
+  #tdd .section{padding-block:88px}
+}
+@media (max-width:760px){
+  html{scroll-padding-top:84px}
+  #tdd{font-size:16px}
+  #tdd .wrap{width:calc(100% - 40px)}
+  #tdd .bar{gap:12px;min-height:68px}
+  #tdd .menu-toggle{display:inline-flex;align-items:center;justify-content:center;min-height:44px;min-width:44px;padding:0 14px;background:transparent;border:1px solid var(--line-2);border-radius:8px;color:var(--ink);font:500 14px/1 var(--body);cursor:pointer}
+  #tdd .menu{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;padding:8px 20px 16px;background:var(--surface);border-bottom:1px solid var(--line);box-shadow:0 24px 40px rgba(0,0,0,.45)}
+  #tdd .menu.is-open{display:flex}
+  #tdd .menu a{width:100%;min-height:48px;padding:0 4px;font-size:16px}
+  #tdd .menu a[aria-current="page"]{box-shadow:inset 3px 0 0 var(--blue);padding-left:14px}
+  #tdd .nav-cta{padding:10px 12px;font-size:13px}
+  #tdd .capture-row{flex-direction:column}
+  #tdd .capture-row .btn{width:100%}
+  #tdd .section{padding-block:64px}
+  #tdd .card,#tdd .quote,#tdd .slip{padding:22px}
+  #tdd .label{margin-bottom:20px;font-size:11px}
+}
+@media (max-width:420px){
+  #tdd .brand-name{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  #tdd *,#tdd *::before,#tdd *::after{animation:none!important;transition:none!important}
+  #tdd .slip.is-armed .tick svg{opacity:1;transform:none}
+}
+
+/* Home v2 (2026-10-25). Shared tokens and components live in shared/base.css.
+   Spec: roles/web/drafts/2026-10-25-site-v2-spec.md (Frame). */
+
+/* ---------- 1. hero: who/what/outcome left, two doors right ---------- */
+#tdd .hero{position:relative;padding:64px 0 0;overflow:hidden}
+#tdd .hero::before{content:'';position:absolute;z-index:-1;inset:-10% -10% 0;pointer-events:none;background:radial-gradient(640px 400px at 86% 28%,rgba(139,92,246,.16),transparent 66%),radial-gradient(520px 340px at 70% 82%,rgba(0,174,239,.10),transparent 62%)}
+#tdd .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+#tdd .eyebrow{margin-bottom:18px;font:500 13px/1.6 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:#B4C3D4}
+#tdd .hero h1{max-width:11em;font-size:clamp(2.6rem,5.6vw,4.4rem)}
+#tdd .door-h-small{margin:6px 0 4px;font-size:clamp(1.25rem,1.8vw,1.45rem);line-height:1.1}
+#tdd .door-read .promise{margin:6px 0 14px;font-size:15px;color:#C2CFDD}
+#tdd .hero-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 24px;margin-top:28px}
+#tdd .hero-foot .founder-strip{margin-top:0;padding:0;border:0}
+#tdd .chips-label{margin-top:32px;font:500 14px/1.4 var(--body);color:var(--ink)}
+#tdd .tool-chips{margin:12px 0 16px}
+#tdd .loop-does{margin-top:20px;color:var(--ink);font-size:16px}
+#tdd .loop-margin{margin-top:14px;color:#C2CFDD;font-size:15px}
+#tdd .loop-copy .text-link{margin-top:8px}
+#tdd .cases-2{grid-template-columns:1fr 1fr}
+#tdd .case-facts{display:grid;gap:12px;margin:6px 0 4px}
+#tdd .case-facts dt{font:500 12px/1.6 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:#AFC0D2}
+#tdd .case-facts dd{margin:2px 0 0;color:var(--ink)}
+#tdd .case-ship{margin-top:16px;font:500 13px/1.5 var(--mono);color:#AFC0D2}
+#tdd .receipts-intro{margin-top:8px}
+#tdd .quotes-4{grid-template-columns:repeat(2,1fr)}
+#tdd .close-sub{margin-top:14px;color:var(--ink);font-size:1.1rem}
+#tdd .field-head{font:500 1.2rem/1.4 var(--body);color:var(--ink)}
+#tdd .close-grid .promise{margin:8px 0 16px}
+#tdd .hero .sub{margin-top:22px;max-width:34em;font-size:1.125rem;color:#C2CFDD}
+#tdd .trust-line{display:flex;flex-wrap:wrap;gap:6px 12px;margin-top:22px;font:500 14px/1.6 var(--body);color:var(--ink)}
+#tdd .trust-line span[aria-hidden]{color:var(--blue)}
+#tdd .doors{padding:0;overflow:hidden}
+#tdd .door{padding:28px}
+#tdd .door-hire{background:linear-gradient(160deg,rgba(0,174,239,.10),rgba(139,92,246,.08) 70%,transparent)}
+#tdd .door-hire h2{margin:8px 0 10px;font-size:clamp(1.45rem,2.2vw,1.8rem);line-height:1.1}
+#tdd .door-meta{margin-bottom:18px;color:#C2CFDD}
+#tdd .door-read{border-top:1px solid var(--line)}
+#tdd .door-read .kicker{margin-bottom:10px}
+#tdd .door-read .fine{margin-top:12px;font-size:14px}
+#tdd .founder-strip{display:flex;flex-wrap:wrap;gap:4px 12px;margin-top:56px;padding:18px 0;border-top:1px solid var(--line);font-size:14px;color:#B4C3D4}
+#tdd .founder-strip span:first-child{color:var(--ink)}
+
+/* ---------- 2. the problem ---------- */
+#tdd .work-head{max-width:44em}
+#tdd .work-head p{margin-top:20px}
+#tdd .tool-chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:32px}
+#tdd .tool-chips li{min-height:40px;display:inline-flex;align-items:center;padding:8px 16px;border:1px solid var(--line-2);border-radius:999px;font:500 15px/1 var(--body);color:var(--ink)}
+
+/* ---------- 3. the color moment: gradient band + the loop ---------- */
+#tdd .loop-band{position:relative;padding-block:104px;background:linear-gradient(135deg,#00AEEF 0%,#3B82F6 48%,#8B5CF6 100%);isolation:isolate}
+#tdd .loop-band::after{content:'';position:absolute;inset:0;z-index:-1;background:radial-gradient(900px 500px at 10% 0%,rgba(5,8,22,.0),rgba(5,8,22,.28) 80%)}
+#tdd .loop-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center}
+/* Copy sits on a navy card: small text never sits on the bright gradient (white on #00AEEF is ~2.5:1). */
+#tdd .loop-copy{padding:32px;border-radius:20px;background:rgba(5,8,22,.86);border:1px solid rgba(255,255,255,.14)}
+#tdd .label-on-band{color:#C9D6E6}
+#tdd .loop-copy h2{font-size:clamp(1.9rem,3.4vw,2.7rem)}
+#tdd .loop-steps{margin-top:24px;display:grid;gap:10px}
+#tdd .loop-steps li{display:flex;align-items:center;gap:14px;min-height:48px;padding:10px 14px;border:1px solid var(--line);border-radius:12px;color:var(--ink);transition:border-color .3s var(--ease),background-color .3s var(--ease)}
+#tdd .loop-steps .step-n{flex:0 0 28px;height:28px;display:grid;place-items:center;border-radius:50%;background:rgba(0,174,239,.16);font:500 13px/1 var(--mono);color:var(--blue)}
+#tdd .loop-steps li.is-on{border-color:var(--blue);background:rgba(0,174,239,.10)}
+#tdd .loop-limit{margin-top:20px;padding-top:16px;border-top:1px solid var(--line);font-size:15px;color:var(--ink)}
+#tdd .loop-card{margin:0}
+#tdd .loop-media{position:relative;aspect-ratio:16/10;border-radius:18px;overflow:hidden;background:#050816;border:1px solid rgba(255,255,255,.22);box-shadow:0 30px 70px rgba(5,8,22,.45)}
+#tdd .loop-video{width:100%;height:100%;object-fit:cover;display:block}
+#tdd .loop-toggle{position:absolute;right:12px;bottom:12px;min-width:88px;min-height:44px;padding:10px 16px;border:1px solid rgba(255,255,255,.35);border-radius:999px;background:rgba(5,8,22,.78);color:#fff;font:500 14px/1 var(--body);cursor:pointer}
+#tdd .loop-toggle:hover{border-color:#fff}
+#tdd .loop-card figcaption{display:inline-block;margin-top:12px;padding:8px 12px;border-radius:10px;background:rgba(5,8,22,.82);font:500 13px/1.5 var(--body);color:#E6EEF8}
+
+/* ---------- 4. proof ---------- */
+#tdd .cases{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px}
+#tdd .case h3{margin:8px 0 10px}
+#tdd .case .text-link{margin-top:10px}
+#tdd .receipts-head{margin:64px 0 0;font:500 1.15rem/1.4 var(--body);color:var(--ink)}
+#tdd .receipts{margin:20px 0 8px;border-top:1px solid var(--line)}
+#tdd .receipts li{display:grid;grid-template-columns:160px 1fr;gap:24px;padding:20px 0;border-bottom:1px solid var(--line)}
+#tdd .receipts .kicker{padding-top:5px}
+#tdd .receipts p{color:var(--ink)}
+#tdd .section-cta{display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px;margin-top:36px}
+
+/* ---------- 5. the path ---------- */
+#tdd .path{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px}
+#tdd .path-step h3{margin:8px 0 12px}
+#tdd .path-rec{border-color:var(--blue);box-shadow:var(--shadow-lift)}
+#tdd .path-rec .kicker{color:var(--blue)}
+#tdd .limit-note{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);font-size:15px;color:var(--ink)}
+#tdd #path .slip{margin-top:24px;max-width:560px}
+
+/* ---------- 7. founder panel ---------- */
+#tdd .founder-panel{display:grid;grid-template-columns:.6fr 1.4fr;gap:56px;align-items:center}
+#tdd .portrait img{width:100%;border-radius:24px;border:1px solid var(--line);box-shadow:var(--shadow-soft)}
+#tdd .founder-copy{max-width:36em}
+#tdd .founder-copy h2{margin-bottom:20px}
+#tdd .story-quote{margin:20px 0;padding:6px 0 6px 24px;border-left:2px solid var(--blue);font:400 clamp(1.4rem,2.4vw,1.9rem)/1.25 var(--display);letter-spacing:.01em;text-transform:uppercase;color:var(--ink)}
+
+/* ---------- 8/9. free + close ---------- */
+#tdd .free-grid{display:grid;grid-template-columns:1.3fr .7fr;gap:48px;align-items:end}
+#tdd .free-copy{margin-top:16px;max-width:30em}
+#tdd .free-links{display:flex;flex-direction:column;align-items:flex-start;gap:12px}
+#tdd .closing{background:radial-gradient(700px 300px at 15% 0%,rgba(139,92,246,.14),transparent 70%),var(--bg)}
+#tdd .close-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:64px;align-items:end}
+#tdd .close-grid .fine{margin-top:12px}
+
+/* small grey mono labels were hard to read on navy: lighter + larger (a11y) */
+#tdd .label{font-size:13px;color:#B4C3D4}
+#tdd .kicker{font-size:12px;color:#AFC0D2}
+
+@media (max-width:960px){
+  #tdd .loop-grid{grid-template-columns:1fr;gap:28px}
+  #tdd .cases,#tdd .path{grid-template-columns:1fr 1fr}
+}
+@media (max-width:760px){
+  #tdd .hero{padding-top:28px}
+  #tdd .hero-grid{grid-template-columns:1fr;gap:28px}
+  #tdd .hero .sub{margin-top:14px;font-size:1rem}
+  #tdd .door{padding:22px}
+  #tdd .founder-strip{margin-top:36px;font-size:13px}
+  #tdd .loop-band{padding-block:64px}
+  #tdd .loop-copy{padding:22px}
+  #tdd .cases,#tdd .path{grid-template-columns:1fr}
+  #tdd .receipts li{grid-template-columns:1fr;gap:4px}
+  #tdd .founder-panel{grid-template-columns:1fr;gap:28px}
+  #tdd .portrait{max-width:320px}
+  #tdd .free-grid,#tdd .close-grid{grid-template-columns:1fr;gap:28px}
+}
+</style>
+</head>
+<body>
+<div id="tdd" data-page="home">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="brand" href="https://www.thedigitaldad.co/" aria-label="The Digital Dad AI Systems, home">
+      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjAwIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJUaGUgRGlnaXRhbCBEYWQgQUkgU3lzdGVtcyBtYXJrIj4NCiAgPGRlZnM+DQogICAgPGxpbmVhckdyYWRpZW50IGlkPSJuQmx1ZSIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzNhYTBmZiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzBiNjNlNSIvPjwvbGluZWFyR3JhZGllbnQ+DQogICAgPGxpbmVhckdyYWRpZW50IGlkPSJuQnJpZ2h0IiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZmZmZmZmIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjOGZkNGZmIi8+PC9saW5lYXJHcmFkaWVudD4NCiAgICA8bGluZWFyR3JhZGllbnQgaWQ9Im5DeWFuIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjNmZlMGZmIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDBhZWVmIi8+PC9saW5lYXJHcmFkaWVudD4NCiAgICA8ZmlsdGVyIGlkPSJnbG93IiB4PSItNjAlIiB5PSItNjAlIiB3aWR0aD0iMjIwJSIgaGVpZ2h0PSIyMjAlIj48ZmVHYXVzc2lhbkJsdXIgc3RkRGV2aWF0aW9uPSIyLjIiIHJlc3VsdD0iYiIvPjxmZU1lcmdlPjxmZU1lcmdlTm9kZSBpbj0iYiIvPjxmZU1lcmdlTm9kZSBpbj0iU291cmNlR3JhcGhpYyIvPjwvZmVNZXJnZT48L2ZpbHRlcj4NCiAgPC9kZWZzPg0KICA8ZyBmaWx0ZXI9InVybCgjZ2xvdykiPg0KICAgIDxnIHN0cm9rZT0iIzVhYjRmNSIgc3Ryb2tlLXdpZHRoPSIyLjQiIGZpbGw9Im5vbmUiIG9wYWNpdHk9Ii45IiBzdHJva2UtbGluZWNhcD0icm91bmQiPg0KICAgICAgPHBhdGggZD0iTTEwMCA1NCBMMTQ2IDEwMCBMMTAwIDE0NiBMNTQgMTAwIFoiLz4NCiAgICAgIDxsaW5lIHgxPSIxMDAiIHkxPSI1NCIgeDI9IjEwMCIgeTI9IjE0NiIvPg0KICAgICAgPGxpbmUgeDE9IjU0IiB5MT0iMTAwIiB4Mj0iMTQ2IiB5Mj0iMTAwIi8+DQogICAgICA8bGluZSB4MT0iNTQiIHkxPSIxMDAiIHgyPSIyOCIgeTI9IjEwMCIvPg0KICAgICAgPGxpbmUgeDE9IjE0NiIgeTE9IjEwMCIgeDI9IjE3MiIgeTI9IjEwMCIvPg0KICAgICAgPGxpbmUgeDE9IjEwMCIgeTE9IjU0IiB4Mj0iNzIiIHkyPSI0MCIvPg0KICAgICAgPGxpbmUgeDE9IjEwMCIgeTE9IjE0NiIgeDI9IjEyOCIgeTI9IjE2MCIvPg0KICAgIDwvZz4NCiAgICA8cmVjdCB4PSI4OCIgeT0iNDIiIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgcng9IjYiIGZpbGw9InVybCgjbkJyaWdodCkiLz4NCiAgICA8cmVjdCB4PSI5MCIgeT0iOTAiIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgcng9IjUiIGZpbGw9InVybCgjbkN5YW4pIi8+DQogICAgPHJlY3QgeD0iODgiIHk9IjEzNCIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiByeD0iNiIgZmlsbD0idXJsKCNuQmx1ZSkiLz4NCiAgICA8cmVjdCB4PSI0MiIgeT0iODgiIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgcng9IjYiIGZpbGw9InVybCgjbkJsdWUpIi8+DQogICAgPHJlY3QgeD0iMTM0IiB5PSI4OCIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiByeD0iNiIgZmlsbD0idXJsKCNuQnJpZ2h0KSIvPg0KICAgIDxyZWN0IHg9IjIwIiB5PSI5MyIgd2lkdGg9IjE0IiBoZWlnaHQ9IjE0IiByeD0iNCIgZmlsbD0idXJsKCNuQmx1ZSkiLz4NCiAgICA8cmVjdCB4PSIxNjYiIHk9IjkzIiB3aWR0aD0iMTQiIGhlaWdodD0iMTQiIHJ4PSI0IiBmaWxsPSJ1cmwoI25CcmlnaHQpIi8+DQogICAgPHJlY3QgeD0iNjQiIHk9IjMzIiB3aWR0aD0iMTMiIGhlaWdodD0iMTMiIHJ4PSI0IiBmaWxsPSJ1cmwoI25DeWFuKSIvPg0KICAgIDxyZWN0IHg9IjEyMiIgeT0iMTUzIiB3aWR0aD0iMTMiIGhlaWdodD0iMTMiIHJ4PSI0IiBmaWxsPSJ1cmwoI25DeWFuKSIvPg0KICA8L2c+DQo8L3N2Zz4NCg==" width="40" height="40" alt="">
+      <span class="brand-name">The Digital Dad<small>AI Systems</small></span>
+    </a>
+    <nav class="site-nav" aria-label="Main">
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu">Menu</button>
+      <ul class="menu" id="site-menu">
+        <li><a href="https://www.thedigitaldad.co/about-us" data-nav="about">About</a></li>
+        <li><a href="https://www.thedigitaldad.co/services" data-nav="services">Work With Me</a></li>
+        <li><a href="https://resources.thedigitaldad.co/" data-nav="resources">Free Resources</a></li>
+      </ul>
+    </nav>
+    <a class="btn nav-cta" href="https://www.thedigitaldad.co/services#apply">Apply for a build</a>
+  </div>
+</header>
+
+<main id="main">
+<!-- Copy: roles/content/drafts/2026-10-25-site-v2-copy.md (Page). Spec: roles/web/drafts/2026-10-25-site-v2-spec.md (Frame). No prices on Home (Charles 10/01). -->
+
+<section class="hero" aria-labelledby="hero-title">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">Funnels &middot; Automation &middot; AI systems</p>
+      <h1 id="hero-title">Stop being the copy-paste between your tools.</h1>
+      <p class="sub">For one-person businesses running on Stan, Systeme, Beacons or Make. I build the part in between, then hand it over tested, in your accounts.</p>
+    </div>
+    <div class="card doors" aria-label="Two ways in">
+      <div class="door door-hire">
+        <p class="kicker">Work with me</p>
+        <h2>What would you hand off first?</h2>
+        <p class="door-meta">Written scope first. Every price is on the Work With Me page, before you ever talk to me.</p>
+        <a class="btn" href="https://www.thedigitaldad.co/services#apply">Apply for a build <span class="arrow" aria-hidden="true">&rarr;</span></a>
+      </div>
+      <div class="door door-read" id="newsletter">
+        <p class="kicker">The Digital Dad News</p>
+        <h2 class="door-h-small">One email a week.</h2>
+        <p class="promise">Every Wednesday: what I built this week, what worked, what broke, plus the AI news worth your time.</p>
+        <form class="capture" data-capture="newsletter" data-no-quiet data-source="home-hero" action="https://thedigitaldadnews.beehiiv.com/subscribe" method="get" novalidate>
+          <label class="field-label" for="email-hero">Your email</label>
+          <div class="capture-row">
+            <input id="email-hero" name="email" type="email" autocomplete="email" inputmode="email" required placeholder="you@example.com">
+            <button class="btn btn-ghost" type="submit">Get the newsletter</button>
+          </div>
+          <div class="hp" aria-hidden="true"><label for="hp-hero">Leave this empty</label><input id="hp-hero" name="company_url" type="text" tabindex="-1" autocomplete="off"></div>
+          <p class="form-status" role="status" aria-live="polite"></p>
+        </form>
+        <p class="fine">Free. Unsubscribe anytime.</p>
+      </div>
+    </div>
+  </div>
+  <div class="wrap hero-foot">
+    <a class="text-link" href="https://resources.thedigitaldad.co/?src=site-home">Or open the free board. One email gets all of them. <span class="arrow" aria-hidden="true">&rarr;</span></a>
+    <p class="founder-strip"><span>Founded by a working dad.</span></p>
+  </div>
+</section>
+
+<section class="section" id="work" aria-labelledby="work-title">
+  <div class="wrap">
+    <div class="work-head">
+      <p class="label">What I do now</p>
+      <h2 id="work-title" data-reveal>You bought the tools. You're still the thing connecting them.</h2>
+      <p data-reveal>If you run a one-person business, you probably already pay for an email platform, a place to sell, and an automation account you opened once and never finished. You're still the copy-paste between them. I build the part in between.</p>
+    </div>
+    <p class="chips-label" id="chips-label">Tools you already pay for</p>
+    <ul class="tool-chips" aria-labelledby="chips-label" data-reveal>
+      <li>Stan</li><li>Systeme</li><li>Beacons</li><li>Make</li>
+    </ul>
+    <a class="text-link" href="#watch">Watch one go through <span class="arrow" aria-hidden="true">&darr;</span></a>
+  </div>
+</section>
+
+<section class="loop-band" id="watch" aria-labelledby="watch-title">
+  <div class="wrap loop-grid">
+    <div class="loop-copy">
+      <h2 id="watch-title">Watch one sign-up go through.</h2>
+      <ol class="loop-steps" aria-label="What the video shows">
+        <li><span class="step-n">1</span><span>Sign-up</span></li>
+        <li><span class="step-n">2</span><span>Tagged</span></li>
+        <li><span class="step-n">3</span><span>Welcome email</span></li>
+      </ol>
+      <p class="loop-does">A new sign-up gets tagged. The tag starts the welcome emails.</p>
+      <p class="loop-limit">It won't bring you traffic. It makes sure the people already showing up don't fall through.</p>
+      <p class="loop-margin">The sign-up lands, the welcome email goes out, and you hear about it at dinner instead of doing it at dinner.</p>
+      <a class="text-link" href="https://resources.thedigitaldad.co/?src=site-band">Open the free board <span class="arrow" aria-hidden="true">&rarr;</span></a>
+    </div>
+    <figure class="loop-card">
+      <div class="loop-media">
+        <video class="loop-video" muted playsinline loop preload="none" width="960" height="600" poster="https://raw.githubusercontent.com/charleshayesdigitally-oss/tdd-content-assets/main/site/v2/loop-poster.webp" aria-describedby="loop-caption">
+          <source data-src="https://raw.githubusercontent.com/charleshayesdigitally-oss/tdd-content-assets/main/site/v2/loop.webm" type="video/webm">
+          <source data-src="https://raw.githubusercontent.com/charleshayesdigitally-oss/tdd-content-assets/main/site/v2/loop.mp4" type="video/mp4">
+        </video>
+        <button class="loop-toggle" type="button" aria-pressed="false" aria-label="Pause the video"><span class="loop-toggle-text">Pause</span></button>
+      </div>
+      <figcaption id="loop-caption">Recorded 25 October 2026 on my own free board, with a test address.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="section band" id="proof" aria-labelledby="proof-title">
+  <div class="wrap">
+    <p class="label">What's running</p>
+    <h2 id="proof-title" data-reveal>Who I've built for.</h2>
+    <div class="cases cases-2">
+      <article class="card case" data-reveal>
+        <p class="kicker">Client project &middot; Stan store, quiz and welcome emails</p>
+        <h3>A Stan store that started keeping its visitors.</h3>
+        <dl class="case-facts">
+          <div><dt>Before</dt><dd>There was no email capture anywhere on it.</dd></div>
+          <div><dt>Built</dt><dd>A free-guide opt-in, a two-path quiz and a three-email welcome flow.</dd></div>
+          <div><dt>What happened</dt><dd>It went live the day after she said yes. Within a day, a stranger opted into the free guide, before she had promoted it anywhere.</dd></div>
+          <div><dt>Where it stops</dt><dd>The quiz sends each lead to her inbox, not into a list with follow-up. That was on purpose. It's her list.</dd></div>
+        </dl>
+        <p class="case-ship">Shipped July 2026</p>
+        <a class="text-link" href="https://charleshayesdigitally-oss.github.io/tdd-content-assets/case-studies/rhonni/" target="_blank" rel="noopener">Read Rhonni's case study <span class="arrow" aria-hidden="true">&rarr;</span></a>
+      </article>
+      <article class="card case" data-reveal>
+        <p class="kicker">Tester run &middot; Sales page written from an intake</p>
+        <h3>The sales page that became Alison's homepage.</h3>
+        <dl class="case-facts">
+          <div><dt>Before</dt><dd>She had already tried it with ChatGPT and with Claude. The page still didn't exist.</dd></div>
+          <div><dt>What happened</dt><dd>She swapped it in as her homepage herself, on her own domain, no developer.</dd></div>
+          <div><dt>Where it stops</dt><dd>The first version had two links that weren't clickable. She caught it. It was fixed the same hour.</dd></div>
+        </dl>
+        <p class="case-ship">Shipped June 2026</p>
+        <a class="text-link" href="https://www.thedigitaldad.co/portfolio">More on the Work page <span class="arrow" aria-hidden="true">&rarr;</span></a>
+      </article>
+    </div>
+    <h3 class="receipts-head" data-reveal>Mine first.</h3>
+    <p class="receipts-intro" data-reveal>These run my own business. Where one still needs me, I say so.</p>
+    <ul class="receipts">
+      <li data-reveal><span class="kicker">Wednesdays</span><p>The newsletter drafts itself. It still can't send itself, so I paste it into Beehiiv by hand.</p></li>
+      <li data-reveal><span class="kicker">Every Reel</span><p>One approval publishes it to Instagram, Facebook and YouTube. TikTok I still post from my phone.</p></li>
+      <li data-reveal><span class="kicker">This site</span><p>The chat box in the corner answers questions about my work and takes your details if you want me to follow up.</p></li>
+    </ul>
+    <div class="section-cta" data-reveal><a class="btn" href="https://www.thedigitaldad.co/services#apply">Apply for a build <span class="arrow" aria-hidden="true">&rarr;</span></a></div>
+  </div>
+</section>
+
+<section class="section" id="path" aria-labelledby="path-title">
+  <div class="wrap">
+    <p class="label">How it works</p>
+    <h2 id="path-title" data-reveal>Find the leak. Then fix it.</h2>
+    <ol class="path">
+      <li class="card path-step" data-reveal><span class="kicker">Start here</span><h3>The Bottleneck Audit</h3><p>I go through your funnel the way a buyer would, every step, on a real phone, and write down where people leave. If you hire me for the fix, the fee comes off the build.</p></li>
+      <li class="card path-step path-rec" data-reveal><span class="kicker">Then</span><h3>The build</h3><p>Page, sign-up and follow-up wired into one path. Tested, then handed over. Yours.</p></li>
+      <li class="card path-step" data-reveal><span class="kicker">After</span><h3>Care Plan</h3><p>Offered when I hand a build over, never sold up front.</p></li>
+    </ol>
+    <aside class="slip" aria-labelledby="slip-home-title" data-reveal>
+      <div class="slip-head"><h3 id="slip-home-title">What you keep at handoff</h3><span class="kicker">In every build</span></div>
+      <ul class="slip-list">
+        <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span><strong>You own the backups.</strong></li>
+        <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span><strong>A one-page note on what happens if I'm out.</strong></li>
+        <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span><strong>Alerts when something fails silently.</strong></li>
+        <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span><strong>One restore, tested before handoff.</strong></li>
+      </ul>
+      <p class="slip-foot"><span class="tick" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span><span>And you keep a copy of your list.</span></p>
+    </aside>
+    <div class="section-cta" data-reveal>
+      <a class="btn" href="https://www.thedigitaldad.co/services#apply">Apply for a build <span class="arrow" aria-hidden="true">&rarr;</span></a>
+      <a class="text-link" href="https://www.thedigitaldad.co/services#ladder">See all prices <span class="arrow" aria-hidden="true">&rarr;</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="section band" id="words" aria-labelledby="words-title">
+  <div class="wrap">
+    <p class="label">Early work, in their words</p>
+    <h2 id="words-title" data-reveal>Each quote is word for word.</h2>
+    <div class="quotes quotes-4">
+      <figure class="quote" data-reveal>
+        <blockquote>The final page captured my voice so well that I immediately replaced my website homepage with it.</blockquote>
+        <figcaption><span class="who">Alison James</span><span class="role">Founder, AiLisia Labs</span><span class="scope">Sales page &middot; Volunteer tester</span></figcaption>
+      </figure>
+      <figure class="quote" data-reveal>
+        <blockquote>What impressed me most was how accurately he captured my voice, personality, and overall mission. It felt like he truly understood my vision and brought it to life without me having to spend hours explaining every detail.</blockquote>
+        <figcaption><span class="who">Jamie O'Connor</span><span class="role">Creator, Boss VA Academy</span><span class="scope">Promo Pack</span></figcaption>
+      </figure>
+      <figure class="quote" data-reveal>
+        <blockquote>It didn't sound like a typical AI sales page. It sounded like someone actually understood my audience and the way I communicate in my content daily!</blockquote>
+        <figcaption><span class="who">Ashley Rivera</span><span class="role">@TheSavvyMamaa</span><span class="scope">Sales page &middot; Volunteer tester</span></figcaption>
+      </figure>
+      <figure class="quote" data-reveal>
+        <blockquote>Every time I needed something fixed you did it with no hesitation. Honestly I love coming back because you always listen and it comes out even better than what's in mind.</blockquote>
+        <figcaption><span class="who">Crispen Arguellez</span><span class="role">Boss Suite affiliate</span><span class="scope">Affiliate sales page &middot; Built free</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="free" aria-labelledby="free-title">
+  <div class="wrap free-grid">
+    <div>
+      <p class="label">Free</p>
+      <h2 id="free-title" data-reveal>Free, and yours to keep.</h2>
+      <p class="free-copy" data-reveal>Checklists, lessons and tools from my own builds, all on one board. One email gets all of them.</p>
+    </div>
+    <div class="free-links" data-reveal>
+      <a class="btn btn-ghost" href="https://resources.thedigitaldad.co/?src=site-home-free">Open the free board <span class="arrow" aria-hidden="true">&rarr;</span></a>
+      <a class="text-link" href="https://digital-dad-leverage-score.netlify.app">Or take the AI Leverage Score quiz. Five questions. <span class="arrow" aria-hidden="true">&rarr;</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="section band" id="story" aria-labelledby="story-title">
+  <div class="wrap founder-panel">
+    <figure class="portrait" data-reveal>
+      <img src="https://raw.githubusercontent.com/charleshayesdigitally-oss/tdd-content-assets/main/site/charles-founder-dark.jpg" alt="Charles Hayes, founder of The Digital Dad" width="640" height="800" loading="lazy">
+    </figure>
+    <div class="founder-copy">
+      <p class="label">Who builds it</p>
+      <p class="lede" id="story-title" data-reveal>I'm Charles Hayes: a father, a follower of Christ, and a builder of systems.</p>
+      <p data-reveal>No college degree. Laid off four times in five years. One income in the house.</p>
+      <p data-reveal>A few days before Christmas, my son picked up a $7 item at the store. He put it back and said:</p>
+      <blockquote class="story-quote" data-reveal>&ldquo;It's okay, Dad. I know you don't have a job right now.&rdquo;</blockquote>
+      <a class="text-link" href="https://www.thedigitaldad.co/about-us" data-reveal>The whole story <span class="arrow" aria-hidden="true">&rarr;</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="section closing" id="join" aria-labelledby="join-title">
+  <div class="wrap close-grid">
+    <div>
+      <h2 id="join-title" data-reveal>Now I build systems that keep working on the days you can't be there.</h2>
+      <p class="close-sub" data-reveal>And I'll tell you which parts still need you.</p>
+      <div class="section-cta" data-reveal><a class="btn" href="https://www.thedigitaldad.co/services#apply">Apply for a build <span class="arrow" aria-hidden="true">&rarr;</span></a></div>
+    </div>
+    <div data-reveal>
+      <p class="field-head">Get Wednesday's email.</p>
+      <p class="promise">Every Wednesday: what I built this week, what worked, what broke, plus the AI news worth your time.</p>
+      <form class="capture" data-capture="newsletter" data-no-quiet data-source="home-closing" action="https://thedigitaldadnews.beehiiv.com/subscribe" method="get" novalidate>
+        <label class="field-label" for="email-close">Your email</label>
+        <div class="capture-row">
+          <input id="email-close" name="email" type="email" autocomplete="email" inputmode="email" required placeholder="you@example.com">
+          <button class="btn btn-ghost" type="submit">Get the newsletter</button>
+        </div>
+        <div class="hp" aria-hidden="true"><label for="hp-close">Leave this empty</label><input id="hp-close" name="company_url" type="text" tabindex="-1" autocomplete="off"></div>
+        <p class="form-status" role="status" aria-live="polite"></p>
+      </form>
+      <p class="fine">Free. Unsubscribe anytime.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <a class="brand" href="https://www.thedigitaldad.co/" aria-label="The Digital Dad AI Systems, home">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjAwIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJUaGUgRGlnaXRhbCBEYWQgQUkgU3lzdGVtcyBtYXJrIj4NCiAgPGRlZnM+DQogICAgPGxpbmVhckdyYWRpZW50IGlkPSJuQmx1ZSIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzNhYTBmZiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzBiNjNlNSIvPjwvbGluZWFyR3JhZGllbnQ+DQogICAgPGxpbmVhckdyYWRpZW50IGlkPSJuQnJpZ2h0IiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZmZmZmZmIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjOGZkNGZmIi8+PC9saW5lYXJHcmFkaWVudD4NCiAgICA8bGluZWFyR3JhZGllbnQgaWQ9Im5DeWFuIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjNmZlMGZmIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDBhZWVmIi8+PC9saW5lYXJHcmFkaWVudD4NCiAgICA8ZmlsdGVyIGlkPSJnbG93IiB4PSItNjAlIiB5PSItNjAlIiB3aWR0aD0iMjIwJSIgaGVpZ2h0PSIyMjAlIj48ZmVHYXVzc2lhbkJsdXIgc3RkRGV2aWF0aW9uPSIyLjIiIHJlc3VsdD0iYiIvPjxmZU1lcmdlPjxmZU1lcmdlTm9kZSBpbj0iYiIvPjxmZU1lcmdlTm9kZSBpbj0iU291cmNlR3JhcGhpYyIvPjwvZmVNZXJnZT48L2ZpbHRlcj4NCiAgPC9kZWZzPg0KICA8ZyBmaWx0ZXI9InVybCgjZ2xvdykiPg0KICAgIDxnIHN0cm9rZT0iIzVhYjRmNSIgc3Ryb2tlLXdpZHRoPSIyLjQiIGZpbGw9Im5vbmUiIG9wYWNpdHk9Ii45IiBzdHJva2UtbGluZWNhcD0icm91bmQiPg0KICAgICAgPHBhdGggZD0iTTEwMCA1NCBMMTQ2IDEwMCBMMTAwIDE0NiBMNTQgMTAwIFoiLz4NCiAgICAgIDxsaW5lIHgxPSIxMDAiIHkxPSI1NCIgeDI9IjEwMCIgeTI9IjE0NiIvPg0KICAgICAgPGxpbmUgeDE9IjU0IiB5MT0iMTAwIiB4Mj0iMTQ2IiB5Mj0iMTAwIi8+DQogICAgICA8bGluZSB4MT0iNTQiIHkxPSIxMDAiIHgyPSIyOCIgeTI9IjEwMCIvPg0KICAgICAgPGxpbmUgeDE9IjE0NiIgeTE9IjEwMCIgeDI9IjE3MiIgeTI9IjEwMCIvPg0KICAgICAgPGxpbmUgeDE9IjEwMCIgeTE9IjU0IiB4Mj0iNzIiIHkyPSI0MCIvPg0KICAgICAgPGxpbmUgeDE9IjEwMCIgeTE9IjE0NiIgeDI9IjEyOCIgeTI9IjE2MCIvPg0KICAgIDwvZz4NCiAgICA8cmVjdCB4PSI4OCIgeT0iNDIiIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgcng9IjYiIGZpbGw9InVybCgjbkJyaWdodCkiLz4NCiAgICA8cmVjdCB4PSI5MCIgeT0iOTAiIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgcng9IjUiIGZpbGw9InVybCgjbkN5YW4pIi8+DQogICAgPHJlY3QgeD0iODgiIHk9IjEzNCIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiByeD0iNiIgZmlsbD0idXJsKCNuQmx1ZSkiLz4NCiAgICA8cmVjdCB4PSI0MiIgeT0iODgiIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgcng9IjYiIGZpbGw9InVybCgjbkJsdWUpIi8+DQogICAgPHJlY3QgeD0iMTM0IiB5PSI4OCIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiByeD0iNiIgZmlsbD0idXJsKCNuQnJpZ2h0KSIvPg0KICAgIDxyZWN0IHg9IjIwIiB5PSI5MyIgd2lkdGg9IjE0IiBoZWlnaHQ9IjE0IiByeD0iNCIgZmlsbD0idXJsKCNuQmx1ZSkiLz4NCiAgICA8cmVjdCB4PSIxNjYiIHk9IjkzIiB3aWR0aD0iMTQiIGhlaWdodD0iMTQiIHJ4PSI0IiBmaWxsPSJ1cmwoI25CcmlnaHQpIi8+DQogICAgPHJlY3QgeD0iNjQiIHk9IjMzIiB3aWR0aD0iMTMiIGhlaWdodD0iMTMiIHJ4PSI0IiBmaWxsPSJ1cmwoI25DeWFuKSIvPg0KICAgIDxyZWN0IHg9IjEyMiIgeT0iMTUzIiB3aWR0aD0iMTMiIGhlaWdodD0iMTMiIHJ4PSI0IiBmaWxsPSJ1cmwoI25DeWFuKSIvPg0KICA8L2c+DQo8L3N2Zz4NCg==" width="40" height="40" alt="">
+        <span class="brand-name">The Digital Dad<small>AI Systems</small></span>
+      </a>
+      <p class="footer-line">Founded by a working dad.<br>Built for everyone still building.</p>
+      <a class="text-link" href="mailto:charles@thedigitaldad.co">charles@thedigitaldad.co</a>
+    </div>
+    <nav class="footer-nav" aria-label="Footer">
+      <a href="https://www.thedigitaldad.co/about-us">About</a>
+      <a href="https://www.thedigitaldad.co/services">Work With Me</a>
+      <a href="https://resources.thedigitaldad.co/">Free Resources</a>
+      <a href="https://instagram.com/charles_the_digital_dad">Instagram</a>
+      <a href="https://www.thedigitaldad.co/privacy-policy">Privacy</a>
+      <a href="https://www.thedigitaldad.co/terms-conditions">Terms</a>
+      <a href="https://www.thedigitaldad.co/refund-policy">Refund policy</a>
+      <a href="https://www.thedigitaldad.co/website-disclaimer">Disclaimer</a>
+    </nav>
+    <p class="footer-legal">&copy; 2026 Everyday Faith Media LLC, d/b/a The Digital Dad AI Systems. All rights reserved.</p>
+  </div>
+</footer>
+
+</div>
+<script>/* The Digital Dad, site rebuild 2026-10-01. SHARED behaviour for all three pages:
+   header menu, current-page marker, the quiet header CTA, one-shot reveals,
+   the handoff slip ticks, and every newsletter form.
+
+   FORMS RULE: success is shown only on a 2xx from the webhook. Anything else
+   (non-2xx, network error, the 15s deadline, or a build with no webhook configured)
+   shows a visible error with two ways out. Nobody is ever told they're subscribed
+   when they aren't. The webhook tokens below are swapped in by build.py from the
+   git-ignored webhooks.local.json; they never live in tracked source. */
+(function () {
+  'use strict';
+  var root = document.getElementById('tdd');
+  if (!root || root.getAttribute('data-site-ready')) return;
+  root.setAttribute('data-site-ready', 'true');
+
+  var NEWSLETTER_WEBHOOK = 'https://hook.us2.make.com/p9dbwk5rti41mmeuj6h6j4u7f91mudkc';
+  var CONTACT_EMAIL = 'charles@thedigitaldad.co';
+  var BEEHIIV_SIGNUP = 'https://thedigitaldadnews.beehiiv.com/?modal=signup';
+  var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+  var DEADLINE_MS = 15000;
+  var reducedMotion = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : { matches: false };
+
+  function each(list, fn) { Array.prototype.forEach.call(list, fn); }
+
+  /* ---------- shared form helpers (also used by services/interactions.js) ---------- */
+  function configured(url) {
+    return /^https:\/\/hook\.[a-z0-9]+\.make\.com\/[A-Za-z0-9]+$/.test(url);
+  }
+  // The deadline is independent of AbortController: Promise.race settles to an error
+  // after DEADLINE_MS whatever the browser supports. AbortController, where it exists,
+  // also cancels the request itself. A hung request always ends in the error state.
+  function postJSON(url, payload) {
+    if (!configured(url)) return Promise.reject(new Error('webhook not configured'));
+    var controller = typeof AbortController === 'function' ? new AbortController() : null;
+    var timer = null;
+    var deadline = new Promise(function (_, reject) {
+      timer = setTimeout(function () {
+        if (controller) controller.abort();
+        reject(new Error('timed out'));
+      }, DEADLINE_MS);
+    });
+    var request = fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+      signal: controller ? controller.signal : undefined
+    }).then(function (response) {
+      if (!response.ok) throw new Error('HTTP ' + response.status);
+      return response;
+    });
+    return Promise.race([request, deadline]).then(function (response) {
+      clearTimeout(timer);
+      return response;
+    }, function (error) {
+      clearTimeout(timer);
+      throw error;
+    });
+  }
+  function link(href, text) {
+    var a = document.createElement('a');
+    a.href = href;
+    a.textContent = text;
+    return a;
+  }
+  function setStatus(el, kind, parts) {
+    if (!el) return;
+    el.className = 'form-status' + (kind ? ' is-' + kind : '');
+    el.textContent = '';
+    each(parts || [], function (part) {
+      el.appendChild(typeof part === 'string' ? document.createTextNode(part) : part);
+    });
+  }
+  function escapeHtml(value) {
+    return String(value).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  window.__tddSite = {
+    postJSON: postJSON, setStatus: setStatus, link: link, escapeHtml: escapeHtml,
+    EMAIL_RE: EMAIL_RE, NEWSLETTER_WEBHOOK: NEWSLETTER_WEBHOOK
+  };
+
+  /* ---------- header: menu, current page, newsletter link ---------- */
+  var header = root.querySelector('.site-header');
+  var toggle = root.querySelector('.menu-toggle');
+  var menu = root.querySelector('#site-menu');
+  function closeMenu() {
+    if (!toggle || !menu) return;
+    toggle.setAttribute('aria-expanded', 'false');
+    menu.classList.remove('is-open');
+  }
+  if (toggle && menu) {
+    toggle.addEventListener('click', function () {
+      var open = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!open));
+      menu.classList.toggle('is-open', !open);
+      if (!open) {
+        var first = menu.querySelector('a');
+        if (first) first.focus();
+      }
+    });
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+        closeMenu();
+        toggle.focus();
+      }
+    });
+    document.addEventListener('click', function (event) {
+      if (header && !header.contains(event.target)) closeMenu();
+    });
+  }
+  var page = root.getAttribute('data-page');
+  each(root.querySelectorAll('[data-nav]'), function (a) {
+    if (a.getAttribute('data-nav') === page) a.setAttribute('aria-current', 'page');
+  });
+  each(root.querySelectorAll('[data-newsletter-link]'), function (a) {
+    a.addEventListener('click', function () {
+      closeMenu();
+      var input = root.querySelector('#newsletter input[type="email"]');
+      if (!input || input.disabled) return;
+      setTimeout(function () {
+        try { input.focus({ preventScroll: true }); } catch (_) { input.focus(); }
+      }, reducedMotion.matches ? 0 : 450);
+    });
+  });
+
+  /* ---------- the quiet CTA: one filled button in view at a time ----------
+     While a form with a filled submit is on screen, the header button drops to an
+     outline. Forms whose own button is already an outline carry data-no-quiet, so
+     the header stays the one filled ask beside them. */
+  var cta = root.querySelector('.nav-cta');
+  var captures = root.querySelectorAll('[data-capture]:not([data-no-quiet])');
+  if (cta && captures.length && 'IntersectionObserver' in window) {
+    var inView = [];
+    var quietObserver = new IntersectionObserver(function (entries) {
+      each(entries, function (entry) {
+        var i = inView.indexOf(entry.target);
+        if (entry.isIntersecting && i === -1) inView.push(entry.target);
+        if (!entry.isIntersecting && i !== -1) inView.splice(i, 1);
+      });
+      cta.classList.toggle('is-quiet', inView.length > 0);
+    }, { threshold: 0.2 });
+    each(captures, function (form) { quietObserver.observe(form); });
+  }
+
+  /* ---------- one-shot reveals. Content is visible by default; this never gates it ---------- */
+  function animate(el, frames, options) {
+    if (reducedMotion.matches || !el || !el.animate) return null;
+    return el.animate(frames, options);
+  }
+  if ('IntersectionObserver' in window) {
+    var revealObserver = new IntersectionObserver(function (entries) {
+      each(entries, function (entry) {
+        if (!entry.isIntersecting) return;
+        revealObserver.unobserve(entry.target);
+        animate(entry.target, [
+          { opacity: 0, transform: 'translateY(20px)' },
+          { opacity: 1, transform: 'translateY(0)' }
+        ], { duration: 460, easing: 'cubic-bezier(.16,1,.3,1)' });
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+    each(root.querySelectorAll('[data-reveal]'), function (el) { revealObserver.observe(el); });
+  }
+
+  /* ---------- the handoff slip: ticks land once, when the slip scrolls in ---------- */
+  var slips = root.querySelectorAll('.slip');
+  if (slips.length && !reducedMotion.matches && 'IntersectionObserver' in window) {
+    var slipObserver = new IntersectionObserver(function (entries) {
+      each(entries, function (entry) {
+        if (!entry.isIntersecting) return;
+        slipObserver.unobserve(entry.target);
+        // Two frames so the armed (hidden) state paints before the transition starts.
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () { entry.target.classList.add('is-ticked'); });
+        });
+      });
+    }, { threshold: 0.35 });
+    each(slips, function (slip) {
+      slip.classList.add('is-armed');
+      slipObserver.observe(slip);
+    });
+  }
+  if (reducedMotion.addEventListener) {
+    reducedMotion.addEventListener('change', function () {
+      if (reducedMotion.matches) each(slips, function (slip) { slip.classList.remove('is-armed'); });
+    });
+  }
+
+  /* ---------- newsletter forms ---------- */
+  each(root.querySelectorAll('form[data-capture="newsletter"]'), function (form) {
+    var input = form.querySelector('input[type="email"]');
+    var button = form.querySelector('button[type="submit"]');
+    var status = form.querySelector('.form-status');
+    var trap = form.querySelector('[name="company_url"]');
+    var label = button ? button.textContent : '';
+    var busy = false;
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+      if (busy || !input || !button) return;
+      if (trap && trap.value) return; // honeypot: a bot filled the hidden field. Send nothing, claim nothing.
+      var email = input.value.trim();
+      if (!EMAIL_RE.test(email)) {
+        input.setAttribute('aria-invalid', 'true');
+        setStatus(status, 'error', ['That email doesn’t look right. Check it and try again.']);
+        input.focus();
+        return;
+      }
+      input.removeAttribute('aria-invalid');
+      busy = true;
+      button.disabled = true;
+      button.textContent = 'Sending…';
+      setStatus(status, 'pending', ['Sending…']);
+      postJSON(NEWSLETTER_WEBHOOK, { email: email, name: '', source: form.getAttribute('data-source') || 'site' })
+        .then(function () {
+          input.disabled = true;
+          button.textContent = 'You’re in';
+          setStatus(status, 'ok', ['You’re on the list. The next issue lands Wednesday.']);
+        })
+        .catch(function () {
+          busy = false;
+          button.disabled = false;
+          button.textContent = label;
+          setStatus(status, 'error', [
+            'We couldn’t confirm that went through. Try again, ',
+            link(BEEHIIV_SIGNUP, 'sign up on Beehiiv directly'),
+            ', or email ',
+            link('mailto:' + CONTACT_EMAIL, CONTACT_EMAIL),
+            ' and I’ll add you by hand.'
+          ]);
+        });
+    });
+  });
+})();
+
+/* Home v2: the loop video in the gradient band.
+   - Loads and plays only once the band is on screen (preload="none", data-src).
+   - A real pause/play button (WCAG 2.2.2: anything looping longer than 5s needs one).
+   - prefers-reduced-motion: never autoplays; the poster and the three listed steps carry the message.
+   - The step chips light in sync with the video's thirds. */
+(function () {
+  'use strict';
+  var video = document.querySelector('#tdd .loop-video');
+  if (!video) return;
+  var toggle = document.querySelector('#tdd .loop-toggle');
+  var label = toggle && toggle.querySelector('.loop-toggle-text');
+  var steps = Array.prototype.slice.call(document.querySelectorAll('#tdd .loop-steps li'));
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var loaded = false;
+  var userPaused = false;
+
+  function setButton(playing) {
+    if (!toggle) return;
+    toggle.setAttribute('aria-pressed', playing ? 'false' : 'true');
+    toggle.setAttribute('aria-label', playing ? 'Pause the video' : 'Play the video');
+    if (label) label.textContent = playing ? 'Pause' : 'Play';
+  }
+
+  function load() {
+    if (loaded) return;
+    loaded = true;
+    Array.prototype.forEach.call(video.querySelectorAll('source[data-src]'), function (s) {
+      s.setAttribute('src', s.getAttribute('data-src'));
+    });
+    video.load();
+  }
+
+  function play() {
+    load();
+    var p = video.play();
+    if (p && p.catch) p.catch(function () { setButton(false); });
+    setButton(true);
+  }
+
+  function pause() {
+    video.pause();
+    setButton(false);
+  }
+
+  if (toggle) {
+    toggle.addEventListener('click', function () {
+      if (video.paused) { userPaused = false; play(); } else { userPaused = true; pause(); }
+    });
+  }
+
+  video.addEventListener('timeupdate', function () {
+    if (!steps.length || !video.duration) return;
+    var third = Math.min(2, Math.floor((video.currentTime / video.duration) * 3));
+    steps.forEach(function (li, i) { li.classList.toggle('is-on', i === third); });
+  });
+
+  if (reduce) {
+    setButton(false);
+    return;
+  }
+
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting && !userPaused) play();
+        else if (!e.isIntersecting && !video.paused) { video.pause(); setButton(false); }
+      });
+    }, { threshold: 0.35 });
+    io.observe(video);
+  } else {
+    play();
+  }
+})();
+</script>
+</body>
+</html>
