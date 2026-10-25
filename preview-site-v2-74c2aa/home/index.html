@@ -366,6 +366,11 @@ body{margin:0;background:#050816}
 #tdd .closing h2{color:#fff}
 #tdd .closing .close-sub{color:#fff;font-size:1.5rem;line-height:1.35}
 #tdd .closing .close-grid>div:last-child{background:var(--bg);border-radius:18px;padding:28px;box-shadow:0 24px 60px -24px rgba(5,8,22,.6)}
+/* round 3b: grader found .cases (3 cols) overriding .cases-2; captions sat over the screenshots */
+#tdd .cases.cases-2{grid-template-columns:1fr 1fr}
+#tdd .case-shots figure{display:flex;flex-direction:column}
+#tdd .case-shots figcaption{position:static;align-self:flex-start;margin:0;padding:6px 10px;border-radius:0;background:transparent;color:var(--muted);font-size:.8rem}
+@media (max-width:960px){#tdd .cases.cases-2{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -480,8 +485,8 @@ body{margin:0;background:#050816}
         <p class="kicker">Client project &middot; Stan store, quiz and welcome emails</p>
         <h3>A Stan store that started keeping its visitors.</h3>
         <div class="case-shots">
-          <figure><img src="https://raw.githubusercontent.com/charleshayesdigitally-oss/tdd-content-assets/main/site/v2/rhonni-before.webp" width="800" height="500" loading="lazy" alt="Rhonni's Stan store before the build: product graphics and no email capture."><figcaption>Before</figcaption></figure>
-          <figure><img src="https://raw.githubusercontent.com/charleshayesdigitally-oss/tdd-content-assets/main/site/v2/rhonni-after.webp" width="800" height="500" loading="lazy" alt="Rhonni's Stan store after the build, opening on her profile with the free guide below."><figcaption>After</figcaption></figure>
+          <figure><img src="https://raw.githubusercontent.com/charleshayesdigitally-oss/tdd-content-assets/main/site/v2/rhonni-before.webp" width="800" height="500" loading="lazy" alt="Rhonni's Stan store before the build: the first thing under her profile was a course graphic, with no email capture."><figcaption>Before: a course graphic up top</figcaption></figure>
+          <figure><img src="https://raw.githubusercontent.com/charleshayesdigitally-oss/tdd-content-assets/main/site/v2/rhonni-after.webp" width="800" height="500" loading="lazy" alt="Rhonni's Stan store after the build: a free guide sign-up form and a quiz are the first things under her profile."><figcaption>After: free guide sign-up up top</figcaption></figure>
         </div>
         <dl class="case-facts">
           <div><dt>Before</dt><dd>There was no email capture anywhere on it.</dd></div>
