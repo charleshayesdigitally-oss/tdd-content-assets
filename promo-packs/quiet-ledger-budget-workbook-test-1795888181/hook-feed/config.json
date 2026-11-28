@@ -1,0 +1,13 @@
+{
+  "style": "elegant",
+  "type": "hook",
+  "format": "feed",
+  "palette": {"accent": "#8a9a7b", "accent2": "#f5f0e6"},
+  "content": {
+    "headline_lines": ["Know Where", "Every Dollar Went."],
+    "headline_highlight": "Every Dollar Went.",
+    "script": "In 20 minutes on a Sunday.",
+    "sub": "A printable monthly budget workbook for busy families.",
+    "cta": "Get the workbook"
+  }
+}

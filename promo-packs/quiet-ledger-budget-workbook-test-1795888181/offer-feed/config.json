@@ -1,0 +1,16 @@
+{
+  "style": "elegant",
+  "type": "offer",
+  "format": "feed",
+  "palette": {"accent": "#8a9a7b", "accent2": "#f5f0e6"},
+  "content": {
+    "headline_lines": ["Budget Clarity", "Every Sunday."],
+    "headline_highlight": "Every Sunday.",
+    "script": "Know where every dollar went, in 20 minutes.",
+    "section": "Quiet Ledger",
+    "features": ["Printable PDF", "Monthly Layout", "20-Min Reset", "Built for Families"],
+    "now": "$27",
+    "cta": "Get the workbook",
+    "tagline": "A printable monthly budget workbook for busy families."
+  }
+}

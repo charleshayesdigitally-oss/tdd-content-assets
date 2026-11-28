@@ -1,0 +1,18 @@
+{
+  "style": "elegant",
+  "type": "steps",
+  "format": "feed",
+  "palette": {"accent": "#8a9a7b", "accent2": "#f5f0e6"},
+  "content": {
+    "headline_lines": ["Budget Clarity", "in 3 Steps"],
+    "headline_highlight": "in 3 Steps",
+    "script": "One Sunday. Twenty minutes. Done.",
+    "steps": [
+      {"label": "Download & Print", "desc": "Print your monthly pages. No setup required."},
+      {"label": "Fill It In", "desc": "Track each dollar by category — 20 minutes total."},
+      {"label": "See the Picture", "desc": "Walk into the month knowing exactly where you stand."}
+    ],
+    "cta": "Get the workbook",
+    "tagline": "Quiet Ledger Budget Workbook — $27"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "style": "elegant",
+  "type": "beforeafter",
+  "format": "feed",
+  "palette": {"accent": "#8a9a7b", "accent2": "#f5f0e6"},
+  "content": {
+    "headline_lines": ["One Workbook.", "Big Shift."],
+    "headline_highlight": "Big Shift.",
+    "script": "Twenty minutes changes the picture.",
+    "before_label": "Before",
+    "after_label": "After",
+    "before": ["Guessing where money went", "Skipping the budget sit-down", "Month ends in a blur"],
+    "after": ["Every dollar accounted for", "20-minute Sunday reset", "Month ends with clarity"],
+    "cta": "Get the workbook",
+    "tagline": "Quiet Ledger — $27"
+  }
+}
